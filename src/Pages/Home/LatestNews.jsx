@@ -1,42 +1,41 @@
 import { useEffect, useRef } from "react";
 
-
 const newsData = [
   {
     title: "ছয় দফা দিবস উপলক্ষে ইবি বঙ্গবন্ধু পরিবারের আলোচনা সভা",
     time: "৩৩ মিনিট আগে",
     category: "ক্যাম্পাস",
-    imageUrl: "https://i.ibb.co/ZKqF21S/bongo.webp", 
+    imageUrl: "https://i.ibb.co/ZKqF21S/bongo.webp",
   },
   {
     title: "সৌম্যের লজ্জার রেকর্ড",
     time: "৬১ মিনিট আগে",
     category: "মাঠে ময়দানে",
-    imageUrl: "https://i.ibb.co/TMjmHcH/soumyo.webp", 
+    imageUrl: "https://i.ibb.co/TMjmHcH/soumyo.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
     category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
     category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
     category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
     category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   // Add more items as needed
 ];
@@ -58,7 +57,7 @@ const LatestNews = () => {
     <div className="p-4 max-w-xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">সর্বশেষ খবর</h2>
       <div
-        className="overflow-y-auto max-h-screen"
+        className="overflow-y-auto max-h-96"
         ref={scrollContainerRef}
       >
         {newsData.map((news, index) => (

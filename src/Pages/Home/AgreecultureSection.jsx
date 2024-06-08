@@ -3,8 +3,8 @@ import NewsCard from '../../Components/NewsCard/NewsCard';
 
 const AgreecultureSection = () => {
     return (
-        <div>
-            <h1 className='text-3xl font-bold ml-5 text-black'>AgreCulture </h1>
+        <div className='mx-5'>
+            <h1 className='text-3xl font-bold ml-5 text-black'>বাণিজ্য </h1>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 mx-4 lg:gap-5">
                 <div className="   lg:col-span-2">
                 <div className="w-full  overflow-hidden  my-4">

@@ -3,8 +3,8 @@ import NewsCard from '../../Components/NewsCard/NewsCard';
 
 const InternationalNews = () => {
     return (
-        <div>
-            <h1 className='text-3xl font-bold text-black'>International News</h1>
+        <div className='text-black mx-4'>
+            <h1 className='text-3xl font-bold text-black'>আন্তর্জাতিক</h1>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
                <div className=" rounded-lg ">
 

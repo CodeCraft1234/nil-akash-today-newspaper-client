@@ -46,7 +46,7 @@ const MostViewedNews = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({ top: 100, behavior: "smooth" });
+        scrollContainerRef.current.scrollBy({ top: 100, behavior: 'smooth' });
       }
     }, 2000);
 
@@ -55,9 +55,9 @@ const MostViewedNews = () => {
 
   return (
     <div className="p-4 max-w-xl mx-auto">
-    <h2 className="text-2xl font-bold mb-4">সর্বচ্চ পঠিত</h2>
+    <h2 className="text-2xl font-bold mb-4">সর্বশেষ খবর</h2>
     <div
-      className="overflow-y-auto max-h-screen"
+      className="overflow-y-auto max-h-96"
       ref={scrollContainerRef}
     >
       {newsData.map((news, index) => (

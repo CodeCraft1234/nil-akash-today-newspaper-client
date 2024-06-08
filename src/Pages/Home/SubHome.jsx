@@ -28,8 +28,10 @@ const SubHome = () => {
              </div>
                 <NewsCardFinal></NewsCardFinal>
                 </div>
-              <div className=" rounded-lg bg-gray-200 lg:col-span-1">
+              <div className=" rounded-lg  lg:col-span-1">
+                <img src="https://i.ibb.co/z8vr3sm/1000010077.jpg" alt="" />
               <LatestNews></LatestNews>
+              <img src="https://i.ibb.co/z8vr3sm/1000010077.jpg" alt="" />
                 <MostViewedNews></MostViewedNews>
               </div>
             </div>        

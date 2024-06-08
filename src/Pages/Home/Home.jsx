@@ -21,7 +21,7 @@ const Home = () => {
       <SubHome></SubHome>
       <AgreecultureSection></AgreecultureSection>
       <CategoryNews></CategoryNews>
-      <ExcusiveNewa></ExcusiveNewa>
+      {/* <ExcusiveNewa></ExcusiveNewa> */}
       <DeshNews></DeshNews>
       <InternationalNews></InternationalNews>
       <AllNews></AllNews>
