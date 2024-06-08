@@ -57,6 +57,9 @@ const NavBar = () => {
             <li>
               <NavLink to={"/Health"}>স্বাস্থ্য</NavLink>
             </li>
+            <li>
+              <NavLink to={"/addNews"}>Add News</NavLink>
+            </li>
           </ul>
         </div>
         <div className="flex justify-center items-center">
@@ -101,6 +104,9 @@ const NavBar = () => {
           <li>
             <NavLink to={"/Health"}>স্বাস্থ্য</NavLink>
           </li>
+          <li>
+              <NavLink to={"/addNews"}>Add News</NavLink>
+            </li>
         </ul>
       </div>
       <div className="navbar-end">
