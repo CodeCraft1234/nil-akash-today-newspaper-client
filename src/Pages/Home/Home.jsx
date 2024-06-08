@@ -1,4 +1,5 @@
 import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
+import TextImageCardList from "../../Components/TextImageCard/TextImageCardList";
 
 import Banner from "./Banner";
 
@@ -11,6 +12,7 @@ const Home = () => {
       <Headline></Headline>
 
       <SubHome></SubHome>
+      <TextImageCardList></TextImageCardList>
       {/* <Banner></Banner>
       <NewsCardFinal></NewsCardFinal> */}
 
