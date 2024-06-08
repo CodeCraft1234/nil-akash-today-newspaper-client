@@ -1,4 +1,5 @@
 const NewsCard = ({ image, title, description, time }) => {
+  
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg my-4">
       <img className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105" src={image} alt="News" />

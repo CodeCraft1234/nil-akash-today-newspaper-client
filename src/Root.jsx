@@ -7,7 +7,7 @@ const Root = () => {
     return (
         <div className="bg-white">
             <NavBar></NavBar>
-           <div className="min-h-screen">
+           <div className="min-h-screen bg-white">
            <Outlet></Outlet>
            </div>
             <Footer></Footer>

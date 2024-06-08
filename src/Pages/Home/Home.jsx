@@ -1,13 +1,19 @@
 import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
-import NewsSideList from "../../Components/NewsCard/NewsSide/NewsSideList";
+
+import Banner from "./Banner";
+
 import Headline from "./Headline";
+import SubHome from "./SubHome";
 
 const Home = () => {
   return (
     <div className="bg-white mt-20">
       <Headline></Headline>
-      <NewsCardFinal></NewsCardFinal>
-      <NewsSideList></NewsSideList>
+
+      <SubHome></SubHome>
+      {/* <Banner></Banner>
+      <NewsCardFinal></NewsCardFinal> */}
+
     </div>
   );
 };
