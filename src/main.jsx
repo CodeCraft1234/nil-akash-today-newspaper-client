@@ -18,6 +18,7 @@ import Sports from "./Pages/Sports/Sports";
 import Education from "./Pages/Education/Education";
 import WestBengal from "./Pages/WestBengal/WestBengal";
 import Health from "./Pages/Health/Health";
+import AddNews from "./Components/AddNews/AddNews";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path:'/Health',
         element: <Health></Health>
+      },
+      {
+        path:'/addNews',
+        element: <AddNews></AddNews>
       },
     ]
   },
