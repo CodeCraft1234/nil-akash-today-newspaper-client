@@ -28,34 +28,34 @@ const NavBar = () => {
             className="menu menu-sm dropdown-content bg-violet-950 mt-3 z-[1] p-2 shadow rounded-box w-52"
           >
             <li>
-              <NavLink to={"/জাতীয়"}>জাতীয়</NavLink>
+              <NavLink to={"/national"}>জাতীয়</NavLink>
             </li>
             <li>
-              <NavLink to={"/আন্তর্জাতিক"}>আন্তর্জাতিক</NavLink>
+              <NavLink to={"/interNational"}>আন্তর্জাতিক</NavLink>
             </li>
             <li>
-              <NavLink to={"/রাজনীতি"}>রাজনীতি</NavLink>
+              <NavLink to={"/politics"}>রাজনীতি</NavLink>
             </li>
             <li>
-              <NavLink to={"/অর্থনীতি"}>অর্থনীতি</NavLink>
+              <NavLink to={"/economics"}>অর্থনীতি</NavLink>
             </li>
             <li>
-              <NavLink to={"/সারাদেশ"}>সারাদেশ</NavLink>
+              <NavLink to={"/wholeBD"}>সারাদেশ</NavLink>
             </li>
             <li>
-              <NavLink to={"/বিনোদন"}>বিনোদন</NavLink>
+              <NavLink to={"/Entertainment"}>বিনোদন</NavLink>
             </li>
             <li>
-              <NavLink to={"/খেলা"}>খেলা</NavLink>
+              <NavLink to={"/Sports"}>খেলা</NavLink>
             </li>
             <li>
-              <NavLink to={"/শিক্ষা"}>শিক্ষা</NavLink>
+              <NavLink to={"/Education"}>শিক্ষা</NavLink>
             </li>
             <li>
-              <NavLink to={"/উপার বাংলা"}>উপার বাংলা</NavLink>
+              <NavLink to={"/WestBengal"}>উপার বাংলা</NavLink>
             </li>
             <li>
-              <NavLink to={"/স্বাস্থ্য"}>স্বাস্থ্য</NavLink>
+              <NavLink to={"/Health"}>স্বাস্থ্য</NavLink>
             </li>
           </ul>
         </div>
@@ -72,34 +72,34 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal items-center px-1 flex gap-1">
           <li>
-            <NavLink to={"/জাতীয়"}>জাতীয়</NavLink>
+            <NavLink to={"/national"}>জাতীয়</NavLink>
           </li>
           <li>
-            <NavLink to={"/আন্তর্জাতিক"}>আন্তর্জাতিক</NavLink>
+            <NavLink to={"/interNational"}>আন্তর্জাতিক</NavLink>
           </li>
           <li>
-            <NavLink to={"/রাজনীতি"}>রাজনীতি</NavLink>
+            <NavLink to={"/politics"}>রাজনীতি</NavLink>
           </li>
           <li>
-            <NavLink to={"/অর্থনীতি"}>অর্থনীতি</NavLink>
+            <NavLink to={"/economics"}>অর্থনীতি</NavLink>
           </li>
           <li>
-            <NavLink to={"/সারাদেশ"}>সারাদেশ</NavLink>
+            <NavLink to={"/wholeBD"}>সারাদেশ</NavLink>
           </li>
           <li>
-            <NavLink to={"/বিনোদন"}>বিনোদন</NavLink>
+            <NavLink to={"/Entertainment"}>বিনোদন</NavLink>
           </li>
           <li>
-            <NavLink to={"/খেলা"}>খেলা</NavLink>
+            <NavLink to={"/Sports"}>খেলা</NavLink>
           </li>
           <li>
-            <NavLink to={"/শিক্ষা"}>শিক্ষা</NavLink>
+            <NavLink to={"/Education"}>শিক্ষা</NavLink>
           </li>
           <li>
-            <NavLink to={"/উপার বাংলা"}>উপার বাংলা</NavLink>
+            <NavLink to={"/WestBengal"}>উপার বাংলা</NavLink>
           </li>
           <li>
-            <NavLink to={"/স্বাস্থ্য"}>স্বাস্থ্য</NavLink>
+            <NavLink to={"/Health"}>স্বাস্থ্য</NavLink>
           </li>
         </ul>
       </div>
