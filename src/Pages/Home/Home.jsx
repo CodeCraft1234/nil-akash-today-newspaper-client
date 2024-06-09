@@ -2,6 +2,7 @@ import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
 import TextImageCardList from "../../Components/TextImageCard/TextImageCardList";
 import LatestNews from "../../assets/LatestNews/LatestNews";
+import PageDetails from "../PageDetails/PageDetails";
 
 import Banner from "./Banner";
 
@@ -17,6 +18,7 @@ const Home = () => {
       <TextImageCardList></TextImageCardList>
       <LatestNews></LatestNews>
       <MostViewedNews></MostViewedNews>
+      <PageDetails></PageDetails>
       {/* <Banner></Banner>
       <NewsCardFinal></NewsCardFinal> */}
 
