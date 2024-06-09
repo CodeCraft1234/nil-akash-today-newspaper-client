@@ -88,7 +88,7 @@ const Economics = () => {
           {latestNews && (
             <div key={latestNews._id} className="w-full overflow-hidden my-4 rounded-lg shadow-lg bg-white">
               <img
-                className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105"
+                className="w-full h-[400px] object-cover transform transition-transform duration-500 hover:scale-105"
                 src={latestNews.photo}
                 alt="News"
               />
