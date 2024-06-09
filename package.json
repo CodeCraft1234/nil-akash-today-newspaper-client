@@ -17,10 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
-<<<<<<< HEAD
     "react-hot-toast": "^2.4.1",
-=======
->>>>>>> cef56b341792daca39c1aef4ad3474d566fd3894
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.22.1",
     "sort-by": "^0.0.2",

@@ -5,6 +5,7 @@ import AllNews from "./AllNews";
 
 import Banner from "./Banner";
 import CategoryNews from "./CategoryNews";
+import CategoryNewsTwo from "./CategoryNewsTwo";
 import DeshNews from "./DeshNews";
 import Entertainment from "./Entertainment";
 import ExcusiveNewa from "./ExcusiveNewa";
@@ -21,6 +22,7 @@ const Home = () => {
       <SubHome></SubHome>
       <AgreecultureSection></AgreecultureSection>
       <CategoryNews></CategoryNews>
+      <CategoryNewsTwo></CategoryNewsTwo>
       {/* <ExcusiveNewa></ExcusiveNewa> */}
       <DeshNews></DeshNews>
       <InternationalNews></InternationalNews>
