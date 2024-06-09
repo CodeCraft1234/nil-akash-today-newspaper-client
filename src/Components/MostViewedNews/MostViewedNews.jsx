@@ -4,37 +4,37 @@ const newsData = [
   {
     title: "ছয় দফা দিবস উপলক্ষে ইবি বঙ্গবন্ধু পরিবারের আলোচনা সভা",
     time: "৩৩ মিনিট আগে",
-    category: "ক্যাম্পাস",
+   
     imageUrl: "https://i.ibb.co/ZKqF21S/bongo.webp",
   },
   {
     title: "সৌম্যের লজ্জার রেকর্ড",
     time: "৬১ মিনিট আগে",
-    category: "মাঠে ময়দানে",
+   
     imageUrl: "https://i.ibb.co/TMjmHcH/soumyo.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
+  
     imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
+   
     imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
+  
     imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
+  
     imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
   },
   // Add more items as needed
@@ -60,7 +60,7 @@ const MostViewedNews = () => {
         {newsData.map((news, index) => (
           <div
             key={index}
-            className="bg-white rounded shadow-md p-4 mb-4 flex items-center"
+            className="bg-gray-100 rounded shadow-md p-4 mb-4 flex items-center border border-gray-400"
           >
             <img
               src={news.imageUrl}
