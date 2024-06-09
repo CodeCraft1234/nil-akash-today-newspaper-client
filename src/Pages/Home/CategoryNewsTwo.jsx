@@ -3,7 +3,7 @@ import NewsSide from "../../Components/NewsCard/NewsSide/NewsSide";
 const CategoryNewsTwo = () => {
   return (
     <div className="text-black mx-4">
-      <div className="grid grid-cols-1 border-t-2 border-black p-2 gap-4 lg:grid-cols-4 lg:gap-5">
+      <div className="grid grid-cols-1 border-t-2 border-black p-2 gap-4 lg:grid-cols-2 lg:gap-5">
         <div className=" rounded-lg ">
           <h1 className="text-3xl font-bold ">জাতীয়</h1>
           <div className="w-full  overflow-hidden  my-4">
