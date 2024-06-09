@@ -4,13 +4,25 @@ import NewsSide from "../../Components/NewsCard/NewsSide/NewsSide";
 import Carousel from "../Home/Carousel";
 import TwoCard from "../Home/TwoCard";
 import NewsCard from "../../Components/NewsCard/NewsCard";
-
+import UseNews from "../../AxiosFetch/UseNews";
+import { useEffect, useState } from "react";
 
 const WholeBD= () => {
+  const [news,refetch]=UseNews() 
+  const [newses,setNewses]=useState([])
+  useEffect(()=>{
+    const filtered=news.filter(n=>n.category === 'সারাদেশ') 
+    console.log(filtered)
+    setNewses(filtered)
+  },[news])
+
+  console.log(news)
+
+ 
     return (
         <div className="mt-36 mx-3 lg:mx-10">
         <h1 className='text-3xl font-bold ml-5 mr-5 text-blue-500 border-2 border-gray-300 w-full p-4 mb-8 rounded-lg'>
-         সব খবর
+        সারাদেশ
         </h1>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           <div className="rounded-lg lg:col-span-2">

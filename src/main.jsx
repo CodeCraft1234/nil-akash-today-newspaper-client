@@ -19,6 +19,8 @@ import Education from "./Pages/Education/Education";
 import WestBengal from "./Pages/WestBengal/WestBengal";
 import Health from "./Pages/Health/Health";
 import AddNews from "./Components/AddNews/AddNews";
+import DashboardRoot from "./Pages/Dashboard/DashboardRoot";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -73,12 +75,25 @@ const router = createBrowserRouter([
         path:'/addNews',
         element: <AddNews></AddNews>
       },
+      {
+        path:'dashboard',
+        element: <DashboardRoot></DashboardRoot>,
+        children:[
+          {
+            path:'dashboard/addNews',
+            element: <AddNews></AddNews>
+          },
+        ]
+      },
     ]
   },
 ]);
 
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+  <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

@@ -2,7 +2,19 @@
 import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import LatestNews from "../Home/LatestNews";
 import NewsCard from "../../Components/NewsCard/NewsCard";
+import { useEffect, useState } from "react";
+import UseNews from "../../AxiosFetch/UseNews";
 const WestBengal= () => {
+
+  const [news,refetch]=UseNews() 
+  const [newses,setNewses]=useState([])
+  useEffect(()=>{
+    const filtered=news.filter(n=>n.category === 'ওপার বাংলা') 
+    console.log(filtered)
+    setNewses(filtered)
+  },[news])
+
+  console.log(news)
     return (
         <div className="mt-36 mx-3 lg:mx-10">
         <h1 className='text-3xl font-bold ml-5 mr-5 text-blue-500 border-2 border-gray-300 w-full p-4 mb-8 rounded-lg'>

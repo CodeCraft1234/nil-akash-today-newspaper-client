@@ -1,18 +1,23 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "./Components/Navber/Navber";
 import Footer from "./Components/Footer/Footer";
-
+import ScrollTop from "./ScrollTop";
+import { Toaster } from "react-hot-toast";
 
 const Root = () => {
+    const location = useLocation();
+    const noheaderfooter = location.pathname.includes("dashboard","login");
     return (
-        <div className="bg-white">
-            <NavBar></NavBar>
-           <div className="min-h-screen bg-white">
-           <Outlet></Outlet>
-           </div>
-            <Footer></Footer>
+      <div>
+        <ScrollTop />
+        {noheaderfooter || <NavBar></NavBar>}
+        <div className="min-h-screen max-w-auto mx-auto">
+          <Outlet></Outlet>
         </div>
+        {noheaderfooter || <Footer></Footer>}
+        <Toaster />
+      </div>
     );
-};
-
-export default Root;
+  };
+  
+  export default Root;

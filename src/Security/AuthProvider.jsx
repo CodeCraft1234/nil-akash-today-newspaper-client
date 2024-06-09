@@ -1,144 +1,154 @@
-import { createContext, useEffect, useState } from "react";
-import auth from "../Components/firebase/firebase.config";
-import {
-  FacebookAuthProvider,
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
-import UseAxiosSecure from "../Axios/UseAxiosSecure";
-import axios from "axios";
+// import { createContext, useEffect, useState } from "react";
+// import {
+//   FacebookAuthProvider,
+//   GithubAuthProvider,
+//   GoogleAuthProvider,
+//   createUserWithEmailAndPassword,
+//   onAuthStateChanged,
+//   sendPasswordResetEmail,
+//   signInWithEmailAndPassword,
+//   signInWithPopup,
+//   signOut,
+//   updateProfile,
+// } from "firebase/auth";
 
-export const AuthContext = createContext(null);
-const googleProvider = new GoogleAuthProvider();
-// const githubProvider = new GithubAuthProvider();
-const facebookprovider = new FacebookAuthProvider();
+// import axios from "axios";
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  // const AxiosSecure = UseAxiosSecure();
+// export const AuthContext = createContext(null);
+// const googleProvider = new GoogleAuthProvider();
+// // const githubProvider = new GithubAuthProvider();
+// const facebookprovider = new FacebookAuthProvider();
 
-  const createUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+// const AuthProvider = ({ children }) => {
+//   const [user, setUser] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   // const AxiosSecure = UseAxiosSecure();
 
-  const forgetPass = (email) => {
-    // setLoading(true);
-    return sendPasswordResetEmail(auth, email);
-  };
+//   const createUser = (email, password) => {
+//     setLoading(true);
+//     return createUserWithEmailAndPassword(auth, email, password);
+//   };
 
-  const googleSignIn = () => {
-    setLoading(true);
-    return signInWithPopup(auth, googleProvider);
-  };
+//   const forgetPass = (email) => {
+//     // setLoading(true);
+//     return sendPasswordResetEmail(auth, email);
+//   };
 
-  const facebookSignin = () => {
-    setLoading(true);
-    return signInWithPopup(auth, facebookprovider);
-  };
+//   const googleSignIn = () => {
+//     setLoading(true);
+//     return signInWithPopup(auth, googleProvider);
+//   };
 
-  const signIn = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+//   const facebookSignin = () => {
+//     setLoading(true);
+//     return signInWithPopup(auth, facebookprovider);
+//   };
 
-  const githubProvider = new GithubAuthProvider();
-  const githubLogin = () =>{
-    setLoading(true);
-    return signInWithPopup(auth, githubProvider);  
-}
+//   const signIn = (email, password) => {
+//     setLoading(true);
+//     return signInWithEmailAndPassword(auth, email, password);
+//   };
 
-  const updateProfiles = (name, photo) => {
-    updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    });
-  };
+//   const githubProvider = new GithubAuthProvider();
+//   const githubLogin = () =>{
+//     setLoading(true);
+//     return signInWithPopup(auth, githubProvider);  
+// }
 
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser);
-      console.log('current user', currentUser);
+//   const updateProfiles = (name, photo) => {
+//     updateProfile(auth.currentUser, {
+//       displayName: name,
+//       photoURL: photo,
+//     });
+//   };
 
-      // get and set token
-      if(currentUser){
-          axios.post('http://localhost:5000/jwt', {email: currentUser.email})
-          .then(data =>{
-              localStorage.setItem('access-token', data.data.token)
-              setLoading(false);
-          })
-      }
-      else{
-          localStorage.removeItem('access-token')
-      }
+//   const logOut = () => {
+//     setLoading(true);
+//     return signOut(auth);
+//   };
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////
+// useEffect(() => {
+//   const unsubscribe = onAuthStateChanged(auth, currentUser => {
+//       setUser(currentUser);
+//       console.log('current user', currentUser);
+
+//       // get and set token
+//       if(currentUser){
+//           axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+//           .then(data =>{
+//               localStorage.setItem('access-token', data.data.token)
+//               setLoading(false);
+//           })
+//       }
+//       else{
+//           localStorage.removeItem('access-token')
+//       }
 
       
-  });
-  return () => {
-      return unsubscribe();
-  }
-}, [])
+//   });
+//   return () => {
+//       return unsubscribe();
+//   }
+// }, [])
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-  // observing the user state
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     const userEmail = currentUser?.email;
-  //     const loggeduser = { email: userEmail };
-  //     setUser(currentUser);
-  //     console.log("user on the auth state changed", currentUser);
-  //     setLoading(false);
+// ////////////////////////////////////////////////////////////////////////////////////////////////////
+//   // observing the user state
+//   // useEffect(() => {
+//   //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+//   //     const userEmail = currentUser?.email;
+//   //     const loggeduser = { email: userEmail };
+//   //     setUser(currentUser);
+//   //     console.log("user on the auth state changed", currentUser);
+//   //     setLoading(false);
 
-  //     if (currentUser) {
-  //       AxiosSecure.post("/jwt", loggeduser, { withCredentials: true }).then(
-  //         (res) => {
-  //           console.log(res.data);
-  //         }
-  //       );
-  //       setLoading(false);
-  //     } else {
-  //       AxiosSecure.post("/logout", loggeduser, {
-  //         withCredentials: true,
-  //       }).then((res) => {
-  //         console.log(res.data);
-  //       });
-  //       setLoading(false);
-  //     }
-  //   });
+//   //     if (currentUser) {
+//   //       AxiosSecure.post("/jwt", loggeduser, { withCredentials: true }).then(
+//   //         (res) => {
+//   //           console.log(res.data);
+//   //         }
+//   //       );
+//   //       setLoading(false);
+//   //     } else {
+//   //       AxiosSecure.post("/logout", loggeduser, {
+//   //         withCredentials: true,
+//   //       }).then((res) => {
+//   //         console.log(res.data);
+//   //       });
+//   //       setLoading(false);
+//   //     }
+//   //   });
 
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, []);
+//   //   return () => {
+//   //     unsubscribe();
+//   //   };
+//   // }, []);
 
-  const authInfo = {
-    user,
-    loading,
-    createUser,
-    googleSignIn,
-    signIn,
-    updateProfiles,
-    logOut,
-    githubLogin,
-    facebookSignin,
-    forgetPass,
-  };
+//   const authInfo = {
+//     user,
+//     loading,
+//     createUser,
+//     googleSignIn,
+//     signIn,
+//     updateProfiles,
+//     logOut,
+//     githubLogin,
+//     facebookSignin,
+//     forgetPass,
+//   };
 
+//   return (
+//     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+//   );
+// };
+
+// export default AuthProvider;
+import React from 'react';
+
+const AuthProvider = () => {
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <div>
+      
+    </div>
   );
 };
 

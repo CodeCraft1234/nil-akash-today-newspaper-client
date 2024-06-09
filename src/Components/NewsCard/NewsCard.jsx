@@ -1,10 +1,10 @@
-const NewsCard = ({ image, title, description, time }) => {
+const NewsCard = ({ photo, title, description, date }) => {
   
   return (
     <div className="max-w-sm rounded-lg text-black overflow-hidden  my-4">
-      <img className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105" src='https://i.ibb.co/kgYtcF7/kajol.jpg' alt="News" />
+      <img className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105" src={photo} alt="News" />
       <div className="px-6 py-4">
-        <div className="font-bold text-sm md:text-xl mb-2">সিন্দাবাদ-আলাদীনের মতো কাজল রেখাও দর্শকমনে স্থান করে নেবে</div>
+        <div className="font-bold text-sm md:text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-sm md:text-base">{description}</p>
       </div>
       <div className="px-6 pt-4 pb-2">
