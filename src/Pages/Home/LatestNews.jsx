@@ -4,38 +4,38 @@ const newsData = [
   {
     title: "ছয় দফা দিবস উপলক্ষে ইবি বঙ্গবন্ধু পরিবারের আলোচনা সভা",
     time: "৩৩ মিনিট আগে",
-    category: "ক্যাম্পাস",
-    imageUrl: "https://i.ibb.co/ZKqF21S/bongo.webp",
+ 
+    imageUrl: "https://i.ibb.co/ZKqF21S/bongo.webp", 
   },
   {
     title: "সৌম্যের লজ্জার রেকর্ড",
     time: "৬১ মিনিট আগে",
-    category: "মাঠে ময়দানে",
-    imageUrl: "https://i.ibb.co/TMjmHcH/soumyo.webp",
+  
+    imageUrl: "https://i.ibb.co/TMjmHcH/soumyo.webp", 
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
+
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
+
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
+  
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
   },
   {
     title: "গাজায় শিশুরা কাজে যাচ্ছে অতিবরে ভাঙাচোরা",
     time: "৩ ঘন্টা আগে",
-    category: "পরবাস",
-    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp",
+  
+    imageUrl: "https://i.ibb.co/9wnC24s/gaja.webp", 
   },
   // Add more items as needed
 ];
@@ -63,7 +63,7 @@ const LatestNews = () => {
         {newsData.map((news, index) => (
           <div
             key={index}
-            className="bg-white text-black rounded shadow-md p-1 mb-2 flex items-center"
+            className="bg-gray-100 rounded shadow-md p-4 mb-4 flex items-center border border-gray-400"
           >
             <img
               src={news.imageUrl}
@@ -71,9 +71,9 @@ const LatestNews = () => {
               className="w-20 h-20 object-cover rounded mr-4"
             />
             <div>
-              <h3 className="text-md font-semibold mb-1">{news.title}</h3>
-              {/* <div className=" text-sm mb-1">{news.time}</div>
-              <div className="text-black">{news.category}</div> */}
+              <h3 className="text-lg font-semibold mb-1">{news.title}</h3>
+              <div className="text-gray-500 text-sm mb-1">{news.time}</div>
+              {/* <div className="text-gray-600">{news.category}</div> */}
             </div>
           </div>
         ))}
