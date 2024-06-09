@@ -18,7 +18,6 @@ const TextImageCardList = () => {
           image="https://i.ibb.co/WxrXhHY/hasina2.jpg"
           title="কালীগঞ্জে বিক্রি হচ্ছিল মরা গরুর মাংস, ম্যাজিস্ট্রেট দেখে পালালো বিক্রেতা"
         />
-        {/* Add more TextImageCard components as needed */}
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ const MostViewedNews = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({ top: 100, behavior: "smooth" });
+        scrollContainerRef.current.scrollBy({ top: 100, behavior: 'smooth' });
       }
     }, 2000);
 
@@ -73,9 +73,9 @@ const MostViewedNews = () => {
               <div className="text-gray-600">{news.category}</div>
             </div>
           </div>
-        ))}
-      </div>
+      ))}
     </div>
+  </div>
   );
 };
 

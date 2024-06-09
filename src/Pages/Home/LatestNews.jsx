@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 
-
 const newsData = [
   {
     title: "ছয় দফা দিবস উপলক্ষে ইবি বঙ্গবন্ধু পরিবারের আলোচনা সভা",
@@ -58,7 +57,7 @@ const LatestNews = () => {
     <div className="p-4 max-w-xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">সর্বশেষ খবর</h2>
       <div
-        className="overflow-y-auto max-h-screen"
+        className="overflow-y-auto max-h-96"
         ref={scrollContainerRef}
       >
         {newsData.map((news, index) => (

@@ -107,6 +107,9 @@ const NavBar = () => {
           <li>
               <NavLink to={"/addNews"}>Add News</NavLink>
             </li>
+          <li>
+              <NavLink to={"dashboard"}>Dashboard</NavLink>
+            </li>
         </ul>
       </div>
       <div className="navbar-end">

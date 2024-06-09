@@ -1,16 +1,16 @@
 
 
-const NewsCard = ({ image, title, description, time }) => {
+const NewsCard = ({ photo, title, description, time }) => {
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg my-4 border border-gray-400 flex flex-col justify-between">
       <div>
         <img
-          className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105"
-          src={image}
+          className="w-full h-[200px] object-cover transform transition-transform duration-500 hover:scale-105"
+          src={photo}
           alt="News"
         />
         <div className="px-6 py-4">
-          <div className="font-bold text-center text-sm md:text-base lg:text-lg mb-2">
+          <div className="font-bold text-black text-start text-sm md:text-base lg:text-lg mb-2">
             {title}
           </div>
           <p className="text-gray-700 text-sm md:text-base">{description}</p>
