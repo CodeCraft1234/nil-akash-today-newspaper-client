@@ -19,7 +19,7 @@ const NewsSide = ({ image, title, description, time }) => {
       </div>
     </div>
     <div className="w-full pl-2">
-      <h1 className="text-xs font-bold mb-1">ঘুম না আসা পর্যন্ত সকল দিও</h1>
+      <h1 className="text-md font-bold mb-1">ঘুম না আসা পর্যন্ত সকল দিও</h1>
     </div>
   </div>
   );
