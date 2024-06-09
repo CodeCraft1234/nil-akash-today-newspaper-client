@@ -58,8 +58,9 @@ const AddNews = () => {
       const photo = res.data.data.display_url;
 
       const date = new Date();
+      const date2 = new Date();
       const bengaliDate = getBengaliDate(date);
-      const newsInfo = { title, description, photo, category, division, district, date: bengaliDate };
+      const newsInfo = { title, description, photo,date2, category, division, district, date: bengaliDate };
 
       // Post the news data
       await AxiosPublic.post("/news", newsInfo);
