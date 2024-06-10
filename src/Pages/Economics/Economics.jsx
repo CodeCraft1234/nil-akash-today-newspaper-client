@@ -54,6 +54,7 @@ const Economics = () => {
       setOtherNews([]);
     }
   }, [news]);
+  
 
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
@@ -104,7 +105,7 @@ const Economics = () => {
           </div>
           {/* Pagination */}
           <div className="flex justify-center mt-4">
-  <ol className="flex gap-1 text-3xl font-medium">
+          <ol className="flex gap-1 text-3xl font-medium">
     {/* Previous Page */}
     <li>
       <a
@@ -134,7 +135,7 @@ const Economics = () => {
       <li key={number}>
         <a
           href="#"
-          className={`block size-8 rounded border border-gray-100 bg-white text-center leading-8 ${currentPage === number ? 'bg-blue-600 text-white' : 'text-gray-900'}`}
+          className={`block size-8 rounded border border-gray-100 bg-white text-center leading-8 ${currentPage === number ? 'bg-blue-600 text-blue-700 text-5xl' : 'text-gray-500'}`}
           onClick={() => paginate(number)}
         >
           {convertToBengaliNumber(number)}
@@ -173,6 +174,7 @@ const Economics = () => {
           <MostViewedNews />
         </div>
       </div>
+      
     </div>
   );
 };

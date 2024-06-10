@@ -6,17 +6,20 @@ import {
   FaEnvelope,
   FaLink,
 } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
 
 const PageDetails = () => {
+  const datas = useLoaderData();
+  console.log(datas);
+
   return (
-    <div className="container mx-auto p-4">
-      {/* Breadcrumb and Article Details */}
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-        <div className=" rounded-lg ">
-          {/* grid */}
-          <div className="mb-4 text-sm">
+    <div className="container mt-24 mx-auto text-black p-4 bg-white">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 bg-white">
+        <div className="rounded-lg bg-white">
+          {/* Grid */}
+          <div className="mb-4 text-sm bg-white">
             <a href="#" className="text-blue-500 hover:underline">
-              বিনোদন
+              {datas.category}
             </a>{" "}
             /
             <a href="#" className="text-blue-500 hover:underline">
@@ -29,25 +32,25 @@ const PageDetails = () => {
             </div>
           </div>
           {/* Article Section */}
-          <article className="md:col-span-1 lg:col-span-1">
+          <article className="md:col-span-1 lg:col-span-1 bg-white">
             <h2 className="text-lg font-bold mb-2">এ সম্পর্কিত আরও খবর</h2>
-            <div className="grid gap-2 mb-4">
-              <div className="border p-4 rounded">
+            <div className="grid gap-2 mb-4 bg-white">
+              <div className="border p-4 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   কঙ্গনাকে থাপ্পড় মারা নিরাপত্তারক্ষীর জন্য পুরস্কার ঘোষণা
                 </a>
               </div>
-              <div className="border p-4 rounded">
+              <div className="border p-4 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   মোদিই হলেন সংসদ নেতা, জোটের এমপিদের প্রস্তাব পাস
                 </a>
               </div>
-              <div className="border p-4 rounded">
+              <div className="border p-4 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   রাহুল গান্ধীকে রাজনীতি বিষয়ে যে পরামর্শ দেন শাহরুখ
                 </a>
               </div>
-              <div className="border p-4 rounded">
+              <div className="border p-4 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   আবারও সংসদ নেতা হচ্ছেন মোদি
                 </a>
@@ -56,9 +59,9 @@ const PageDetails = () => {
           </article>
         </div>
 
-        <div className=" rounded-lg  lg:col-span-2">
-          <header className="mb-4 flex justify-between items-center md:col-span-2 lg:col-span-2">
-            <h1 className="text-2xl font-bold">বিপুল ভোটে জিতলেন সায়নী</h1>
+        <div className="rounded-lg lg:col-span-2 bg-white">
+          <header className="mb-4 flex justify-between items-center md:col-span-2 lg:col-span-2 bg-white">
+            <h1 className="text-2xl font-bold">{datas.title}</h1>
             <div className="flex space-x-2">
               <button className="px-3 py-1 bg-blue-500 text-white rounded-full flex items-center">
                 <FaFacebookF />
@@ -81,37 +84,21 @@ const PageDetails = () => {
             </div>
           </header>
           <img
-            src="https://i.ibb.co/g9grrG9/sayoni.webp"
+            src={datas.photo}
             alt="Article"
-            className="w-full h-auto mb-4"
+            className="w-full h-auto mb-4 bg-white"
           />
-          <p className="text-justify mb-4">
-            ভারতের লোকসভা নির্বাচনে যাদবপুর থেকে তৃণমূল কংগ্রেস প্রার্থী ও
-            অভিনেত্রী সায়নী ঘোষ বিজয়ী হয়েছেন। নিকটতম প্রতিদ্বন্দ্বী, বিজেপির
-            জাতীয় পুরস্কার জয়ী অভিনেতা গজেন্দ্র চৌহান কে হারিয়ে বেশী ভোটের
-            ব্যবধানে তিনি বিজয়ী হয়েছেন।
-          </p>
-          <p className="text-justify mb-4">
-            মঙ্গলবার (৪ জুন) ভারতের নির্বাচন কমিশনের ওয়েবসাইট এ তথ্য জানা যায়।
-            কমিশনের ওয়েবসাইটে দেয়া তথ্যে জানা যায়, যাদবপুর থেকে তৃণমূল প্রার্থী
-            সায়নী পেয়েছেন ১ লাখ ১৭ হাজার ৩৬১ ভোট। আর বিজেপির গজেন্দ্র চৌহান
-            পেয়েছেন ৯৮ হাজার ৯৬৫ ভোট।
-          </p>
-          <p className="text-justify mb-4">
-            অতিরিক্ত ১৯ হাজার ৩৯৬ ভোট বেশি পেয়ে সায়নী জয়ী হয়েছেন। ২০২১ সালের
-            বিধানসভা নির্বাচনের প্রার্থীতায় অভিষেকের পর এবার তিনি প্রথমবারের মতো
-            লোকসভা নির্বাচনে জয়লাভ করলেন।
-          </p>
+          <p className="text-justify mb-4 bg-white">{datas.description}</p>
         </div>
 
-        <div className=" rounded-lg ">
+        <div className="rounded-lg bg-white">
           {/* Left Sidebar Section */}
-          <aside className="md:col-span-1 lg:col-span-1">
-            <h2 className="text-lg font-bold mb-2 m-1">
+          <aside className="md:col-span-1 lg:col-span-1 bg-white">
+            <h2 className="text-lg font-bold mb-2 m-1 bg-white">
               ঘটনাপ্রবাহ: লোকসভা নির্বাচন ২০২৪
             </h2>
-            <div className="grid gap-2">
-              <div className="border p-2 rounded">
+            <div className="grid gap-2 bg-white">
+              <div className="border p-2 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   চা বিক্রেতা থেকে প্রধানমন্ত্রী হিসেবে হ্যাটট্রিক মোদির!
                 </a>
@@ -119,7 +106,7 @@ const PageDetails = () => {
                   ০৯ জুন, ২০২৪ ১১:৪৩ এএম
                 </span>
               </div>
-              <div className="border p-2 rounded">
+              <div className="border p-2 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   নীতিশকে যে টোপ দিয়েও ভাগাতে পারেনি ইন্ডিয়া জোট
                 </a>
@@ -127,7 +114,7 @@ const PageDetails = () => {
                   ০৯ জুন, ২০২৪ ১০:০০ এএম
                 </span>
               </div>
-              <div className="border p-2 rounded">
+              <div className="border p-2 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   মোদির শপথ অনুষ্ঠানে শেখ হাসিনাসহ থাকবেন যেসব রাষ্ট্রনায়ক
                 </a>
@@ -135,7 +122,7 @@ const PageDetails = () => {
                   ০৯ জুন, ২০২৪ ০৯:১৭ এএম
                 </span>
               </div>
-              <div className="border p-2 rounded">
+              <div className="border p-2 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   মোদির সঙ্গে জোট করে কী পেলেন নীতিশ-নাইডু
                 </a>
@@ -143,7 +130,7 @@ const PageDetails = () => {
                   ০৮ জুন, ২০২৪ ১০:৪৭ পিএম
                 </span>
               </div>
-              <div className="border p-2 rounded">
+              <div className="border p-2 rounded bg-white">
                 <a href="#" className="block hover:underline">
                   জেলে বসে ওমর আব্দুল্লাহকে হারানো কে এই রশিদ
                 </a>
@@ -157,12 +144,12 @@ const PageDetails = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="grid lg:grid-cols-5 md:grid-cols-5 gap-4"></div>
+      <div className="grid lg:grid-cols-5 md:grid-cols-5 gap-4 bg-white"></div>
 
       {/* Comments Section */}
-      <section className="mt-8">
+      <section className="mt-8 bg-white">
         <h2 className="text-lg font-bold mb-4">মন্তব্য করুন</h2>
-        <div className="bg-gray-100 p-4 rounded">
+        <div className="bg-gray-100 p-4 rounded bg-white">
           <form>
             <textarea
               className="w-full p-2 border rounded mb-4"
