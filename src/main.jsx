@@ -21,6 +21,7 @@ import Health from "./Pages/Health/Health";
 import AddNews from "./Components/AddNews/AddNews";
 import DashboardRoot from "./Pages/Dashboard/DashboardRoot";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import PageDetails from "./Pages/PageDetails/PageDetails";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path:'/politics',
         element: <Politics></Politics>
+      },
+      {
+        path:'/newsDetails/:id',
+        element: <PageDetails></PageDetails>,
+        loader:({params})=>fetch(`https://akash-newspaper-server.vercel.app/news/${params.id}`)
       },
       {
         path:'/economics',
