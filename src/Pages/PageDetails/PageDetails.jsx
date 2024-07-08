@@ -11,6 +11,7 @@ import { useLoaderData } from "react-router-dom";
 const PageDetails = () => {
   const datas = useLoaderData();
   console.log(datas);
+  
 
   return (
     <div className="container mt-24 mx-auto text-black p-4 bg-white">
