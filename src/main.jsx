@@ -22,6 +22,9 @@ import AddNews from "./Components/AddNews/AddNews";
 import DashboardRoot from "./Pages/Dashboard/DashboardRoot";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PageDetails from "./Pages/PageDetails/PageDetails";
+import Settings from "./Components/Settings/Settings";
+import AllNews from "./Components/AllNews/AllNews";
+
 
 const router = createBrowserRouter([
   {
@@ -88,6 +91,14 @@ const router = createBrowserRouter([
           {
             path:'dashboard/addNews',
             element: <AddNews></AddNews>
+          },
+          {
+            path:'dashboard/allNews',
+            element: <AllNews></AllNews>
+          },
+          {
+            path:'dashboard/settings',
+            element: <Settings></Settings>
           },
         ]
       },

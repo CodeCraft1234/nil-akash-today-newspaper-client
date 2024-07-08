@@ -5,6 +5,7 @@ import {  useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -35,8 +36,12 @@ const ForgetPassword = () => {
 
 return (
     <div>
-        <div className="hero min-h-screen mt-16">
-            <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero min-h-screen mt-36 ">
+        <Helmet>
+              <title> বিশ্বস্ত-বাজার | ForgetPassword</title>
+              <link rel="canonical" href="https://www.tacobell.com/" />
+               </Helmet>
+            <div className="hero-content flex-col lg:flex-row-reverse ">
                 <div className="text-center lg:text-left"></div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleForgetPassword} className="card-body">
@@ -60,7 +65,7 @@ return (
                             />
                         </div>
                         <div className="form-control mt-4">
-                            <button className="p-2 rounded bg-neutral text-white">
+                            <button className="p-2 rounded bg-blue-700 text-white">
                                 Submit
                             </button>
                         </div>

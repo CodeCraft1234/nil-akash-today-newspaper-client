@@ -60,8 +60,9 @@ const AddNews = () => {
       const photo = res.data.data.display_url;
 
       const date = new Date();
+      const dates = new Date();
       const bengaliDate = getBengaliDate(date);
-      const newsInfo = { title, description, photo, category, division, district, date: bengaliDate };
+      const newsInfo = { title, description, photo,dates, category, division, district, date: bengaliDate };
 
       // Post the news data
       await AxiosPublic.post("/news", newsInfo);
@@ -99,9 +100,9 @@ const AddNews = () => {
   };
 
   return (
-    <div className="min-h-screen text-black flex items-center justify-center p-10">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full">
-        <h2 className="text-3xl font-bold text-black mb-6">Add New Post</h2>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-10">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+        <h2 className="text-3xl font-bold text-gray-900 mb-6">Add New Post</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="title" className="block text-lg font-medium text-gray-700">
@@ -111,7 +112,7 @@ const AddNews = () => {
               type="text"
               id="title"
               name="title"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -149,7 +150,7 @@ const AddNews = () => {
               id="image"
               name="image"
               onChange={handleImageChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
               accept="image/*"
               required
             />
@@ -162,7 +163,7 @@ const AddNews = () => {
             <select
               id="category"
               name="category"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
               required
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -190,16 +191,14 @@ const AddNews = () => {
                 <select
                   id="division"
                   name="division"
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
                   required
                   value={division}
                   onChange={(e) => setDivision(e.target.value)}
                 >
                   <option value="" disabled>Select a division</option>
                   {Object.keys(divisionsAndDistricts).map((div) => (
-                    <option key={div} value={div}>
-                      {div}
-                    </option>
+                    <option key={div} value={div}>{div}</option>
                   ))}
                 </select>
               </div>
@@ -212,16 +211,14 @@ const AddNews = () => {
                   <select
                     id="district"
                     name="district"
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white"
+                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
                     required
                     value={district}
                     onChange={(e) => setDistrict(e.target.value)}
                   >
                     <option value="" disabled>Select a district</option>
                     {divisionsAndDistricts[division].map((dist) => (
-                      <option key={dist} value={dist}>
-                        {dist}
-                      </option>
+                      <option key={dist} value={dist}>{dist}</option>
                     ))}
                   </select>
                 </div>
@@ -229,12 +226,14 @@ const AddNews = () => {
             </>
           )}
 
-          <button
-            type="submit"
-            className="w-full py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50"
-          >
-            Submit
-          </button>
+          <div>
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            >
+              Add News
+            </button>
+          </div>
         </form>
       </div>
     </div>
