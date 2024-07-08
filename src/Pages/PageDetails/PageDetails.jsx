@@ -89,7 +89,8 @@ const PageDetails = () => {
             alt="Article"
             className="w-full h-auto mb-4 bg-white"
           />
-          <p className="text-justify mb-4 bg-white">{datas.description}</p>
+         <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: datas.description }}></p>
+
         </div>
 
         <div className="rounded-lg bg-white">

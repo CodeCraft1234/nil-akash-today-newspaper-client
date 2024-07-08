@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import UseAxiosPublic from "../../Axios/UseAxiosPublic";
 import Swal from "sweetalert2";
 import 'tailwindcss/tailwind.css';
@@ -58,9 +60,8 @@ const AddNews = () => {
       const photo = res.data.data.display_url;
 
       const date = new Date();
-      const date2 = new Date();
       const bengaliDate = getBengaliDate(date);
-      const newsInfo = { title, description, photo,date2, category, division, district, date: bengaliDate };
+      const newsInfo = { title, description, photo, category, division, district, date: bengaliDate };
 
       // Post the news data
       await AxiosPublic.post("/news", newsInfo);
@@ -117,19 +118,26 @@ const AddNews = () => {
             />
           </div>
 
-          <div>
-            <label htmlFor="description" className="block text-lg font-medium text-gray-700">
-              Description
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              rows="4"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white"
-              required
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
+          <div className='py-3 pb-5 rounded-lg bg-white'>
+            <label className="block text-base font-medium ml-2 text-gray-700">Description</label>
+            <CKEditor
+              editor={ClassicEditor}
+              data={description}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setDescription(data);
+              }}
+              className="mt-1 p-4 py-10 h-[400px] bg-white"
+              config={{
+                toolbar: [
+                  'heading', '|',
+                  'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|',
+                  'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells', '|',
+                  'undo', 'redo'
+                ],
+                height: 400
+              }}
+            />
           </div>
 
           <div>
