@@ -7,7 +7,7 @@ const AgreecultureSection = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch('http://localhost:5001/news');
+        const response = await fetch('https://akash-newspaper-server.vercel.app/news');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
