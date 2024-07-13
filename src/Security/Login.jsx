@@ -1,195 +1,27 @@
-
-// import { useContext } from "react";
-// import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { FcGoogle } from "react-icons/fc";
-// import { FaSquareFacebook } from "react-icons/fa6";
-// import { FaGithub } from "react-icons/fa6";
-// import toast from "react-hot-toast";
-// import axios from "axios";
-// import { AuthContext } from "./AuthProvider";
-
-// const Login = () => {
-//   const { signIn, googleSignIn, facebookSignin } = useContext(AuthContext);
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   // console.log('location in the login page', location);
-
-//   // google login
-//   const handleGoogleLogin = () => {
-//     googleSignIn()
-//       .then((result) => {
-//         console.log(result.user);
-
-//         // navigate after login
-//         navigate(location?.state ? location.state : "/");
-//         return toast.success("google login successfully");
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//         return toast.error("password or email not match");
-//       });
-//   };
-
-//   // facebook login
-//   const handleFacebook = () => {
-//     facebookSignin()
-//       .then((result) => {
-//         console.log(result.user);
-
-//         // navigate after login
-//         navigate(location?.state ? location.state : "/");
-//         return toast.success("facebook login successfully");
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//         return toast.error("password or email not match");
-//       });
-//   };
-
-//   const handleLogin = (e) => {
-//     // access the form data
-//     e.preventDefault();
-//     const form = new FormData(e.currentTarget);
-//     const email = form.get("email");
-//     const password = form.get("password");
-//     // console.log(name, photo, email, password);
-
-//     // sign in a user
-//     signIn(email, password).then((result) => {
-//       console.log(result.user);
-//       e.target.reset();
-//       // const user = { email };
-//       navigate(location?.state ? location.state : "/");
-//       return toast.success("user login successfully");
-//     });
-//   };
-
-//   return (
-//     <div>
-//       <div className="hero min-h-screen">
-//         <div className="hero-content flex-col lg:flex-row-reverse">
-//           <div className="text-center lg:text-left"></div>
-//           <div className="card flex-shrink-0 w-full  max-w-sm shadow-2xl border-4 box bg-violet-950">
-//             <form onSubmit={handleLogin} className="card-body">
-//               <div className="form-control">
-//                 <h1 className="text-3xl text-center text-white font-semibold">
-//                   Login your account
-//                 </h1>
-//                 <hr className="mt-4" />
-//                 <label className="label">
-//                   <span className="label-text text-white text-sm font-semibold">
-//                     Email address
-//                   </span>
-//                 </label>
-//                 <input
-//                   type="email"
-//                   placeholder="Enter your email address"
-//                   name="email"
-//                   className="input input-bordered text-xs font-normal "
-//                   required
-//                 />
-//               </div>
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text text-sm text-white font-semibold">
-//                     Password
-//                   </span>
-//                 </label>
-//                 <input
-//                   type="password"
-//                   name="password"
-//                   placeholder="Enter your password"
-//                   className="input input-bordered text-[#9F9F9F] text-xs font-normal "
-//                   required
-//                 />
-//                 <div className="flex justify-end text-xs dark:text-gray-400">
-//                   {/* <a rel="noopener noreferrer" href="#">Forgot Password?</a> */}
-//                   <Link className="text-[#F75B5F] " to="/forgetPassword">
-//                     {" "}
-//                     Forgot Password?
-//                   </Link>
-//                 </div>
-//               </div>
-//               <div className="form-control mt-1">
-
-//                 <button className="p-2 rounded bg-[#1368c0] text-white">
-
-//                   Login
-//                 </button>
-//               </div>
-             
-//               <div className="flex items-center pt-4 space-x-1">
-//                 <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-//                 <div className=" flex flex-col w-full">
-//                   <p className="px-3 divider divider-neutral  text-sm text-white">
-//                     Login with social accounts
-//                   </p>
-//                 </div>
-//                 <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-//               </div>
-//               <div className="flex justify-center space-x-4">
-//                 <button
-//                   onClick={handleGoogleLogin}
-//                   aria-label="Log in with Google"
-//                   className="p-3 hover:bg-[#e7e9eb] rounded-full"
-//                 >
-//                <FcGoogle />
-
-
-//                 </button>
-//                 <button
-//                   onClick={handlefacebooksignin}
-//                   aria-label="Log in with Facebook"
-//                   className="p-3 hover:bg-[#e7e9eb] rounded-full"
-//                 >
-//                 <FaSquareFacebook className="text-[#016ecd]"/>
-//                 </button>
-//                 <button
-//                   aria-label="Log in with GitHub"
-//                   className="p-3 text-white hover:bg-[#e7e9eb] rounded-full"
-//                 >
-//                 <FaGithub className="text-black"/>
-//                 </button>
-//               </div>
-
-//               <p className="text-center text-white font-semibold text-xs mt-4">
-//                { `Don't Have An Account ?`}
-//                 <Link className="text-[#F75B5F]" to="/signup">
-//                   {" "}
-//                   Register
-//                 </Link>
-//               </p>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import {  FaGithub } from "react-icons/fa";
-import toast from "react-hot-toast";
-import { AuthContext } from "./AuthProvider";
-import "./Login.css";
+import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import { FaSquareFacebook } from "react-icons/fa6";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
+import { sendPasswordResetEmail } from "firebase/auth";
+import auth from "../src/Components/firebase/firebase.config";
+import useLogo from "../src/Hook/useLogo";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const { signIn, googleSignIn, facebookSignin, githubLogin } =
-    useContext(AuthContext);
+  const { signIn, googleSignIn, facebookSignin, githubLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-
+  const emailRef = useRef(null);
+  
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
         toast.success("Google login successful");
       })
       .catch((error) => {
@@ -198,34 +30,19 @@ const Login = () => {
       });
   };
 
-// facebook login
-const handleFacebook = () => {
-  facebookSignin()
-    .then((result) => {
-      console.log(result.user);
-
-      // navigate after login
-      navigate(location?.state ? location.state : "/");
-      return toast.success("facebook login successfully");
-    })
-    .catch((error) => {
-      console.log(error);
-      return toast.error("password or email not match");
-    });
-};
-
-  const handleGithubLogin = () => {
-    githubLogin()
+  const handleFacebook = () => {
+    facebookSignin()
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : "/");
-        toast.success("GitHub login successful");
+        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
+        return toast.success("Facebook login successful");
       })
       .catch((error) => {
         console.log(error);
-        toast.error("GitHub login failed");
+        return toast.error("Facebook login failed");
       });
   };
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -236,72 +53,134 @@ const handleFacebook = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : "/");
-        toast.success("User login successful");
+        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
+        Swal.fire({
+          title: "Login successful!",
+          text: "You have logged in successfully.",
+          icon: "success"
+        });
       })
       .catch((error) => {
         console.log(error);
-        toast.error("User login failed");
+        Swal.fire({
+          title: "Error",
+          text: "Wrong password or email.",
+          icon: "error"
+        });
       });
   };
 
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      Swal.fire({
+        title: "Error",
+        text: "Please enter your email to reset password.",
+        icon: "error"
+      });
+      return;
+    }
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        Swal.fire({
+          title: "Success",
+          text: "Check your email to reset your password.",
+          icon: "success"
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Error",
+          text: "Failed to send reset email.",
+          icon: "error"
+        });
+      });
+  };
+
+  const [logo, setLogo] = useLogo();
+  const [latestLogo, setLatestLogo] = useState(null);
+  console.log(latestLogo);
+
+  useEffect(() => {
+    if (logo && logo.length > 0) {
+      // Sort the logos based on date in descending order
+      const sortedLogo = [...logo].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Get the latest logo
+      const latest = sortedLogo[0];
+
+      // Set the sorted logo and latest logo state
+      setLogo(sortedLogo);
+      setLatestLogo(latest);
+    }
+  }, [logo, setLogo]);
+
+  const [show, setShow] = useState(false);
+
   return (
-    <div className=" flex justify-center items-center mx-auto lg:pb-0 md:pb-0 pb-8">
-      <div className="box mt-10">
-        <div className="login">
-          <div className="loginBx">
-            <h2>
-              <i className="fa-solid fa-right-to-bracket"></i> Login
-              <i className="fa-solid fa-heart"></i>
-            </h2>
-            <form onSubmit={handleLogin}>
-              <input
-                type="text"
-                name="email"
-                placeholder="Username"
-                className="mb-5"
-                required
-              />
-             
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                className="input input-bordered text-[#9F9F9F] text-xs font-normal mb-5"
-                required
-              />
-              <input type="submit" value="Sign in" />
-            </form>
-            <div className="group">
-              <Link className="text-[#F75B5F] " to="/forgetPassword">
-                Forgot Password?
-              </Link>
-              <Link to="/signup">Sign up</Link>
-            </div>
-            <div className="flex justify-center space-x-4">
-              <button
-                onClick={handleGoogleLogin}
-                aria-label="Log in with Google"
-                className="p-3 text-white bg-gray-800 hover:bg-gray-700 rounded-full"
-              >
-                <FcGoogle />
-              </button>
-              <button
-                  onClick={handleFacebook}
-                  aria-label="Log in with Facebook"
-                  className="p-3 text-white bg-gray-800 hover:bg-gray-700 rounded-full"
-                >
-                <FaSquareFacebook className="text-[#016ecd]"/>
-                </button>
-              <button
-                onClick={handleGithubLogin}
-                aria-label="Log in with GitHub"
-                className="p-3 text-white bg-gray-800 hover:bg-gray-700 rounded-full"
-              >
-                <FaGithub className="text-white" />
-              </button>
-            </div>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <Helmet>
+              <title> বিশ্বস্ত-বাজার | Login</title>
+              <link rel="canonical" href="https://www.tacobell.com/" />
+               </Helmet>
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+      <div className="flex justify-center items-center">
+          <Link to={"/"}>
+            <img
+              className="h-20 w-20 "
+              src={latestLogo?.photo}
+              alt=""
+            />
+          </Link>
+        </div>
+        <h2 className="text-2xl font-bold text-center text-black mb-6">Login</h2>
+        <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <div>
+            <input
+              type="email"
+              name="email"
+              ref={emailRef}
+              placeholder="Type your email"
+              className="w-full p-2 border bg-white border-black rounded-lg"
+              required
+            />
           </div>
+          <div className="relative">
+          <span 
+        className="absolute inset-y-0 mb-5 ml-5   right-2 top-3 flex items-center pr-3 cursor-pointer"
+        onClick={() => setShow(!show)}
+      >
+        {show ? <FaEyeSlash /> : <FaEye />}
+      </span>
+      <input
+        type={show ? "text" : "password"}
+        name="password"
+        placeholder="Enter your password"
+
+        className="input w-full p-2 bg-white input-bordered border-black text-[#9F9F9F] text-xs font-normal mb-5 pr-10"
+
+        required
+      />
+      
+    </div>
+
+    <div className="text-center text-sm text-gray-600">
+            <Link to="/admin-login/reg-php" className="text-blue-600 hover:text-blue-500">
+              Already have an account? Resister
+            </Link>
+          </div>
+
+
+          <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition duration-300">Sign in</button>
+        </form>
+        <div className="flex justify-center gap-4 mt-6">
+          <button onClick={handleGoogleLogin} aria-label="Log in with Google" className="flex justify-center items-center w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-300">
+            <FcGoogle />
+          </button>
+          <button onClick={handleFacebook} aria-label="Log in with Facebook" className="flex justify-center items-center w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-300">
+            <FaSquareFacebook className="text-blue-600" />
+          </button>
         </div>
       </div>
     </div>
@@ -309,5 +188,3 @@ const handleFacebook = () => {
 };
 
 export default Login;
-
-
