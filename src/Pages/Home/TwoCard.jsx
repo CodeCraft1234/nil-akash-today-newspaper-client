@@ -35,8 +35,10 @@ const TwoCard = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Side: National News */}
-        <div>
-          <h2 className="text-2xl font-bold mb-4">জাতীয়</h2>
+        <div className="">
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+            জাতীয়
+          </h2>
           <div className="flex flex-col gap-4">
             <div className="lg:w-full">
               <MainCard article={nationalNews[0]} />
@@ -50,8 +52,10 @@ const TwoCard = () => {
         </div>
 
         {/* Right Side: International News */}
-        <div>
-          <h2 className="text-2xl font-bold mb-4">আন্তর্জাতিক</h2>
+        <div className="">
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+            আন্তর্জাতিক
+          </h2>
           <div className="flex flex-col gap-4">
             <div className="lg:w-full">
               <MainCard article={internationalNews[0]} />
@@ -64,15 +68,6 @@ const TwoCard = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
-        {nationalNews.slice(5, 9).map((article) => (
-          <SmallCard key={article.id} article={article} />
-        ))}
-        {internationalNews.slice(5, 9).map((article) => (
-          <SmallCard key={article.id} article={article} />
-        ))}
-      </div> */}
     </div>
   );
 };
