@@ -2,7 +2,7 @@ import Marquee from "react-fast-marquee";
 
 const Headline = () => {
     return (
-        <div className="flex justify-start  z-0 items-center px-3">
+        <div className="flex justify-start mt-36  z-0 items-center px-3">
            <h1 className="bg-cyan-600 py-3 text-black px-2 tex-4xl font-bold">শিরোনাম</h1>
             <Marquee className="space-x-10 text-black bg-sky-100 py-3">
             <p className="mx-5">আপনার পৌর কর নিয়মিত পরিশোধ করুন</p> 
