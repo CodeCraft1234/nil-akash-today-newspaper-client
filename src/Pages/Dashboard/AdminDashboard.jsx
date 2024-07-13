@@ -1,110 +1,14 @@
-// import { NavLink } from "react-router-dom";
-// import {
-//   FaBlog,
-//   FaBlogger,
-//   FaBorderAll,
-//   FaEmpire,
-//   FaHome,
-//   FaUsers,
-// } from "react-icons/fa";
-
-// import { RxDashboard } from "react-icons/rx";
-
-// import { MdAccountCircle, MdCampaign } from "react-icons/md";
-// import { IoPeopleSharp } from "react-icons/io5";
-// import { FaPeopleGroup,  } from "react-icons/fa6";
-
-
-
-// const AdminDashboard = () => {
-//   return (
-//     <div className="overflow-y-scroll h-screen">
-//       <div className="w-[250px]">
-//         <img
-//           className="w-44 mx-auto"
-//           src="https://i.ibb.co/sHLrjHq/Logo-Nilakash-Today-1.png"
-//           alt=""
-//         />
-//         <ul className="space-y-5">
-//           <li className="bg-[#003A90] rounded-lg my-2">
-//             <NavLink
-//               to="dashboard/admin/home"
-//               activeClassName="text-red-500 bg-red-200"
-//               className="flex items-center py-2 px-4 rounded-lg"
-//             >
-//               <RxDashboard className="mr-2" />
-//               Admin Dashboard
-//             </NavLink>
-//           </li>
-
-        
-//              <li>
-//                   <NavLink
-//                     to="dashboard/addNews"
-//                     className="text-white bg-red-800 hover:bg-green-300 hover:text-black"
-//                     activeClassName="bg-green-300"
-//                   >
-//                     <MdAccountCircle className="w-6 h-6" /> Add News
-//                   </NavLink>
-//                 </li>
-//              <li>
-//                   <NavLink
-//                     to="dashboard/allUsers"
-//                     className="text-white bg-red-800 hover:bg-green-300 hover:text-black"
-//                     activeClassName="bg-green-300"
-//                   >
-//                     <MdAccountCircle className="w-6 h-6" /> All Users
-//                   </NavLink>
-//                 </li>
-               
-               
-               
-//                 <li>
-//                   <NavLink
-//                     to="dashboard/allEmployee"
-//                     className="text-white bg-red-800 hover:bg-green-300 hover:text-black"
-//                     activeClassName="bg-green-300"
-//                   >
-//                     <FaPeopleGroup className="w-6 h-6" />All News
-//                   </NavLink>
-//                 </li>
-//                 <li>
-//                   <NavLink
-//                     to="dashboard/employeePayment"
-//                     className="text-white bg-red-800 hover:bg-green-300 hover:text-black"
-//                     activeClassName="bg-green-300"
-//                   >
-//                     <FaPeopleGroup className="w-6 h-6" /> Settings
-//                   </NavLink>
-//                 </li>
-
-//           <li className="bg-[#003A90] rounded-lg my-2">
-//             <NavLink to="/">
-//               <FaHome className="mr-2" />
-//               Go Home
-//             </NavLink>
-//           </li>
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-// export default AdminDashboard;
-
-
-
-
-///////////////////
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {  useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdOutlinePayments, MdPeopleOutline } from "react-icons/md";
 import { BsCartCheckFill, BsCartPlusFill } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { RxDashboard } from "react-icons/rx";
+
 import { IoIosLogOut } from "react-icons/io";
+import { Helmet } from "react-helmet-async";
 import useLogo from "../../AxiosFetch/useLogo";
 import { AuthContext } from "../../Security/AuthProvider";
-
 
 const AdminDashboard = () => {
   const [logo, setLogo] = useLogo();
@@ -127,13 +31,13 @@ const AdminDashboard = () => {
     }
   }, [logo, setLogo]);
 
-  // const {  logOut } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // const handleLogOut = () => {
-  //   logOut().then().catch();
-  //   navigate("/");
-  // };
+  const handleLogOut = () => {
+    logOut().then().catch();
+    navigate("/");
+  };
 
   const getButtonClass = (path) => {
     return `w-full mb-2 text-start  py-2  px-1 rounded-lg focus:outline-none ${
@@ -145,7 +49,10 @@ const AdminDashboard = () => {
 
   return (
     <div className="overflow-y-auto text-start h-screen">
-     
+      <Helmet>
+        <title>বিশ্বস্ত-বাজার | AdminDashboard</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <div className="w-[150px]">
         <div className="flex items-center justify-center mb-8">
           <Link to={"/"}>
@@ -165,52 +72,25 @@ const AdminDashboard = () => {
                 Dashboard
               </button>
             </Link>
-            <Link   to="dashboard/addNews">
-              <button className={getButtonClass("/dashboard/admin/allOrders")}>
-                <MdOutlinePayments className="text-xl inline-block mr-2" />
-               Add News
-              </button>
-            </Link>
-            <Link to="dashboard/allNews">
-              <button className={getButtonClass("/dashboard/admin/allProducts")}>
-                <BsCartPlusFill className="text-xl inline-block mr-2" />
-                All News
-              </button>
-            </Link>
-            
-            {/* <Link to="/dashboard/admin/addProduct">
-              <button className={getButtonClass("/dashboard/admin/addProduct")}>
+            <Link to="/dashboard/admin/addNews">
+              <button className={getButtonClass("/dashboard/admin/addNews")}>
                 <BsCartCheckFill className="text-xl inline-block mr-2" />
-                Add Product
+                Add News
               </button>
-            </Link> */}
-          
-            {/* <Link to="/dashboard/admin/totalCustomers">
-              <button className={getButtonClass("/dashboard/admin/totalCustomers")}>
-                <MdPeopleOutline className="text-xl inline-block mr-2" />
-                Customers
-              </button>
-            </Link> */}
-            <Link to="dashboard/settings">
+            </Link>
+            <Link to="/dashboard/admin/settings">
               <button className={getButtonClass("/dashboard/admin/settings")}>
                 <AiOutlineSetting className="text-xl inline-block mr-2" />
                 Settings
               </button>
             </Link>
-            <Link to="/">
-              <button className={getButtonClass("/dashboard/admin/settings")}>
-                <AiOutlineSetting className="text-xl inline-block mr-2" />
-                Go Home
-              </button>
-            </Link>
-
-            {/* <button
+            <button
               onClick={handleLogOut}
               className="mr-2 mb-2 py-2 px-4 rounded-lg bg-red-500 text-white hover:bg-red-700 focus:outline-none w-full flex items-center justify-center"
             >
               <IoIosLogOut className="text-xl mr-2" />
               Logout
-            </button> */}
+            </button>
           </div>
         </nav>
       </div>
@@ -219,4 +99,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-

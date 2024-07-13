@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -8,14 +9,78 @@ import {
 } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 
+const newsItems = [
+  { id: 1, text: 'অটোরিকশায় যাত্রী হয়নি, বাড়তি ভাড়ার অভিযোগ' },
+  { id: 2, text: 'দেশে ফিরেছেন ৬৭ হাজার ৯২৪ হাজি, মৃত্যু বেড়ে ৬৪' },
+  { id: 3, text: 'ফিলিস্তিনের স্বাধীনতাকামীদের ধরতে পদক্ষেপ নিল আর্জেন্টিনা' },
+  { id: 4, text: 'রাতের আঁধারে দূরন্ত ঝড়ুল বিভি সঙ্গীতার মাজার' },
+  { id: 5, text: 'দেশ বিকি করে দিচ্ছেন মিসরের প্রেসিডেন্ট সিসি' },
+  { id: 6, text: 'এক সেকেন্ডের বৃষ্টিলেতে আকাশে সংঘর্ষ এড়ালা যাত্রীবাহী দুই বিমান' },
+  { id: 7, text: 'সন্তানকে খুঁজতে গিয়ে মা নিখোঁজ' },
+  { id: 8, text: 'এক মুক্তিযোদ্ধার ৭ ভুয়া সন্তান, কোটায় ৫ জনের চাকরি' },
+  { id: 9, text: 'কার হাতে যাচ্ছে গাজার নিয়ন্ত্রণ?' },
+  { id: 10, text: 'জনতার আদালতে রাসেল ভাইপারের ‘ফাঁসি’' },
+  { id: 11, text: 'ফিলিস্তিনের পতাকা নিয়ে কেন বিক্ষোভ করছেন কোটায় আন্দোলনকারীরা?' },
+  { id: 12, text: 'কোটায় ইসরুতে বিক্ষোভকারী হিসেবে নাম প্রত্যাহার করলেন আইহাস' },
+];
+
+const popularItems = [
+  { id: 1, text: 'সন্তানকে খুঁজতে গিয়ে মা নিখোঁজ' },
+  { id: 2, text: 'এক মুক্তিযোদ্ধার ৭ ভুয়া সন্তান, কোটায় ৫ জনের চাকরি' },
+  { id: 3, text: 'কার হাতে যাচ্ছে গাজার নিয়ন্ত্রণ?' },
+  { id: 4, text: 'জনতার আদালতে রাসেল ভাইপারের ‘ফাঁসি’' },
+  { id: 5, text: 'ফিলিস্তিনের পতাকা নিয়ে কেন বিক্ষোভ করছেন কোটায় আন্দোলনকারীরা?' },
+  { id: 6, text: 'কোটায় ইসরুতে বিক্ষোভকারী হিসেবে নাম প্রত্যাহার করলেন আইহাস' },
+  { id: 7, text: 'অটোরিকশায় যাত্রী হয়নি, বাড়তি ভাড়ার অভিযোগ' },
+  { id: 8, text: 'দেশে ফিরেছেন ৬৭ হাজার ৯২৪ হাজি, মৃত্যু বেড়ে ৬৪' },
+  { id: 9, text: 'ফিলিস্তিনের স্বাধীনতাকামীদের ধরতে পদক্ষেপ নিল আর্জেন্টিনা' },
+  { id: 10, text: 'রাতের আঁধারে দূরন্ত ঝড়ুল বিভি সঙ্গীতার মাজার' },
+  { id: 11, text: 'দেশ বিকি করে দিচ্ছেন মিসরের প্রেসিডেন্ট সিসি' },
+  { id: 12, text: 'এক সেকেন্ডের বৃষ্টিলেতে আকাশে সংঘর্ষ এড়ালা যাত্রীবাহী দুই বিমান' },
+];
 const PageDetails = () => {
   const datas = useLoaderData();
   console.log(datas);
   
+  const [activeSection, setActiveSection] = useState('latest');
+  const [visibleCount, setVisibleCount] = useState(10);
 
+  const handleToggle = (section) => {
+    setActiveSection(section);
+    setVisibleCount(10); // Reset the visible count when switching sections
+  };
+
+  const handleScroll = (e) => {
+    const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      setVisibleCount(prevCount => prevCount + 10); // Load 6 more items when scrolled to bottom
+    }
+  };
+
+  const itemsToShow = activeSection === 'latest' ? newsItems : popularItems;
+
+  const [sortOrder, setSortOrder] = useState('Oldest');
+  const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState('');
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+  };
+
+  const handleCommentChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  const handleCommentSubmit = () => {
+    if (commentText.trim()) {
+      setComments([...comments, { text: commentText, id: comments.length + 1 }]);
+      setCommentText('');
+    }
+  };
   return (
-    <div className="container mt-16 pt-20 mx-auto text-black p-4 bg-white">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 bg-white">
+    <div className="container  pt-36 mx-auto text-black p-4 bg-white">
+       <img className="w-full h-20 mb-4" src="https://i.ibb.co/t3xZ42G/8506705887870801222.png" alt="" />
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-4 lg:gap-5 bg-white">
         <div className="rounded-lg bg-white">
           {/* Grid */}
           <div className="mb-4 text-sm bg-white">
@@ -27,42 +92,33 @@ const PageDetails = () => {
               {" "}
               টালিউড
             </a>
-            <div className="text-gray-500 mt-1">
-              কালবেলা প্রতিবেদক | প্রকাশ : ০৪ জুন ২০২৪, ০৮:৫৫ পিএম | অনলাইন
-              সংস্করণ
+            <div className="text-black mt-1">
+              <h1>প্রতিবেদক</h1>
+              <h1>প্রকাশ : ০৪ জুন ২০২৪,০৮:৫৫ পিএম</h1>
+              <h1>অনলাইন  সংস্করণ</h1>
+              <h1></h1>
             </div>
           </div>
           {/* Article Section */}
           <article className="md:col-span-1 lg:col-span-1 bg-white">
-            <h2 className="text-lg font-bold mb-2">এ সম্পর্কিত আরও খবর</h2>
-            <div className="grid gap-2 mb-4 bg-white">
-              <div className="border p-4 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  কঙ্গনাকে থাপ্পড় মারা নিরাপত্তারক্ষীর জন্য পুরস্কার ঘোষণা
-                </a>
-              </div>
-              <div className="border p-4 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  মোদিই হলেন সংসদ নেতা, জোটের এমপিদের প্রস্তাব পাস
-                </a>
-              </div>
-              <div className="border p-4 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  রাহুল গান্ধীকে রাজনীতি বিষয়ে যে পরামর্শ দেন শাহরুখ
-                </a>
-              </div>
-              <div className="border p-4 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  আবারও সংসদ নেতা হচ্ছেন মোদি
-                </a>
-              </div>
+            <h2 className="text-lg font-bold border-b-2 border-t-2 pb-3 pt-3 mb-2">এ সম্পর্কিত আরও খবর</h2>
+            <div className="grid gap-2  mb-4 bg-white">
+            <ul className="space-y-2">
+          {itemsToShow.slice(0, 5).map(item => (
+            <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
+             <img className="h-14 w-16" src="https://i.ibb.co/YpxB4DL/449501355-456042040534020-2738157919491050824-n.jpg" alt="" />
+              <a className="hover:text-blue-800  hover:font-extralight">{item.text}</a>
+            </li>
+          ))}
+        </ul>
             </div>
           </article>
+          <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
         </div>
 
         <div className="rounded-lg lg:col-span-2 bg-white">
-          <header className="mb-4 flex justify-between items-center md:col-span-2 lg:col-span-2 bg-white">
-            <h1 className="text-2xl font-bold">{datas.title}</h1>
+          <header className="mb-4  items-center md:col-span-2 lg:col-span-2 bg-white">
+            <h1 className="text-2xl mb-4 font-bold">{datas.title}</h1>
             <div className="flex space-x-2">
               <button className="px-3 py-1 bg-blue-500 text-white rounded-full flex items-center">
                 <FaFacebookF />
@@ -91,82 +147,97 @@ const PageDetails = () => {
           />
          <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: datas.description }}></p>
 
+         <div className="p-4 border rounded-lg">
+      <h2 className="text-blue-600 font-bold mb-4">মন্তব্য করুন</h2>
+      <div className="mb-4">
+        <span className="font-bold">{comments.length} comments</span>
+        <div className="float-right">
+          <label htmlFor="sortOrder" className="mr-2">Sort by</label>
+          <select
+            id="sortOrder"
+            value={sortOrder}
+            onChange={handleSortChange}
+            className="border bg-white border-gray-500 rounded p-1"
+          >
+            <option value="Oldest">Oldest</option>
+            <option value="Newest">Newest</option>
+          </select>
+        </div>
+      </div>
+      
+      <div className="flex mb-4">
+        <div className="flex-shrink-0 mr-4">
+          <img
+            src="https://via.placeholder.com/50"
+            alt="User avatar"
+            className="rounded-full"
+          />
+        </div>
+        <div className="flex-grow">
+          <textarea
+            className="w-full bg-white border border-gray-500 rounded p-2"
+            placeholder="Add a comment..."
+            value={commentText}
+            onChange={handleCommentChange}
+          />
+        </div>
+      </div>
+      <button
+        className="bg-blue-500 text-white p-2 rounded"
+        onClick={handleCommentSubmit}
+      >
+        Submit
+      </button>
+      <div className="mt-4">
+        {comments.map((comment) => (
+          <div key={comment.id} className="border-t pt-2 mt-2">
+            <div className="flex items-center mb-2">
+              <img
+                src="https://via.placeholder.com/30"
+                alt="User avatar"
+                className="rounded-full mr-2"
+              />
+              <span>User</span>
+            </div>
+            <p>{comment.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
         </div>
 
         <div className="rounded-lg bg-white">
-          {/* Left Sidebar Section */}
-          <aside className="md:col-span-1 lg:col-span-1 bg-white">
-            <h2 className="text-lg font-bold mb-2 m-1 bg-white">
-              ঘটনাপ্রবাহ: লোকসভা নির্বাচন ২০২৪
-            </h2>
-            <div className="grid gap-2 bg-white">
-              <div className="border p-2 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  চা বিক্রেতা থেকে প্রধানমন্ত্রী হিসেবে হ্যাটট্রিক মোদির!
-                </a>
-                <span className="text-gray-500 text-xs">
-                  ০৯ জুন, ২০২৪ ১১:৪৩ এএম
-                </span>
-              </div>
-              <div className="border p-2 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  নীতিশকে যে টোপ দিয়েও ভাগাতে পারেনি ইন্ডিয়া জোট
-                </a>
-                <span className="text-gray-500 text-xs">
-                  ০৯ জুন, ২০২৪ ১০:০০ এএম
-                </span>
-              </div>
-              <div className="border p-2 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  মোদির শপথ অনুষ্ঠানে শেখ হাসিনাসহ থাকবেন যেসব রাষ্ট্রনায়ক
-                </a>
-                <span className="text-gray-500 text-xs">
-                  ০৯ জুন, ২০২৪ ০৯:১৭ এএম
-                </span>
-              </div>
-              <div className="border p-2 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  মোদির সঙ্গে জোট করে কী পেলেন নীতিশ-নাইডু
-                </a>
-                <span className="text-gray-500 text-xs">
-                  ০৮ জুন, ২০২৪ ১০:৪৭ পিএম
-                </span>
-              </div>
-              <div className="border p-2 rounded bg-white">
-                <a href="#" className="block hover:underline">
-                  জেলে বসে ওমর আব্দুল্লাহকে হারানো কে এই রশিদ
-                </a>
-                <span className="text-gray-500 text-xs">
-                  ০৮ জুন, ২০২৪ ০৪:৫৩ পিএম
-                </span>
-              </div>
-            </div>
-          </aside>
+          <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+          
+        <div className="p-4 mt-3">
+      <div className="flex mb-4">
+        <button
+          className={`mr-2 p-2 transition duration-500 ease-in-out transform ${activeSection === 'latest' ? 'bg-blue-500 text-white scale-105' : 'bg-gray-300'}`}
+          onClick={() => handleToggle('latest')}
+        >
+          সর্বশেষ
+        </button>
+        <button
+          className={`p-2 transition duration-500 ease-in-out transform ${activeSection === 'popular' ? 'bg-blue-500 text-white scale-105' : 'bg-gray-300'}`}
+          onClick={() => handleToggle('popular')}
+        >
+          জনপ্রিয়
+        </button>
+      </div>
+      <div className="h-64 overflow-y-scroll" onScroll={handleScroll}>
+        <ul className="space-y-2">
+          {itemsToShow.slice(0, visibleCount).map(item => (
+            <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
+             <img className="h-14 w-16" src="https://i.ibb.co/YpxB4DL/449501355-456042040534020-2738157919491050824-n.jpg" alt="" />
+              <a className="hover:text-blue-800  hover:font-extralight">{item.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
         </div>
       </div>
-
-      {/* Main Content Section */}
-      <div className="grid lg:grid-cols-5 md:grid-cols-5 gap-4 bg-white"></div>
-
-      {/* Comments Section */}
-      <section className="mt-8 bg-white">
-        <h2 className="text-lg font-bold mb-4">মন্তব্য করুন</h2>
-        <div className="bg-gray-100 p-4 rounded bg-white">
-          <form>
-            <textarea
-              className="w-full p-2 border rounded mb-4"
-              rows="4"
-              placeholder="আপনার মন্তব্য লিখুন..."
-            ></textarea>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded"
-            >
-              মন্তব্য প্রকাশ করুন
-            </button>
-          </form>
-        </div>
-      </section>
     </div>
   );
 };

@@ -19,16 +19,16 @@ const Home = () => {
   return (
     <div className="bg-white mt-20">
       <Headline></Headline>
-      <SubHome></SubHome>
+      {/* <SubHome></SubHome>
       <AgreecultureSection></AgreecultureSection>
       <CategoryNews></CategoryNews>
       <CategoryNewsTwo></CategoryNewsTwo>
       {/* <ExcusiveNewa></ExcusiveNewa> */}
-      <DeshNews></DeshNews>
+      {/* <DeshNews></DeshNews>
       <InternationalNews></InternationalNews>
       <AllNews></AllNews>
       <Entertainment></Entertainment>
-      <Saradesh></Saradesh>
+      <Saradesh></Saradesh> */} 
     </div>
   );
 };

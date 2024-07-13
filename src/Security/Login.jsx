@@ -7,9 +7,13 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 import { sendPasswordResetEmail } from "firebase/auth";
-import auth from "../src/Components/firebase/firebase.config";
-import useLogo from "../src/Hook/useLogo";
+
+
 import { Helmet } from "react-helmet-async";
+import auth from "./firebase.config";
+import useLogo from "../AxiosFetch/useLogo";
+
+
 
 const Login = () => {
   const { signIn, googleSignIn, facebookSignin, githubLogin } = useContext(AuthContext);

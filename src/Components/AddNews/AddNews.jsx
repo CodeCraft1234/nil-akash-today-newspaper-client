@@ -60,9 +60,8 @@ const AddNews = () => {
       const photo = res.data.data.display_url;
 
       const date = new Date();
-      const dates = new Date();
       const bengaliDate = getBengaliDate(date);
-      const newsInfo = { title, description, photo,dates, category, division, district, date: bengaliDate };
+      const newsInfo = { title, description, photo,date, category, division, district, dates: bengaliDate };
 
       // Post the news data
       await AxiosPublic.post("/news", newsInfo);
@@ -112,7 +111,7 @@ const AddNews = () => {
               type="text"
               id="title"
               name="title"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="mt-1 block w-full px-4 py-2 bg-white text-black border border-gray-300 rounded-md shadow-sm"
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
