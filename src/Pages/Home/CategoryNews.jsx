@@ -1,73 +1,80 @@
-import NewsSide from "../../Components/NewsCard/NewsSide/NewsSide";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
+
+import MainCard from "../../Components/MainCard/MainCard";
+import SmallCard from "../../Components/SmallCard/SmallCard";
 
 const CategoryNews = () => {
-    return (
-        <div className="text-black mx-4">
-            <div className="grid grid-cols-1 border-t-2 border-black p-2 gap-4 lg:grid-cols-3 lg:gap-5">
-  <div className=" rounded-lg ">
-    <h1 className="text-3xl font-bold ">রাজনীতি</h1>
-  <div className="w-full  overflow-hidden  my-4">
-      <img className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105" src='https://i.ibb.co/kgYtcF7/kajol.jpg' alt="News" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-sm md:text-xl mb-2">সিন্দাবাদ-আলাদীনের মতো কাজল রেখাও দর্শকমনে স্থান করে নেবে</div>
-        <p className="text-black text-sm md:text-base">চট্টগ্রামের আনোয়ারা উপজেলায় বাজেটকে স্বাগত জানিয়ে আনন্দ মিছিলের আগে অর্থ প্রতিমন্ত্রী ওয়াসিকা আয়শা খান ও সাবেক ভূমিমন্ত্রী সাইফুজ্জামান চৌধুরীর অনুসারীদের দু’গ্রুপের সংঘর্ষের ঘটনা ঘটেছে</p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-        ১ বছর আগে
-        </span>
-      </div>
-    </div>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    </div>
-  <div className=" border-l-2 border-black p-2 ">
-  <h1 className="text-3xl font-bold ">অর্থনীতি</h1>
-  <div className="w-full  overflow-hidden  my-4">
-      <img className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105" src='https://i.ibb.co/kgYtcF7/kajol.jpg' alt="News" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-sm md:text-xl mb-2">সিন্দাবাদ-আলাদীনের মতো কাজল রেখাও দর্শকমনে স্থান করে নেবে</div>
-        <p className="text-black text-sm md:text-base">চট্টগ্রামের আনোয়ারা উপজেলায় বাজেটকে স্বাগত জানিয়ে আনন্দ মিছিলের আগে অর্থ প্রতিমন্ত্রী ওয়াসিকা আয়শা খান ও সাবেক ভূমিমন্ত্রী সাইফুজ্জামান চৌধুরীর অনুসারীদের দু’গ্রুপের সংঘর্ষের ঘটনা ঘটেছে</p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-        ১ বছর আগে
-        </span>
-      </div>
-    </div>
-  <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-  </div>
-  <div className="  border-l-2 border-black p-2">
-  <h1 className="text-3xl font-bold ">জাতীয়</h1>
-  <div className="w-full  overflow-hidden  my-4">
-      <img className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105" src='https://i.ibb.co/kgYtcF7/kajol.jpg' alt="News" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-sm md:text-xl mb-2">সিন্দাবাদ-আলাদীনের মতো কাজল রেখাও দর্শকমনে স্থান করে নেবে</div>
-        <p className="text-black text-sm md:text-base">চট্টগ্রামের আনোয়ারা উপজেলায় বাজেটকে স্বাগত জানিয়ে আনন্দ মিছিলের আগে অর্থ প্রতিমন্ত্রী ওয়াসিকা আয়শা খান ও সাবেক ভূমিমন্ত্রী সাইফুজ্জামান চৌধুরীর অনুসারীদের দু’গ্রুপের সংঘর্ষের ঘটনা ঘটেছে</p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-        ১ বছর আগে
-        </span>
-      </div>
-    </div>
-  <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-    <NewsSide></NewsSide>
-  </div>
-</div>
+  const [saradeshNews, setSaradeshNews] = useState([]);
+  const [shikkhaNews, setShikkhaNews] = useState([]);
+  const [upamahadeshNews, setUpamahadeshNews] = useState([]);
+  const [healthNews, setHealthNews] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/news");
+        const saradesh = response.data.filter(
+          (news) => news.category === "সারাদেশ"
+        );
+        const shikkha = response.data.filter(
+          (news) => news.category === "শিক্ষা"
+        );
+        const upamahadesh = response.data.filter(
+          (news) => news.category === "উপার বাংলা"
+        );
+        const healthNews = response.data.filter(
+          (news) => news.category === "স্বাস্থ্য"
+        );
+        setSaradeshNews(saradesh);
+        setShikkhaNews(shikkha);
+        setUpamahadeshNews(upamahadesh);
+        setHealthNews(healthNews)
+      } catch (error) {
+        console.error("Error fetching the news data", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (
+    saradeshNews.length === 0 ||
+    shikkhaNews.length === 0 ||
+    upamahadeshNews.length === 0
+  ) {
+    return <p>Loading...</p>;
+  }
+
+  const renderCategorySection = (title, news) => (
+    <div>
+      <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+        {title}
+      </h2>
+      <div className="flex flex-col gap-4">
+        <div className="lg:w-full">
+          <MainCard article={news[0]} />
         </div>
-    );
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+          {news.slice(1, 5).map((article) => (
+            <SmallCard key={article.id} article={article} />
+          ))}
+        </div> */}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="container mx-8 px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {renderCategorySection("সারাদেশ", saradeshNews)}
+        {renderCategorySection("শিক্ষা", shikkhaNews)}
+        {renderCategorySection("উপার বাংলা", upamahadeshNews)}
+        {renderCategorySection("স্বাস্থ্য", healthNews)}
+      </div>
+    </div>
+  );
 };
 
 export default CategoryNews;

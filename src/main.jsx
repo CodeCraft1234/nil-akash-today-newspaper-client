@@ -21,6 +21,10 @@ import Health from "./Pages/Health/Health";
 import AddNews from "./Components/AddNews/AddNews";
 import DashboardRoot from "./Pages/Dashboard/DashboardRoot";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import PageDetails from "./Pages/PageDetails/PageDetails";
+import Settings from "./Components/Settings/Settings";
+import AllNews from "./Components/AllNews/AllNews";
+
 
 const router = createBrowserRouter([
   {
@@ -42,6 +46,11 @@ const router = createBrowserRouter([
       {
         path:'/politics',
         element: <Politics></Politics>
+      },
+      {
+        path:'/newsDetails/:id',
+        element: <PageDetails></PageDetails>,
+        loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
       },
       {
         path:'/economics',
@@ -82,6 +91,14 @@ const router = createBrowserRouter([
           {
             path:'dashboard/addNews',
             element: <AddNews></AddNews>
+          },
+          {
+            path:'dashboard/allNews',
+            element: <AllNews></AllNews>
+          },
+          {
+            path:'dashboard/settings',
+            element: <Settings></Settings>
           },
         ]
       },

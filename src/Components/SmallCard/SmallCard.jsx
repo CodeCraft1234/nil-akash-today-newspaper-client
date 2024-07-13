@@ -4,7 +4,7 @@ const SmallCard = ({ article }) => {
   return (
     <div className="rounded overflow-hidden shadow-lg flex flex-row items-center">
       <img
-        className="w-1/3 h-20 object-cover"
+        className="w-1/3 h-20 object-cover rounded"
         src={article.photo}
         alt={article.title}
       />

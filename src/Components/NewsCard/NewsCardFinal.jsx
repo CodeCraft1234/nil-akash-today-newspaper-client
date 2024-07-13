@@ -15,7 +15,7 @@ const NewsCardFinal = () => {
           (news) => news.category === "অর্থনীতি"
         );
         const international = response.data.filter(
-          (news) => news.category === "বাণিজ্য"
+          (news) => news.category === "রাজনীতি"
         );
         setNationalNews(national);
         setInternationalNews(international);
@@ -51,7 +51,7 @@ const NewsCardFinal = () => {
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
-          বাণিজ্য
+          রাজনীতি
           </h2>
           <div className="flex flex-col gap-4">
             <div className="lg:w-full">
