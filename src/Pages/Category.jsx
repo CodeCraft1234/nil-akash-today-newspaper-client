@@ -1,71 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import UseNews from "../AxiosFetch/UseNews"; // Assuming this is a custom hook to fetch news data
-import NewsCard from "../Components/NewsCard/NewsCard"; // Assuming this is a component to display individual news
-
-const convertToBengaliNumber = (number) => {
-  const bengaliNumbers = {
-    0: "০",
-    1: "১",
-    2: "২",
-    3: "৩",
-    4: "৪",
-    5: "৫",
-    6: "৬",
-    7: "৭",
-    8: "৮",
-    9: "৯",
-  };
-  return String(number).replace(/\d/g, (digit) => bengaliNumbers[digit]);
-};
-
-const getTimeDifference = (publishDate) => {
-  const now = new Date();
-  const publishedDate = new Date(publishDate);
-  const difference = now - publishedDate;
-
-  const minutes = Math.floor(difference / 1000 / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (days > 0) {
-    return `${convertToBengaliNumber(days)} দিন আগে`;
-  } else if (hours > 0) {
-    return `${convertToBengaliNumber(hours)} ঘণ্টা আগে`;
-  } else {
-    return `${convertToBengaliNumber(minutes)} মিনিট আগে`;
-  }
-};
-
-const newsItems = [
-  { id: 1, text: 'অটোরিকশায় যাত্রী হয়নি, বাড়তি ভাড়ার অভিযোগ' },
-  { id: 2, text: 'দেশে ফিরেছেন ৬৭ হাজার ৯২৪ হাজি, মৃত্যু বেড়ে ৬৪' },
-  { id: 3, text: 'ফিলিস্তিনের স্বাধীনতাকামীদের ধরতে পদক্ষেপ নিল আর্জেন্টিনা' },
-  { id: 4, text: 'রাতের আঁধারে দূরন্ত ঝড়ুল বিভি সঙ্গীতার মাজার' },
-  { id: 5, text: 'দেশ বিকি করে দিচ্ছেন মিসরের প্রেসিডেন্ট সিসি' },
-  { id: 6, text: 'এক সেকেন্ডের বৃষ্টিলেতে আকাশে সংঘর্ষ এড়ালা যাত্রীবাহী দুই বিমান' },
-  { id: 7, text: 'সন্তানকে খুঁজতে গিয়ে মা নিখোঁজ' },
-  { id: 8, text: 'এক মুক্তিযোদ্ধার ৭ ভুয়া সন্তান, কোটায় ৫ জনের চাকরি' },
-  { id: 9, text: 'কার হাতে যাচ্ছে গাজার নিয়ন্ত্রণ?' },
-  { id: 10, text: 'জনতার আদালতে রাসেল ভাইপারের ‘ফাঁসি’' },
-  { id: 11, text: 'ফিলিস্তিনের পতাকা নিয়ে কেন বিক্ষোভ করছেন কোটায় আন্দোলনকারীরা?' },
-  { id: 12, text: 'কোটায় ইসরুতে বিক্ষোভকারী হিসেবে নাম প্রত্যাহার করলেন আইহাস' },
-];
-
-const popularItems = [
-  { id: 1, text: 'সন্তানকে খুঁজতে গিয়ে মা নিখোঁজ' },
-  { id: 2, text: 'এক মুক্তিযোদ্ধার ৭ ভুয়া সন্তান, কোটায় ৫ জনের চাকরি' },
-  { id: 3, text: 'কার হাতে যাচ্ছে গাজার নিয়ন্ত্রণ?' },
-  { id: 4, text: 'জনতার আদালতে রাসেল ভাইপারের ‘ফাঁসি’' },
-  { id: 5, text: 'ফিলিস্তিনের পতাকা নিয়ে কেন বিক্ষোভ করছেন কোটায় আন্দোলনকারীরা?' },
-  { id: 6, text: 'কোটায় ইসরুতে বিক্ষোভকারী হিসেবে নাম প্রত্যাহার করলেন আইহাস' },
-  { id: 7, text: 'অটোরিকশায় যাত্রী হয়নি, বাড়তি ভাড়ার অভিযোগ' },
-  { id: 8, text: 'দেশে ফিরেছেন ৬৭ হাজার ৯২৪ হাজি, মৃত্যু বেড়ে ৬৪' },
-  { id: 9, text: 'ফিলিস্তিনের স্বাধীনতাকামীদের ধরতে পদক্ষেপ নিল আর্জেন্টিনা' },
-  { id: 10, text: 'রাতের আঁধারে দূরন্ত ঝড়ুল বিভি সঙ্গীতার মাজার' },
-  { id: 11, text: 'দেশ বিকি করে দিচ্ছেন মিসরের প্রেসিডেন্ট সিসি' },
-  { id: 12, text: 'এক সেকেন্ডের বৃষ্টিলেতে আকাশে সংঘর্ষ এড়ালা যাত্রীবাহী দুই বিমান' },
-];
+import NewsCard from "../Components/NewsCard/NewsCard"; // Assuming this is a component to display 
 
 const Category = () => {
     const { categorys } = useParams();
@@ -73,7 +9,7 @@ const Category = () => {
     const [latestNews, setLatestNews] = useState(null);
     const [otherNews, setOtherNews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [newsPerPage] = useState(6);
+    const [newsPerPage] = useState(12);
     const [activeSection, setActiveSection] = useState('latest');
     const [visibleCount, setVisibleCount] = useState(10);
     const [newer,setNewer] = useState([]);
@@ -83,8 +19,9 @@ const Category = () => {
   
       const filtered = news.filter((n) => n.category === categorys);
       const sorted = filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const sorted2 = news.sort((a, b) => new Date(b.date) - new Date(a.date));
   
-      setNewer(sorted);
+      setNewer(sorted2);
       if (sorted.length > 0) {
         setLatestNews(sorted[1]);
         setOtherNews(sorted.slice(1));
@@ -113,7 +50,7 @@ const Category = () => {
       }
     };
   
-    const itemsToShow = activeSection === 'latest' ? newsItems : popularItems;
+    const itemsToShow = activeSection === 'latest' ? newer : news;
   
 
   return (
@@ -244,10 +181,13 @@ const Category = () => {
               <div className="h-64 overflow-y-scroll" onScroll={handleScroll}>
                 <ul className="space-y-2">
                   {itemsToShow.slice(0, visibleCount).map(item => (
-                    <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
-                      <img className="h-14 w-16" src="https://i.ibb.co/YpxB4DL/449501355-456042040534020-2738157919491050824-n.jpg" alt="" />
-                      <a className="hover:text-blue-800 hover:font-extralight">{item.text}</a>
+                      <Link key={item.id} to={`/newsDetails/${item._id}`}>
+                      <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
+                      <img className="h-14 w-16" src={item.photo} alt="" />
+                      <a className="hover:text-blue-800 hover:font-extralight">{item.title}</a>
                     </li>
+                      </Link>
+                   
                   ))}
                 </ul>
               </div>

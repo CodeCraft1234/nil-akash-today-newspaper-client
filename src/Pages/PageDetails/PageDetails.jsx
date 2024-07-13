@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,37 +7,9 @@ import {
   FaEnvelope,
   FaLink,
 } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import UseNews from "../../AxiosFetch/UseNews";
 
-const newsItems = [
-  { id: 1, text: 'অটোরিকশায় যাত্রী হয়নি, বাড়তি ভাড়ার অভিযোগ' },
-  { id: 2, text: 'দেশে ফিরেছেন ৬৭ হাজার ৯২৪ হাজি, মৃত্যু বেড়ে ৬৪' },
-  { id: 3, text: 'ফিলিস্তিনের স্বাধীনতাকামীদের ধরতে পদক্ষেপ নিল আর্জেন্টিনা' },
-  { id: 4, text: 'রাতের আঁধারে দূরন্ত ঝড়ুল বিভি সঙ্গীতার মাজার' },
-  { id: 5, text: 'দেশ বিকি করে দিচ্ছেন মিসরের প্রেসিডেন্ট সিসি' },
-  { id: 6, text: 'এক সেকেন্ডের বৃষ্টিলেতে আকাশে সংঘর্ষ এড়ালা যাত্রীবাহী দুই বিমান' },
-  { id: 7, text: 'সন্তানকে খুঁজতে গিয়ে মা নিখোঁজ' },
-  { id: 8, text: 'এক মুক্তিযোদ্ধার ৭ ভুয়া সন্তান, কোটায় ৫ জনের চাকরি' },
-  { id: 9, text: 'কার হাতে যাচ্ছে গাজার নিয়ন্ত্রণ?' },
-  { id: 10, text: 'জনতার আদালতে রাসেল ভাইপারের ‘ফাঁসি’' },
-  { id: 11, text: 'ফিলিস্তিনের পতাকা নিয়ে কেন বিক্ষোভ করছেন কোটায় আন্দোলনকারীরা?' },
-  { id: 12, text: 'কোটায় ইসরুতে বিক্ষোভকারী হিসেবে নাম প্রত্যাহার করলেন আইহাস' },
-];
-
-const popularItems = [
-  { id: 1, text: 'সন্তানকে খুঁজতে গিয়ে মা নিখোঁজ' },
-  { id: 2, text: 'এক মুক্তিযোদ্ধার ৭ ভুয়া সন্তান, কোটায় ৫ জনের চাকরি' },
-  { id: 3, text: 'কার হাতে যাচ্ছে গাজার নিয়ন্ত্রণ?' },
-  { id: 4, text: 'জনতার আদালতে রাসেল ভাইপারের ‘ফাঁসি’' },
-  { id: 5, text: 'ফিলিস্তিনের পতাকা নিয়ে কেন বিক্ষোভ করছেন কোটায় আন্দোলনকারীরা?' },
-  { id: 6, text: 'কোটায় ইসরুতে বিক্ষোভকারী হিসেবে নাম প্রত্যাহার করলেন আইহাস' },
-  { id: 7, text: 'অটোরিকশায় যাত্রী হয়নি, বাড়তি ভাড়ার অভিযোগ' },
-  { id: 8, text: 'দেশে ফিরেছেন ৬৭ হাজার ৯২৪ হাজি, মৃত্যু বেড়ে ৬৪' },
-  { id: 9, text: 'ফিলিস্তিনের স্বাধীনতাকামীদের ধরতে পদক্ষেপ নিল আর্জেন্টিনা' },
-  { id: 10, text: 'রাতের আঁধারে দূরন্ত ঝড়ুল বিভি সঙ্গীতার মাজার' },
-  { id: 11, text: 'দেশ বিকি করে দিচ্ছেন মিসরের প্রেসিডেন্ট সিসি' },
-  { id: 12, text: 'এক সেকেন্ডের বৃষ্টিলেতে আকাশে সংঘর্ষ এড়ালা যাত্রীবাহী দুই বিমান' },
-];
 const PageDetails = () => {
   const datas = useLoaderData();
   console.log(datas);
@@ -57,7 +29,21 @@ const PageDetails = () => {
     }
   };
 
-  const itemsToShow = activeSection === 'latest' ? newsItems : popularItems;
+
+  const [newer,setNewer] = useState([]);
+  const [newer2,setNewerRelated] = useState([]);
+  const [news]=UseNews()
+  
+  useEffect(() => {
+    if (news.length === 0) return;
+    const sorted = news.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const filtered = news.filter((n) => n.category === datas.category);
+    const sorted2 = filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    setNewer(sorted);
+    setNewerRelated(sorted2);
+  }, [news,datas]);
+
+  const itemsToShow = activeSection === 'latest' ? newer : newer2;
 
   const [sortOrder, setSortOrder] = useState('Oldest');
   const [comments, setComments] = useState([]);
@@ -104,11 +90,14 @@ const PageDetails = () => {
             <h2 className="text-lg font-bold border-b-2 border-t-2 pb-3 pt-3 mb-2">এ সম্পর্কিত আরও খবর</h2>
             <div className="grid gap-2  mb-4 bg-white">
             <ul className="space-y-2">
-          {itemsToShow.slice(0, 5).map(item => (
-            <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
-             <img className="h-14 w-16" src="https://i.ibb.co/YpxB4DL/449501355-456042040534020-2738157919491050824-n.jpg" alt="" />
-              <a className="hover:text-blue-800  hover:font-extralight">{item.text}</a>
+          {newer2.slice(0, 5).map(item => (
+            <Link key={item.id} to={`/newsDetails/${item._id}`}>
+              <li  className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
+             <img className="h-14 w-16" src={item.photo} alt="" />
+              <a className="hover:text-blue-800  hover:font-extralight">{item.title}</a>
             </li>
+            </Link>
+          
           ))}
         </ul>
             </div>
@@ -146,6 +135,7 @@ const PageDetails = () => {
             className="w-full h-auto mb-4 bg-white"
           />
          <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: datas.description }}></p>
+
 
          <div className="p-4 border rounded-lg">
       <h2 className="text-blue-600 font-bold mb-4">মন্তব্য করুন</h2>
@@ -228,14 +218,18 @@ const PageDetails = () => {
       <div className="h-64 overflow-y-scroll" onScroll={handleScroll}>
         <ul className="space-y-2">
           {itemsToShow.slice(0, visibleCount).map(item => (
-            <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
-             <img className="h-14 w-16" src="https://i.ibb.co/YpxB4DL/449501355-456042040534020-2738157919491050824-n.jpg" alt="" />
-              <a className="hover:text-blue-800  hover:font-extralight">{item.text}</a>
+            <Link key={item.id} to={`/newsDetails/${item._id}`}>
+           <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
+             <img className="h-14 w-16" src={item.photo} alt="" />
+              <a className="hover:text-blue-800  hover:font-extralight">{item.title}</a>
             </li>
+            </Link>
+           
           ))}
         </ul>
       </div>
     </div>
+    <img className="w-full h-200px" src="https://i.ibb.co/YW2Gqsx/images-2.jpg" alt="" />
         </div>
       </div>
     </div>
