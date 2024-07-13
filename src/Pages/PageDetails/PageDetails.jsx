@@ -14,7 +14,7 @@ const PageDetails = () => {
   
 
   return (
-    <div className="container mt-24 mx-auto text-black p-4 bg-white">
+    <div className="container mt-16 pt-20 mx-auto text-black p-4 bg-white">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 bg-white">
         <div className="rounded-lg bg-white">
           {/* Grid */}
