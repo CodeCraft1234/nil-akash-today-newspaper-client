@@ -1,54 +1,70 @@
-
-import NewsCard from "./NewsCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import MainCard from "../MainCard/MainCard";
+import SmallCard from "../SmallCard/SmallCard";
 
 const NewsCardFinal = () => {
+  const [nationalNews, setNationalNews] = useState([]);
+  const [internationalNews, setInternationalNews] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/news");
+        const national = response.data.filter(
+          (news) => news.category === "অর্থনীতি"
+        );
+        const international = response.data.filter(
+          (news) => news.category === "বাণিজ্য"
+        );
+        setNationalNews(national);
+        setInternationalNews(international);
+      } catch (error) {
+        console.error("Error fetching the news data", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (nationalNews.length === 0 || internationalNews.length === 0) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
-      
-      {/* card 2 */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <NewsCard
-          image="https://i.ibb.co/8mBwNTd/kasim.jpg"
-          title="কাশিমপুর কারাগারে ধর্ষণ মামলার আসামির ফাঁসি কার্যকর"
-       
-          time="১ বছর আগে"
-        />
-        <NewsCard
-          image="https://i.ibb.co/rm9SY56/padma.jpg"
-          title="পদ্মা নদীতে আটকে পড়া শিক্ষার্থী ও শিশুসহ ২৪ জনকে উদ্ধার করেছে নৌপুলিশ"
-        
-          time="১ বছর আগে"
-        />
-        <NewsCard
-          image="https://i.ibb.co/ZVg4qGG/istema.jpg"
-          title="জেনে নিন বিশ্ব ইজতেমার জেলাভিত্তিক খিত্তার তালিকা"
-         
-          time="১ বছর আগে"
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+          অর্থনীতি
+          </h2>
+          <div className="flex flex-col gap-4">
+            <div className="lg:w-full">
+              <MainCard article={nationalNews[0]} />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+              {nationalNews.slice(1, 5).map((article) => (
+                <SmallCard key={article.id} article={article} />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+          বাণিজ্য
+          </h2>
+          <div className="flex flex-col gap-4">
+            <div className="lg:w-full">
+              <MainCard article={internationalNews[0]} />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+              {internationalNews.slice(1, 5).map((article) => (
+                <SmallCard key={article.id} article={article} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      {/* card 3 */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <NewsCard
-          image="https://i.ibb.co/WxrXhHY/hasina2.jpg"
-          title="জনগণ বিচার করবে ১৪ বছরে আ. লীগ কী দিয়েছে : প্রধানমন্ত্রী"
-        
-          time="১ বছর আগে"
-        />
-        <NewsCard
-          image="https://i.ibb.co/jfScjqs/dhumketo.jpg"
-          title="৫০ হাজার বছর পর আকাশে উঠবে যে ধূমকেতু, দেখা যাবে খালি চোখেও"
-        
-          time="১ বছর আগে"
-        />
-        <NewsCard
-          image="https://i.ibb.co/kgYtcF7/kajol.jpg"
-          title="‘সিন্দাবাদ-আলাদীনের মতো কাজল রেখাও দর্শকমনে স্থান করে নেবে’"
-         
-          time="১ বছর আগে"
-        />
-      </div>
-      {/* card 4 */}
-      
     </div>
   );
 };
