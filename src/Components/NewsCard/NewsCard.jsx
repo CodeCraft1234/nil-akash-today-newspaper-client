@@ -31,3 +31,6 @@ const NewsCard = ({ photo, title, _id }) => {
 };
 
 export default NewsCard;
+
+
+

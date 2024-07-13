@@ -20,10 +20,10 @@ const SubHome = () => {
                  <div className=" rounded-lg space-y-5 lg:col-span-2">
                     <NewsSide></NewsSide>
                     <NewsSide></NewsSide>
+                    {/* <NewsSide></NewsSide>
                     <NewsSide></NewsSide>
                     <NewsSide></NewsSide>
-                    <NewsSide></NewsSide>
-                    <NewsSide></NewsSide>
+                    <NewsSide></NewsSide> */}
                 </div>
              </div>
                 <NewsCardFinal></NewsCardFinal>
