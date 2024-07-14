@@ -3,6 +3,7 @@ import axios from "axios";
 import MainCard from "../../Components/MainCard/MainCard";
 import SmallCard from "../../Components/SmallCard/SmallCard";
 import NewsCard from "../../Components/NewsCard/NewsCard";
+import { Link } from "react-router-dom";
 
 const TwoCard = () => {
   const [nationalNews, setNationalNews] = useState([]);
@@ -32,8 +33,15 @@ const TwoCard = () => {
     return <p>Loading...</p>;
   }
 
+  const truncateTitle = (title = "", wordLimit) => {
+    const words = title.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    }
+    return title;
+  };
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className=" px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Side: National News */}
         <div className="">
@@ -44,11 +52,11 @@ const TwoCard = () => {
             <div className="lg:w-full">
             <div  className="rounded-lg">
                 <NewsCard {...nationalNews[0]} />
-              </div>
+            </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4">
               {nationalNews.slice(1, 5).map((article) => (
-                <SmallCard key={article.id} article={article} />
+                  <SmallCard key={article.id} article={article} />
               ))}
             </div>
           </div>
