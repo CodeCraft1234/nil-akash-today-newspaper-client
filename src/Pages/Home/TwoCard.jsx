@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MainCard from "../../Components/MainCard/MainCard";
 import SmallCard from "../../Components/SmallCard/SmallCard";
+import NewsCard from "../../Components/NewsCard/NewsCard";
 
 const TwoCard = () => {
   const [nationalNews, setNationalNews] = useState([]);
@@ -41,7 +42,9 @@ const TwoCard = () => {
           </h2>
           <div className="flex flex-col gap-4">
             <div className="lg:w-full">
-              <MainCard article={nationalNews[0]} />
+            <div  className="rounded-lg">
+                <NewsCard {...nationalNews[0]} />
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4">
               {nationalNews.slice(1, 5).map((article) => (
@@ -58,7 +61,9 @@ const TwoCard = () => {
           </h2>
           <div className="flex flex-col gap-4">
             <div className="lg:w-full">
-              <MainCard article={internationalNews[0]} />
+            <div  className="rounded-lg">
+                <NewsCard {...internationalNews[0]} />
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4">
               {internationalNews.slice(1, 5).map((article) => (

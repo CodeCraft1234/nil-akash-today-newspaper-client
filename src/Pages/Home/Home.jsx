@@ -1,3 +1,4 @@
+import Binnodon from "../../Components/Binodon";
 import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
 import AgreecultureSection from "./AgreecultureSection";
@@ -21,6 +22,7 @@ const Home = () => {
       <Headline></Headline>
       <SubHome></SubHome>
       <AgreecultureSection></AgreecultureSection>
+      <Binnodon></Binnodon>
       <CategoryNews></CategoryNews>
       {/* <CategoryNewsTwo></CategoryNewsTwo> */}
       {/* <ExcusiveNewa></ExcusiveNewa> */}

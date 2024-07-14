@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
 import NewsSide from "../../Components/NewsCard/NewsSide/NewsSide";
@@ -5,9 +6,48 @@ import Banner from "./Banner";
 import Carousel from "./Carousel";
 import LatestNews from "./LatestNews";
 import TwoCard from "./TwoCard";
+import UseNews from "../../AxiosFetch/UseNews";
+import { useEffect, useState } from "react";
 
 
 const SubHome = () => {
+  const [news] = UseNews();
+  const [latestNews, setLatestNews] = useState(null);
+  const [otherNews, setOtherNews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [newsPerPage] = useState(12);
+  const [activeSection, setActiveSection] = useState('latest');
+  const [visibleCount, setVisibleCount] = useState(10);
+  const [newer,setNewer] = useState([]);
+
+  useEffect(() => {
+    if (news.length === 0) return;
+    const sorted2 = news.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    setNewer(sorted2);
+  }, [news]);
+
+
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNews = otherNews.slice(indexOfFirstNews, indexOfLastNews);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleToggle = (section) => {
+    setActiveSection(section);
+    setVisibleCount(10); // Reset the visible count when switching sections
+  };
+
+  const handleScroll = (e) => {
+    const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      setVisibleCount(prevCount => prevCount + 10); // Load 10 more items when scrolled to bottom
+    }
+  };
+
+  const itemsToShow = activeSection === 'latest' ? newer : news;
+
     return (
         <div className="mt-5 mx-3">
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-5 lg:gap-2">
@@ -28,12 +68,47 @@ const SubHome = () => {
              </div>
                 <NewsCardFinal></NewsCardFinal>
                 </div>
-              <div className=" rounded-lg  lg:col-span-1">
-                <img src="https://i.ibb.co/z8vr3sm/1000010077.jpg" alt="" />
-              <LatestNews></LatestNews>
-              <img src="https://i.ibb.co/z8vr3sm/1000010077.jpg" alt="" />
-                <MostViewedNews></MostViewedNews>
+             
+
+
+                <div className="rounded-lg w-full">
+          <div className="rounded-lg text-black bg-white">
+            <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+            <div className="p-4 mt-3">
+              <div className="flex mb-4">
+                <button
+                  className={`mr-2 p-2 transition duration-500 ease-in-out transform ${
+                    activeSection === 'latest' ? 'bg-blue-500 text-white scale-105' : 'bg-gray-300'
+                  }`}
+                  onClick={() => handleToggle('latest')}
+                >
+                  সর্বশেষ
+                </button>
+                <button
+                  className={`p-2 transition duration-500 ease-in-out transform ${
+                    activeSection === 'popular' ? 'bg-blue-500 text-white scale-105' : 'bg-gray-300'
+                  }`}
+                  onClick={() => handleToggle('popular')}
+                >
+                  জনপ্রিয়
+                </button>
               </div>
+              <div className="h-64 overflow-y-scroll" onScroll={handleScroll}>
+                <ul className="space-y-2">
+                  {itemsToShow.slice(0, visibleCount).map(item => (
+                      <Link key={item.id} to={`/newsDetails/${item._id}`}>
+                      <li key={item.id} className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
+                      <img className="h-14 w-16" src={item.photo} alt="" />
+                      <a className="hover:text-blue-800 hover:font-extralight">{item.title}</a>
+                    </li>
+                      </Link>
+                   
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
             </div>        
         </div>
     );
