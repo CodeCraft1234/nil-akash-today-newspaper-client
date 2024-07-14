@@ -5,7 +5,7 @@
 
 
 // export const AxiosSecure = axios.create({
-//   baseURL: 'http://localhost:5000',
+//   baseURL: 'https://akash-newspaper-server.vercel.app',
 // });
 
 // const UseAxiosSecure = () => {

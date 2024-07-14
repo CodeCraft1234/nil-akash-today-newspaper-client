@@ -7,9 +7,13 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 import { sendPasswordResetEmail } from "firebase/auth";
-import auth from "../src/Components/firebase/firebase.config";
-import useLogo from "../src/Hook/useLogo";
+
+
 import { Helmet } from "react-helmet-async";
+import auth from "./firebase.config";
+import useLogo from "../AxiosFetch/useLogo";
+
+
 
 const Login = () => {
   const { signIn, googleSignIn, facebookSignin, githubLogin } = useContext(AuthContext);
@@ -121,9 +125,9 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Helmet>
-              <title> বিশ্বস্ত-বাজার | Login</title>
-              <link rel="canonical" href="https://www.tacobell.com/" />
-               </Helmet>
+        <title>NilAkashToday | Login</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
       <div className="flex justify-center items-center">
           <Link to={"/"}>
