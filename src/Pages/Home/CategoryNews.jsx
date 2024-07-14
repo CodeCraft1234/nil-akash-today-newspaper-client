@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 import MainCard from "../../Components/MainCard/MainCard";
 import SmallCard from "../../Components/SmallCard/SmallCard";
 
@@ -30,7 +29,7 @@ const CategoryNews = () => {
         setSaradeshNews(saradesh);
         setShikkhaNews(shikkha);
         setUpamahadeshNews(upamahadesh);
-        setHealthNews(healthNews)
+        setHealthNews(healthNews);
       } catch (error) {
         console.error("Error fetching the news data", error);
       }
@@ -66,8 +65,11 @@ const CategoryNews = () => {
   );
 
   return (
-    <div className="container mx-8 px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div className="container  px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className=" rounded-lg  lg:col-span-1">
+          <img src="https://i.ibb.co/z8vr3sm/1000010077.jpg" alt="" />
+        </div>
         {renderCategorySection("সারাদেশ", saradeshNews)}
         {renderCategorySection("শিক্ষা", shikkhaNews)}
         {renderCategorySection("উপার বাংলা", upamahadeshNews)}

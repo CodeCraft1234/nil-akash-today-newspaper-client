@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NewsCard from '../../Components/NewsCard/NewsCard';
+import NewsSide from '../../Components/NewsCard/NewsSide/NewsSide';
 
 const AgreecultureSection = () => {
   const [news, setNews] = useState(null);
@@ -54,8 +55,7 @@ const AgreecultureSection = () => {
           </div>
         </div>
         <div className="rounded-lg">
-          <NewsCard />
-          <NewsCard />
+          <NewsSide />
         </div>
       </div>
     </div>
