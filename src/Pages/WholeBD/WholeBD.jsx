@@ -4,6 +4,7 @@ import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import LatestNews from "../Home/LatestNews";
 import { useEffect, useState } from "react";
 import UseNews from "../../AxiosFetch/UseNews";
+import { Helmet } from "react-helmet-async";
 
 const convertToBengaliNumber = (number) => {
   const bengaliNumbers = {
@@ -74,6 +75,10 @@ const WholeBD = () => {
 
   return (
     <div className="mt-36 mx-3 lg:mx-10">
+      <Helmet>
+        <title>NilAkashToday | WholeBD</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <h1 className="text-3xl font-bold ml-5 mr-5 text-blue-500 border-2 border-gray-300 w-full p-4 mb-8 rounded-lg">
         সারাদেশ
       </h1>

@@ -3,6 +3,7 @@ import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import LatestNews from "../Home/LatestNews";
 import NewsCard from "../../Components/NewsCard/NewsCard";
 import UseNews from '../../AxiosFetch/UseNews';
+import { Helmet } from 'react-helmet-async';
 
 const convertToBengaliNumber = (number) => {
   const bengaliNumbers = {
@@ -68,6 +69,10 @@ const Economics = () => {
   
   return (
     <div className="mt-20 px-3 pb-5 bg-white">
+      <Helmet>
+        <title>NilAkashToday | Economics</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <h1 className='text-3xl font-bold ml-5 mr-5 text-blue-500 border-2 border-gray-300 w-full p-4 mb-8 rounded-lg'>
         অর্থনীতি
       </h1>

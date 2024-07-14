@@ -1,9 +1,16 @@
+
+
+import { Helmet } from "react-helmet-async";
 import NewsSide from "../../Components/NewsCard/NewsSide/NewsSide";
 
 
 const AllNews = () => {
     return (
         <div>
+            <Helmet>
+        <title>NilAkashToday | AllNews</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
             <h1 className='text-3xl font-bold text-black ml-5'> সব খবর</h1>
             <div className="grid grid-cols-1 gap-4 mx-4 lg:grid-cols-3 lg:gap-5">
                  <div className=" rounded-lg ">

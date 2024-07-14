@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import AdminDashboard from "./AdminDashboard";
 
 
@@ -14,6 +15,10 @@ const Dashboard = ({ showSidebar }) => {
             showSidebar ? "block" : "hidden"
           } md:block`}
         >
+          <Helmet>
+        <title>NilAkashToday | AdminDashboard</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
           <ul className="menu  text-center text-lg md:text-xl">
                <AdminDashboard></AdminDashboard> 
           </ul>

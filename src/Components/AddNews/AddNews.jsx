@@ -5,6 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import UseAxiosPublic from "../../Axios/UseAxiosPublic";
 import Swal from "sweetalert2";
 import 'tailwindcss/tailwind.css';
+import { Helmet } from "react-helmet-async";
 
 const AddNews = () => {
   const [title, setTitle] = useState("");
@@ -101,6 +102,10 @@ const AddNews = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-10">
+      <Helmet>
+        <title>NilAkashToday | AddNews</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Add New Post</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
