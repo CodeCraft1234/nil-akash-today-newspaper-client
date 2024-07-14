@@ -85,8 +85,8 @@ const UpdateProducts = () => {
   return (
     <div className="px-4">
       <Helmet>
-        <title>বিশ্বস্ত-বাজার | UpdateProducts</title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
+        <title>NilAkashToday | UpdateProducts</title>
+        <link rel="canonical" href="https://www.example.com/" />
       </Helmet>
       <div className="text-center">
         <h2 className="text-xl font-bold py-5 text-pink-600">Update {item.title}</h2>

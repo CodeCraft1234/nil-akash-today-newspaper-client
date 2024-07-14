@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import UseNews from "../AxiosFetch/UseNews"; // Assuming this is a custom hook to fetch news data
 import NewsCard from "../Components/NewsCard/NewsCard"; // Assuming this is a component to display 
+import { Helmet } from "react-helmet-async";
 
 const Category = () => {
     const { categorys } = useParams();
@@ -55,6 +56,10 @@ const Category = () => {
 
   return (
     <div className="mt-24 pt-10 px-3 bg-white lg:px-10">
+      <Helmet>
+        <title>NilAkashToday | {categorys}</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <h1 className="text-3xl font-bold text-blue-500 border-2 border-gray-300 w-full p-2 mb-2 rounded-lg">
         {categorys}
       </h1>

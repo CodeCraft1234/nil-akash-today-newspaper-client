@@ -150,7 +150,7 @@ const AdminHome = () => {
   return (
     <section className="">
       <Helmet>
-        <title>বিশ্বস্ত-বাজার | AdminHome</title>
+        <title>NilAkashToday | AdminHome</title>
         <link rel="canonical" href="https://www.example.com/" />
       </Helmet>
       <div className=" px-4 pt-8 pb-4 ">

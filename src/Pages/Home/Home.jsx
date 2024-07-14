@@ -1,4 +1,7 @@
 import Binnodon from "../../Components/Binodon";
+
+
+import { Helmet } from "react-helmet-async";
 import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
 import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
 import AgreecultureSection from "./AgreecultureSection";
@@ -19,6 +22,10 @@ import SubHome from "./SubHome";
 const Home = () => {
   return (
     <div className="bg-white mt-20">
+      <Helmet>
+        <title>NilAkashToday | Home</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
       <Headline></Headline>
       <SubHome></SubHome>
       <AgreecultureSection></AgreecultureSection>
