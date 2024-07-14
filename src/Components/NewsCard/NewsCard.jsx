@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NewsCard = ({ photo, title, _id }) => {
   // Function to truncate title to a specific number of words
-  const truncateTitle = (title, wordLimit) => {
+  const truncateTitle = (title = "", wordLimit) => {
     const words = title.split(" ");
     if (words.length > wordLimit) {
       return words.slice(0, wordLimit).join(" ") + "...";
@@ -31,6 +31,3 @@ const NewsCard = ({ photo, title, _id }) => {
 };
 
 export default NewsCard;
-
-
-

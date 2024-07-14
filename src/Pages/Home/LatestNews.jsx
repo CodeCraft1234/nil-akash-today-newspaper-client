@@ -9,7 +9,7 @@ const LatestNews = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/news");
+        const response = await axios.get("https://akash-newspaper-server.vercel.app/news");
         setNewsData(response.data);
         setFilteredNews(response.data); // Initially set to all news
       } catch (error) {

@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path:'/newsDetails/:id',
         element: <PageDetails></PageDetails>,
-        loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
+        loader:({params})=>fetch(`https://akash-newspaper-server.vercel.app/news/${params.id}`)
       },
       {
         path:'/addNews',
@@ -78,9 +78,11 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
   <QueryClientProvider client={queryClient}>
-  <HelmetProvider>
-          <RouterProvider router={router} />
-          </HelmetProvider>
+   <HelmetProvider>
+         <AuthProvider>
+               <RouterProvider router={router} />
+          </AuthProvider> 
+    </HelmetProvider> 
     </QueryClientProvider>
   </React.StrictMode>
 );
