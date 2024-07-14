@@ -8,23 +8,18 @@ import {
 import "./index.css";
 import Root from "./Root";
 import Home from "./Pages/Home/Home";
-import National from "./Pages/National/National";
-import InterNational from "./Pages/InterNational/InterNational";
-import Politics from "./Pages/Politics/Politics";
-import Economics from "./Pages/Economics/Economics";
-import WholeBD from "./Pages/WholeBD/WholeBD";
-import Entertainment from "./Pages/Entertainment/Entertainment";
-import Sports from "./Pages/Sports/Sports";
-import Education from "./Pages/Education/Education";
-import WestBengal from "./Pages/WestBengal/WestBengal";
-import Health from "./Pages/Health/Health";
 import AddNews from "./Components/AddNews/AddNews";
 import DashboardRoot from "./Pages/Dashboard/DashboardRoot";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PageDetails from "./Pages/PageDetails/PageDetails";
-import Settings from "./Components/Settings/Settings";
-import AllNews from "./Components/AllNews/AllNews";
-
+import Category from "./Pages/Category";
+import AuthProvider from "./Security/AuthProvider";
+import { HelmetProvider } from "react-helmet-async";
+import Login from "./Security/Login";
+import AdminHome from "./Pages/Dashboard/AdminHome";
+import AddProduct from "./Pages/Dashboard/Routes/AddProducts";
+import UpdateProducts from "./Pages/Dashboard/Routes/Updateproducts";
+import Settings from "./Pages/Dashboard/Settings";
 
 const router = createBrowserRouter([
   {
@@ -36,16 +31,12 @@ const router = createBrowserRouter([
         element:<Home></Home>
       },
       {
-        path:'/national',
-        element: <National></National>
+        path:'/login',
+        element:<Login></Login>
       },
       {
-        path:'/interNational',
-        element: <InterNational></InterNational>
-      },
-      {
-        path:'/politics',
-        element: <Politics></Politics>
+        path:'/category/:categorys',
+        element: <Category></Category>
       },
       {
         path:'/newsDetails/:id',
@@ -53,55 +44,32 @@ const router = createBrowserRouter([
         loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
       },
       {
-        path:'/economics',
-        element: <Economics></Economics>
-      },
-      {
-        path:'/wholeBD',
-        element: <WholeBD></WholeBD>
-      },
-      {
-        path:'/Entertainment',
-        element: <Entertainment></Entertainment>
-      },
-      {
-        path:'/Sports',
-        element: <Sports></Sports>
-      },
-      {
-        path:'/Education',
-        element: <Education></Education>
-      },
-      {
-        path:'/WestBengal',
-        element: <WestBengal></WestBengal>
-      },
-      {
-        path:'/Health',
-        element: <Health></Health>
-      },
-      {
         path:'/addNews',
         element: <AddNews></AddNews>
       },
       {
         path:'dashboard',
-        element: <DashboardRoot></DashboardRoot>,
+        element:<DashboardRoot></DashboardRoot>,
         children:[
           {
-            path:'dashboard/addNews',
-            element: <AddNews></AddNews>
+            path:'/dashboard/admin/addNews',
+            element:<AddNews></AddNews>
+          },
+          // {
+          //   path:'/dashboard/admin/adminHome',
+          //   element:<AdminHome></AdminHome>
+          // },
+          {
+            path: "/dashboard/admin/settings",
+            element: <Settings />,
           },
           {
-            path:'dashboard/allNews',
-            element: <AllNews></AllNews>
-          },
-          {
-            path:'dashboard/settings',
-            element: <Settings></Settings>
+            path:'/dashboard/admin/updateProducts/:id',
+            element:<UpdateProducts></UpdateProducts>,
+            loader: ({ params }) => fetch(`https://hirikbazar.vercel.app/products/${params.id}`)
           },
         ]
-      },
+      }
     ]
   },
 ]);
@@ -110,7 +78,11 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
   <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
+   <HelmetProvider>
+         <AuthProvider>
+               <RouterProvider router={router} />
+          </AuthProvider> 
+    </HelmetProvider> 
     </QueryClientProvider>
   </React.StrictMode>
 );
