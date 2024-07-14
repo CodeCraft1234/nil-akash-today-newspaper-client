@@ -11,7 +11,7 @@ const DashboardRoot = () => {
   return (
     <div className="bg-[#85F4FA]">
       <Helmet>
-        <title>বিশ্বস্ত-বাজার | DashboardHome</title>
+        <title>NilAkashToday | DashboardHome</title>
         <link rel="canonical" href="https://www.example.com/" />
       </Helmet>
     <div className="flex relative">

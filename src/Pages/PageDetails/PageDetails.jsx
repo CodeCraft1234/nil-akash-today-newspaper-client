@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import UseNews from "../../AxiosFetch/UseNews";
+import { Helmet } from "react-helmet-async";
 
 const PageDetails = () => {
   const datas = useLoaderData();
@@ -65,6 +66,10 @@ const PageDetails = () => {
   };
   return (
     <div className="container  pt-36 mx-auto text-black p-4 bg-white">
+      <Helmet>
+        <title>NilAkashToday | NewsDetails</title>
+        <link rel="canonical" href="https://www.example.com/" />
+      </Helmet>
        <img className="w-full h-20 mb-4" src="https://i.ibb.co/t3xZ42G/8506705887870801222.png" alt="" />
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-4 lg:gap-5 bg-white">
         <div className="rounded-lg bg-white">
