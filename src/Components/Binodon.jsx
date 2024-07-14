@@ -51,7 +51,8 @@ const Binnodon = () => {
           <div>
             <div className="grid lg:grid-cols-2 gap-3 my-3">
               {binodonNews.slice(0, 2).map((latestNews) => (
-                <div key={latestNews._id} className="w-full overflow-hidden border border-gray-400 my-4 rounded-lg bg-gray-100">
+                <Link key={latestNews._id} to={`/newsDetails/${latestNews._id}`}>
+                    <div  className="w-full overflow-hidden border border-gray-400 my-4 rounded-lg bg-gray-100">
                   <div className="relative w-full h-[250px]">
                     <img
                       className="w-full h-64 object-cover transform transition-transform duration-500 hover:scale-105"
@@ -63,6 +64,8 @@ const Binnodon = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
+            
               ))}
             </div>
             <div className="grid lg:grid-cols-3 gap-3 mb-3">
@@ -88,7 +91,7 @@ const Binnodon = () => {
 
         {/* Right Column */}
         <div>
-          <div className="bg-red-600 text-white p-2 rounded">সাহিত্য</div>
+          <div className="bg-red-600 text-white p-2 rounded">উপার বাংলা</div>
           <div className="grid grid-cols-1 my-3 mt-7 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4">
             {oparbanglaNews.slice(1, 8).map((article) => (
               <SmallCard key={article._id} article={article} />

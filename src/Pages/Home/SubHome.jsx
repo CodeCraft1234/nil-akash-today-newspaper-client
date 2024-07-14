@@ -8,6 +8,8 @@ import LatestNews from "./LatestNews";
 import TwoCard from "./TwoCard";
 import UseNews from "../../AxiosFetch/UseNews";
 import { useEffect, useState } from "react";
+import EveryCategory from "./EveryCategory";
+import LatestTwoNews from "./LatestTwoNews";
 
 
 const SubHome = () => {
@@ -55,18 +57,18 @@ const SubHome = () => {
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-5 lg:gap-2">
                  <div className=" rounded-lg  lg:col-span-3">
                     <Carousel></Carousel>
-                    <TwoCard></TwoCard>
+                    <EveryCategory></EveryCategory>
+                    <div className="">
+                      
                     </div>
+                    
+                  </div>
+                   
+                  
                  <div className=" rounded-lg space-y-5 lg:col-span-2">
-                    <NewsSide></NewsSide>
-                    <NewsSide></NewsSide>
-                    {/* <NewsSide></NewsSide>
-                    <NewsSide></NewsSide>
-                    <NewsSide></NewsSide>
-                    <NewsSide></NewsSide> */}
+                <LatestTwoNews></LatestTwoNews>
                 </div>
              </div>
-                <NewsCardFinal></NewsCardFinal>
                 </div>
              
 
@@ -107,6 +109,7 @@ const SubHome = () => {
                 </ul>
               </div>
             </div>
+            <img className="w-full py-4 h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
           </div>
         </div>
             </div>        

@@ -4,6 +4,8 @@ import AgreecultureSection from "./AgreecultureSection";
 import CategoryNews from "./CategoryNews";
 import Headline from "./Headline";
 import SubHome from "./SubHome";
+import Banijjo from "./Banijjo";
+import TwoCard from "./TwoCard";
 
 const Home = () => {
   return (
@@ -13,9 +15,12 @@ const Home = () => {
         <link rel="canonical" href="https://www.example.com/" />
       </Helmet>
       <Headline></Headline>
+      
       <SubHome></SubHome>
+      <TwoCard></TwoCard>
       <AgreecultureSection></AgreecultureSection>
       <Binnodon></Binnodon>
+      <Banijjo></Banijjo>
       <CategoryNews></CategoryNews>
       {/* <CategoryNewsTwo></CategoryNewsTwo> */}
       {/* <ExcusiveNewa></ExcusiveNewa> */}

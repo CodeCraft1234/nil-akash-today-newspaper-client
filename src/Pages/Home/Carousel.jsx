@@ -1,46 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import UseNews from '../../AxiosFetch/UseNews';
+import NewsCard from '../../Components/NewsCard/NewsCard';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Carousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [news] = UseNews();
+  const [latestNewsByCategory, setLatestNewsByCategory] = useState([]);
 
-  const handlePrevClick = () => {
-    setCurrentSlide(currentSlide === 1 ? 4 : currentSlide - 1);
-  };
+  const categories = [
+    "জাতীয়", "আন্তর্জাতিক", "রাজনীতি", "অর্থনীতি",
+    "সারাদেশ", "বিনোদন", "খেলা", "শিক্ষা",
+    "উপর বাংলা", "স্বাস্থ্য"
+  ];
 
-  const handleNextClick = () => {
-    setCurrentSlide(currentSlide === 4 ? 1 : currentSlide + 1);
+  useEffect(() => {
+    if (news && news.length > 0) {
+      const latestNews = categories.map(category => {
+        const newsInCategory = news.filter(item => item.category === category);
+        return newsInCategory.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+      }).filter(item => item); // Filter out undefined values
+
+      setLatestNewsByCategory(latestNews);
+    }
+  }, [news]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
   };
 
   return (
-    <div className="carousel w-full">
-      <div id="slide1" className={`carousel-item relative w-full ${currentSlide === 1 ? 'block' : 'hidden'}`}>
-        <img src="https://i.ibb.co/ph1zSsY/img1-1.jpg" className="w-full h-[300px]" alt="Slide 1" />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button onClick={handlePrevClick} className="btn btn-circle">&lt;</button>
-          <button onClick={() => setCurrentSlide(2)} className="btn btn-circle">&gt;</button>
-        </div>
-      </div>
-      <div id="slide2" className={`carousel-item relative w-full ${currentSlide === 2 ? 'block' : 'hidden'}`}>
-        <img src=" https://i.ibb.co/6vz60YX/img2.jpg" className="w-full h-[300px]" alt="Slide 2" />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button onClick={() => setCurrentSlide(1)} className="btn btn-circle">&lt;</button>
-          <button onClick={() => setCurrentSlide(3)} className="btn btn-circle">&gt;</button>
-        </div>
-      </div>
-      <div id="slide3" className={`carousel-item relative w-full ${currentSlide === 3 ? 'block' : 'hidden'}`}>
-        <img src="https://i.ibb.co/jgCq4NX/img3.jpg" className="w-full h-[300px]" alt="Slide 3" />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button onClick={() => setCurrentSlide(2)} className="btn btn-circle">&lt;</button>
-          <button onClick={() => setCurrentSlide(4)} className="btn btn-circle">&gt;</button>
-        </div>
-      </div>
-      <div id="slide4" className={`carousel-item relative w-full ${currentSlide === 4 ? 'block' : 'hidden'}`}>
-        <img src="https://i.ibb.co/4jdqFPG/img4.jpg" className="w-full h-[300px]" alt="Slide 4" />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button onClick={() => setCurrentSlide(3)} className="btn btn-circle">&lt;</button>
-          <button onClick={() => setCurrentSlide(1)} className="btn btn-circle">&gt;</button>
-        </div>
-      </div>
+    <div className="container mx-auto px-4  pb-8">
+      <Slider {...settings}>
+        {latestNewsByCategory.map((newsItem, index) => (
+          <div key={index} className="px-2">
+                           <div key={newsItem._id} className="w-full overflow-hidden border border-gray-400 mb-4 p-5 rounded-lg bg-gray-100">
+                  <div className="relative w-full h-[250px]">
+                    <img
+                      className="w-full h-64 object-cover transform transition-transform duration-500 hover:scale-105"
+                      src={newsItem.photo}
+                      alt="News"
+                    />
+                    <div className="absolute  bottom-0 w-full bg-gray-700 bg-opacity-40 text-white px-2 py-4">
+                      <div className="font-bold text-sm md:text-xl">{newsItem.title}</div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };
