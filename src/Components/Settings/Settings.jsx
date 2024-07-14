@@ -1,5 +1,5 @@
 
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import AddAddress from "./AddAddress";
 import AddLinks from "./AddLinks";
 import AddLogos from "./AddLogos";
@@ -9,10 +9,10 @@ const Settings = () => {
     return (
         <div className=" py-8 mx-4">
             
-            <Helmet>
+            {/* <Helmet>
         <title>NilAkashToday | Settings</title>
         <link rel="canonical" href="https://www.example.com/" />
-      </Helmet>
+      </Helmet> */}
            <div>
            <AddLogos></AddLogos>
            <AddAddress></AddAddress>

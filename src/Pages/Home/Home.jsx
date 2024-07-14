@@ -4,6 +4,8 @@ import AgreecultureSection from "./AgreecultureSection";
 import CategoryNews from "./CategoryNews";
 import Headline from "./Headline";
 import SubHome from "./SubHome";
+import Rajniti from "../../Components/Rajniti";
+import Khela from "../../Components/Khela";
 
 const Home = () => {
   return (
@@ -16,6 +18,8 @@ const Home = () => {
       <SubHome></SubHome>
       <AgreecultureSection></AgreecultureSection>
       <Binnodon></Binnodon>
+      <Rajniti></Rajniti>
+      <Khela></Khela>
       <CategoryNews></CategoryNews>
       {/* <CategoryNewsTwo></CategoryNewsTwo> */}
       {/* <ExcusiveNewa></ExcusiveNewa> */}
