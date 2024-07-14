@@ -4,7 +4,7 @@ import NewsCard from "./NewsCard/NewsCard";
 import { Link } from "react-router-dom";
 import SmallCard from "./SmallCard/SmallCard";
 
-const Binnodon = () => {
+const Rajniti = () => {
   const [binodonNews, setBinodonNews] = useState([]);
   const [oparbanglaNews, setOparbanglaNews] = useState([]);
 
@@ -17,8 +17,8 @@ const Binnodon = () => {
           return newsArray.sort((a, b) => new Date(b.date) - new Date(a.date));
         };
 
-        const binodon = sortByDate(response.data.filter(news => news.category === "বিনোদন"));
-        const oparbangla = sortByDate(response.data.filter(news => news.category === "উপার বাংলা"));
+        const binodon = sortByDate(response.data.filter(news => news.category === "রাজনীতি"));
+        const oparbangla = sortByDate(response.data.filter(news => news.category === "অর্থনীতি"));
 
         setBinodonNews(binodon);
         setOparbanglaNews(oparbangla);
@@ -47,7 +47,7 @@ const Binnodon = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Left Column */}
         <div className="col-span-2">
-          <div className="bg-red-600 text-white p-2 rounded">বিনোদন</div>
+          <div className="bg-red-600 text-white p-2 rounded">রাজনীতি</div>
           <div>
             <div className="grid lg:grid-cols-2 gap-3 my-3">
               {binodonNews.slice(0, 2).map((latestNews) => (
@@ -88,7 +88,7 @@ const Binnodon = () => {
 
         {/* Right Column */}
         <div>
-          <div className="bg-red-600 text-white p-2 rounded">উপার বাংলা</div>
+          <div className="bg-red-600 text-white p-2 rounded">অর্থনীতি</div>
           <div className="grid grid-cols-1 my-3 mt-7 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4">
             {oparbanglaNews.slice(1, 8).map((article) => (
               <SmallCard key={article._id} article={article} />
@@ -100,4 +100,4 @@ const Binnodon = () => {
   );
 };
 
-export default Binnodon;
+export default Rajniti;
