@@ -1,22 +1,8 @@
 import Binnodon from "../../Components/Binodon";
-
-
 import { Helmet } from "react-helmet-async";
-import MostViewedNews from "../../Components/MostViewedNews/MostViewedNews";
-import NewsCardFinal from "../../Components/NewsCard/NewsCardFinal";
 import AgreecultureSection from "./AgreecultureSection";
-import AllNews from "./AllNews";
-
-import Banner from "./Banner";
 import CategoryNews from "./CategoryNews";
-import CategoryNewsTwo from "./CategoryNewsTwo";
-import DeshNews from "./DeshNews";
-import Entertainment from "./Entertainment";
-import ExcusiveNewa from "./ExcusiveNewa";
-
 import Headline from "./Headline";
-import InternationalNews from "./InternationalNews";
-import Saradesh from "./Saradesh";
 import SubHome from "./SubHome";
 
 const Home = () => {
