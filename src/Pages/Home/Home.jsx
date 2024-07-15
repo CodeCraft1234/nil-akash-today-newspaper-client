@@ -10,6 +10,7 @@ import TwoCard from "./TwoCard";
 
 import Rajniti from "../../Components/Rajniti";
 import Khela from "../../Components/Khela";
+import Saradesh from "./Saradesh";
 
 
 const Home = () => {
@@ -19,26 +20,15 @@ const Home = () => {
         <title>NilAkashToday | Home</title>
         <link rel="canonical" href="https://www.example.com/" />
       </Helmet>
+
       <Headline></Headline>
-      
       <SubHome></SubHome>
       <TwoCard></TwoCard>
-      <AgreecultureSection></AgreecultureSection>
       <Binnodon></Binnodon>
-
       <Banijjo></Banijjo>
-
       <Rajniti></Rajniti>
       <Khela></Khela>
-
-      <CategoryNews></CategoryNews>
-      {/* <CategoryNewsTwo></CategoryNewsTwo> */}
-      {/* <ExcusiveNewa></ExcusiveNewa> */}
-      {/* <DeshNews></DeshNews> */}
-      {/* <InternationalNews></InternationalNews> */}
-      {/* <AllNews></AllNews> */}
-      {/* <Entertainment></Entertainment> */}
-      {/* <Saradesh></Saradesh> */}
+      <Saradesh></Saradesh>
     </div>
   );
 };

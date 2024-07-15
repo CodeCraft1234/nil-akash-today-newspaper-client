@@ -58,13 +58,10 @@ const SubHome = () => {
                  <div className=" rounded-lg  lg:col-span-3">
                     <Carousel></Carousel>
                     <EveryCategory></EveryCategory>
-                    <div className="">
-                      
+                    <div className="">   
                     </div>
-                    
                   </div>
-                   
-                  
+
                  <div className=" rounded-lg space-y-5 lg:col-span-2">
                 <LatestTwoNews></LatestTwoNews>
                 </div>
