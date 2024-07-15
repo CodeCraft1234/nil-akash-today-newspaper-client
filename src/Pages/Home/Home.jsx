@@ -6,10 +6,11 @@ import Headline from "./Headline";
 import SubHome from "./SubHome";
 
 import Banijjo from "./Banijjo";
-import TwoCard from "./TwoCard";
+
 
 import Rajniti from "../../Components/Rajniti";
 import Khela from "../../Components/Khela";
+import Sikkha from "../../Components/Sikkha";
 
 
 const Home = () => {
@@ -22,8 +23,8 @@ const Home = () => {
       <Headline></Headline>
       
       <SubHome></SubHome>
-      <TwoCard></TwoCard>
-      
+      {/* <TwoCard></TwoCard> */}
+      <Sikkha></Sikkha>
       <Binnodon></Binnodon>
 
       <Banijjo></Banijjo>
