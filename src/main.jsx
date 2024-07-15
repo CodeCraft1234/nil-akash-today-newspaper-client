@@ -22,6 +22,7 @@ import UpdateProducts from "./Pages/Dashboard/Routes/Updateproducts";
 import Settings from "./Pages/Dashboard/Settings";
 import AllNews from "./Pages/Home/AllNews";
 import Draft from "./Pages/Home/Draft";
+import Register from "./Security/Register";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path:'/login',
         element:<Login></Login>
+      },
+      {
+        path:'/admin-login/reg',
+        element:<Register></Register>
       },
       {
         path:'/category/:categorys',

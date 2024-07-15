@@ -2,10 +2,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
-import UseAxiosPublic from "../src/Axios/useAxiosPublic";
+
 import { useForm } from "react-hook-form";
-import useLogo from "../src/Hook/useLogo";
+
 import { Helmet } from "react-helmet-async";
+import UseAxiosPublic from "../Axios/UseAxiosPublic";
+import useLogo from "../AxiosFetch/useLogo";
+
 
 const image_hosting_key = "6fbc3358bbb1a92b78e2dee0f5ca1b94";
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -51,7 +54,7 @@ const Register = () => {
         AxiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
         });
-        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
+        navigate(location?.state ? location.state : "/dashboard/admin/addNews");
         return toast.success("User created successfully");
       })
       .catch((error) => {
@@ -171,7 +174,7 @@ const Register = () => {
             </button>
           </div>
           <div className="text-center text-sm text-gray-600">
-            <Link to="/admin/login-php" className="text-blue-600 hover:text-blue-500">
+            <Link to="/login" className="text-blue-600 hover:text-blue-500">
               Already have an account? Login
             </Link>
           </div>

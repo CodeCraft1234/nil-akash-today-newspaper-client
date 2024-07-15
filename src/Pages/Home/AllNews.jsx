@@ -18,7 +18,7 @@ const AllNews = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/news');
+        const response = await axios.get('https://akash-newspaper-server.vercel.app/news');
         setNews(response.data);
       } catch (error) {
         console.error('Error fetching news:', error);
@@ -41,7 +41,7 @@ const AllNews = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/news/${id}`);
+      const response = await axios.delete(`https://akash-newspaper-server.vercel.app/news/${id}`);
       if (response.status === 200) {
         Swal.fire({
           icon: 'success',
@@ -80,7 +80,7 @@ const AllNews = () => {
         division,
         district
       };
-      const response = await axios.put(`http://localhost:5000/news/${editingNews._id}`, updatedNews);
+      const response = await axios.put(`https://akash-newspaper-server.vercel.app/news/${editingNews._id}`, updatedNews);
       if (response.status === 200) {
         Swal.fire({
           icon: 'success',
@@ -213,9 +213,8 @@ const AllNews = () => {
         </table>
       </div>
 
-      {/* Edit Modal */}
       {isEditing && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 text-black bg-opacity-75">
           <div className="bg-white rounded-lg overflow-hidden shadow-md max-w-3xl w-full mx-4">
             <div className="flex justify-between items-center bg-gray-100 px-6 py-4">
               <h2 className="text-lg font-semibold text-gray-800">Edit News</h2>
@@ -231,7 +230,7 @@ const AllNews = () => {
                 type="text"
                 id="editTitle"
                 name="editTitle"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border bg-white  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -240,47 +239,10 @@ const AllNews = () => {
                 id="editDescription"
                 name="editDescription"
                 rows="4"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border bg-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-              />
-              <label htmlFor="editPhoto" className="block mt-3 text-sm font-medium text-gray-700">Photo URL</label>
-              <input
-                type="text"
-                id="editPhoto"
-                name="editPhoto"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={photo}
-                onChange={(e) => setPhoto(e.target.value)}
-              />
-              <label htmlFor="editCategory" className="block mt-3 text-sm font-medium text-gray-700">Category</label>
-              <input
-                type="text"
-                id="editCategory"
-                name="editCategory"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                disabled // Disable editing category
-              />
-              <label htmlFor="editDivision" className="block mt-3 text-sm font-medium text-gray-700">Division</label>
-              <input
-                type="text"
-                id="editDivision"
-                name="editDivision"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={division}
-                onChange={(e) => setDivision(e.target.value)}
-              />
-              <label htmlFor="editDistrict" className="block mt-3 text-sm font-medium text-gray-700">District</label>
-              <input
-                type="text"
-                id="editDistrict"
-                name="editDistrict"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={district}
-                onChange={(e) => setDistrict(e.target.value)}
-              />
+              />    
               <div className="mt-6 flex justify-end">
                 <button
                   onClick={handleSaveEdit}
