@@ -27,7 +27,7 @@ const NewsSection = ({ title, news,id }) => {
                     )}
                     {news[0] && (
                         <div className="bg-white p-2 rounded shadow">
-                            {truncateText(news[0].description, 35)}
+                              <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0].description, 35 )}}></p>
                         </div>
                     )}
                 </Link>

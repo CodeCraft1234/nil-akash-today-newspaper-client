@@ -51,7 +51,7 @@ const SubHome = () => {
   const itemsToShow = activeSection === 'latest' ? newer : news;
 
     return (
-        <div className="mt-5 mx-3">
+        <div className="mt-5 px-1">
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-5 lg:gap-2">
               <div className=" rounded-lg  lg:col-span-4">
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-5 lg:gap-2">

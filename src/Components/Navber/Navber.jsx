@@ -42,7 +42,7 @@ const NavBar = () => {
         </div>
 
         {/* Logo */}
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center lg:justify-start justify-center w-full lg:w-auto">
           <img
             className="h-12 w-auto"
             src="https://i.ibb.co/sHLrjHq/Logo-Nilakash-Today-1.png"
@@ -69,8 +69,7 @@ const NavBar = () => {
                 key={category}
                 to={`/category/${category}`}
                 className={({ isActive }) =>
-                  `text-gray-800 hover:text-blue-600 px-1 py-2 rounded-md font-medium ${isActive ? "bg-blue-100 text-blue-600" : ""
-                  }`
+                  `text-gray-800 hover:text-blue-600 px-1 py-2 rounded-md font-medium ${isActive ? "bg-blue-100 text-blue-600" : ""}`
                 }
               >
                 {category}

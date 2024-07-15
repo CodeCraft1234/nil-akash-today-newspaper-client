@@ -35,7 +35,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="container mx-auto px-4  pb-8">
+    <div className="  pb-8">
       <Slider {...settings}>
         {latestNewsByCategory.map((newsItem, index) => (
           <div key={index} className="px-2">

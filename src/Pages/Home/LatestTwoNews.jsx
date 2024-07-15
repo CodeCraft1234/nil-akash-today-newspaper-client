@@ -22,9 +22,9 @@ const LatestTwoNews = () => {
         return text;
     };
     return (
-        <div className='text-black'>
+        <div className='text-black mx-3 '>
             {latestTwoNews.map(newsItem => (
-                <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block h-full">
+                <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block border-b border-gray-500 mb-5 h-full">
  <div className='mb-4' >
                     <img className='h-60 w-full' src={newsItem.photo} alt="" />
                     <h1>{newsItem.title}</h1>

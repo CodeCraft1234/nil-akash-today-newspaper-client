@@ -51,7 +51,7 @@ const Khela = () => {
   <div className="w-full pl-2">
     <img className='rounded' src={leftNews[0].photo} alt="" />
     <h1 className="text-2xl font-bold mb-1">{leftNews[0].title}</h1>
-    <p>{truncateDescription(leftNews[0].description, 50)}</p>
+    <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateDescription(leftNews[0]?.description, 50) }}></p>
   </div>
 </div>
 </Link>

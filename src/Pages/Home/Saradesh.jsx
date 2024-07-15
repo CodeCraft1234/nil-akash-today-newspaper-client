@@ -77,7 +77,7 @@ const Saradesh = () => {
   };
 
   return (
-    <div className=" mx-3 p-4">
+    <div className=" p-4">
       <div className="bg-red-600  text-white p-2 mb-3 rounded">সারাদেশ</div>
       <div className="filter-container justify-end mb-4 flex items-center">
         <div className="mr-4">
@@ -106,10 +106,10 @@ const Saradesh = () => {
           currentItems.map((article, index) => (
             <Link key={index} to={`/newsDetails/${article._id}`} className="block h-full">
             <div  className="news-article mb-4">
-              <div className="w-full pl-2">
+              <div className="w-full ">
                 <img className='rounded' src={article?.photo} alt="" />
                 <h1 className="text-2xl font-bold mb-1">{article.title}</h1>
-                <p>{truncateDescription(article.description, 50)}</p>
+                <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateDescription(article.description, 50) }}></p>
               </div>
             </div>
             </Link>
