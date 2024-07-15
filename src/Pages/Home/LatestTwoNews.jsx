@@ -26,7 +26,7 @@ const LatestTwoNews = () => {
                <div className='mb-4' key={newsItem._id}>
                     <img className='h-60 w-full' src={newsItem.photo} alt="" />
                     <h1>{newsItem.title}</h1>
-                    {truncateText(news[0].description, 35)}
+                    {truncateText(news[0]?.description, 35)}
                </div>
             ))}
         </div>
