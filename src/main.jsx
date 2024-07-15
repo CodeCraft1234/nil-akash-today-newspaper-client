@@ -41,6 +41,7 @@ const router = createBrowserRouter([
       {
         path:'/newsDetails/:id',
         element: <PageDetails></PageDetails>,
+        // loader:({params})=>fetch(`https://akash-newspaper-server.vercel.app/news/${params.id}`)
         loader:({params})=>fetch(`https://akash-newspaper-server.vercel.app/news/${params.id}`)
       },
       {
@@ -66,7 +67,8 @@ const router = createBrowserRouter([
           {
             path:'/dashboard/admin/updateProducts/:id',
             element:<UpdateProducts></UpdateProducts>,
-            loader: ({ params }) => fetch(`https://hirikbazar.vercel.app/products/${params.id}`)
+            // loader: ({ params }) => fetch(`https://hirikbazar.vercel.app/products/${params.id}`)
+            loader: ({ params }) => fetch(`https://akash-newspaper-server.vercel.app/products/${params.id}`)
           },
         ]
       }

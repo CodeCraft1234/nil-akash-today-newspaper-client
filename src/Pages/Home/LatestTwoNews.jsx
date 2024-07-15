@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UseNews from '../../AxiosFetch/UseNews';
 import NewsCard from '../../Components/NewsCard/NewsCard';
+import { Link } from 'react-router-dom';
 
 const LatestTwoNews = () => {
     const [news] = UseNews();
@@ -21,13 +22,16 @@ const LatestTwoNews = () => {
         return text;
     };
     return (
-        <div>
+        <div className='text-black'>
             {latestTwoNews.map(newsItem => (
-               <div className='mb-4' key={newsItem._id}>
+                <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block h-full">
+ <div className='mb-4' >
                     <img className='h-60 w-full' src={newsItem.photo} alt="" />
                     <h1>{newsItem.title}</h1>
-                    {truncateText(news[0]?.description, 35)}
+                      <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0]?.description, 35) }}></p>
                </div>
+                </Link>
+              
             ))}
         </div>
     );
