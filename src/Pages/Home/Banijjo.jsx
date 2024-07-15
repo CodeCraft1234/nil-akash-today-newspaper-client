@@ -15,8 +15,8 @@ function Banijjo () {
           return newsArray.sort((a, b) => new Date(b.date) - new Date(a.date));
         };
 
-        const binodon = sortByDate(response.data.filter(news => news.category === "বিনোদন"));
-        const oparbangla = sortByDate(response.data.filter(news => news.category === "উপার বাংলা"));
+        const binodon = sortByDate(response.data.filter(news => news.category === "স্বাস্থ্য"));
+        const oparbangla = sortByDate(response.data.filter(news => news.category === "শিক্ষা"));
 
         setBinodonNews(binodon);
         setOparbanglaNews(oparbangla);
@@ -29,8 +29,8 @@ function Banijjo () {
   }, []);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-3 p-4">
-      <NewsSection title="অর্থ-বাণিজ্য" news={binodonNews} />
+    <div className="grid text-black lg:grid-cols-2 gap-3 p-4">
+      <NewsSection title="স্বাস্থ্য" news={binodonNews} />
       <NewsSection title="শিক্ষাঙ্গন" news={oparbanglaNews} />
     </div>
   );

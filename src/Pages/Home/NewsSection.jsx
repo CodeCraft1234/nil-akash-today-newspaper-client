@@ -16,22 +16,21 @@ const NewsSection = ({ title, news,id }) => {
             <div className="bg-red-600 text-white p-2 rounded mb-4">{title}</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div >
-                    {news[0] && (
-                        <Link  to={`/newsDetails/${id}`}>
+                <Link  to={`/newsDetails/${id}`}>
+                {news[0] && (
                           <div className="relative mb-4">
                             <img src={news[0].photo} alt="news" className="w-full rounded" />
                             <div className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2 rounded-b w-full">
                                 {news[0].title}
                             </div>
                         </div>
-                        </Link>
-                       
                     )}
                     {news[0] && (
                         <div className="bg-white p-2 rounded shadow">
-                            {truncateText(news[0].description, 35)}
+                              <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0].description, 35 )}}></p>
                         </div>
                     )}
+                </Link>
                 </div>
                 <div>
                     <div className="space-y-4">

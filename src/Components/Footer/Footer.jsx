@@ -9,7 +9,7 @@ const Footer = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/news');
+        const response = await axios.get('https://akash-newspaper-server.vercel.app/news');
         const uniqueCategories = [...new Set(response.data.map(article => article.category))];
         setCategories(uniqueCategories);
       } catch (error) {

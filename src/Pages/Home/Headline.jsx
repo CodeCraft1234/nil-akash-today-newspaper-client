@@ -1,19 +1,37 @@
+import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
+import UseNews from "../../AxiosFetch/UseNews";
 
 const Headline = () => {
+  const [news] = UseNews();
+  const [latestNewsByCategory, setLatestNewsByCategory] = useState([]);
+
+  const categories = ["জাতীয়", "আন্তর্জাতিক", "রাজনীতি", "অর্থনীতি", "সারাদেশ", "বিনোদন", "খেলা", "শিক্ষা", "উপর বাংলা", "স্বাস্থ্য"];
+
+  useEffect(() => {
+      if (news && news.length > 0) {
+          const latestNews = categories.map(category => {
+              const newsInCategory = news.filter(item => item.category === category);
+              return newsInCategory.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+          }).filter(item => item); // Filter out undefined values
+
+          setLatestNewsByCategory(latestNews);
+      }
+  }, [news,categories]);
+  console.log(latestNewsByCategory);
+
     return (
-        <div className="flex justify-start mt-36  z-0 items-center px-3">
-           <h1 className="bg-cyan-600 py-3 text-black px-2 tex-4xl font-bold">শিরোনাম</h1>
+        <div className="flex justify-start mt-32  z-0 items-center px-3">
+           <h1 className="bg-blue-700  py-3 text-white rounded-md px-2 tex-4xl font-bold">শিরোনাম</h1>
             <Marquee className="space-x-10 text-black bg-sky-100 py-3">
-            <p className="mx-5">আপনার পৌর কর নিয়মিত পরিশোধ করুন</p> 
-            <p className="mx-5"> মাদক মুক্ত সমাজ গঠন করুন </p> 
-            <p className="mx-5">যে কোন স্থাপনা নির্মাণের জন্য পৌরসভার অনুনুমোদন গ্রহন করুন এবং পরিকল্পিত নগরায়ণে সহায়তা করুন </p> 
-            <p className="mx-5">আবর্জনা সঠিক স্থানে ফেলুন  </p> 
-            <p className="mx-5">
-                  আপনার সন্তানের জন্ম নিবন্ধন সম্পন্ন করুন  </p> 
-            <p className="mx-5"> সময়মতো পানির বিল পরিশোধ করুন </p> 
-            <p className="mx-5">  আপনার পৌরসভাকে পরিচ্ছন্ন রাখুন </p> 
-          </Marquee>
+            {latestNewsByCategory.map((newsItem, index) => (
+                <Link key={index} to={`/newsDetails/${newsItem._id}`} >
+                <h1 className="mr-5">{newsItem.title} । </h1> 
+                </Link>
+             
+            ))}
+            </Marquee>
         </div>
     );
 };

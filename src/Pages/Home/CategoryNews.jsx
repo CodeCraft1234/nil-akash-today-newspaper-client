@@ -65,8 +65,8 @@ const CategoryNews = () => {
   );
 
   return (
-    <div className="container  px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="  px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className=" rounded-lg  lg:col-span-1">
           <img src="https://i.ibb.co/z8vr3sm/1000010077.jpg" alt="" />
         </div>

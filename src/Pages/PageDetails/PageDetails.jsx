@@ -72,7 +72,7 @@ const PageDetails = () => {
       </Helmet>
        <img className="w-full h-20 mb-4" src="https://i.ibb.co/t3xZ42G/8506705887870801222.png" alt="" />
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-4 lg:gap-5 bg-white">
-        <div className="rounded-lg bg-white">
+        <div className="rounded-lg order-2 lg:order-1 md:order-1 bg-white">
           {/* Grid */}
           <div className="mb-4 text-sm bg-white">
             <a href="#" className="text-blue-500 hover:underline">
@@ -110,7 +110,7 @@ const PageDetails = () => {
           <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
         </div>
 
-        <div className="rounded-lg lg:col-span-2 bg-white">
+        <div className="rounded-lg order-1 lg:order-2 md:order-2 lg:col-span-2 bg-white">
           <header className="mb-4  items-center md:col-span-2 lg:col-span-2 bg-white">
             <h1 className="text-2xl mb-4 font-bold">{datas.title}</h1>
             <div className="flex space-x-2">
@@ -202,7 +202,7 @@ const PageDetails = () => {
     <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
         </div>
 
-        <div className="rounded-lg bg-white">
+        <div className="rounded-lg order-3 lg:order-3 md:order-3 bg-white">
           <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
           
         <div className="p-4 mt-3">
