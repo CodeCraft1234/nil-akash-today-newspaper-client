@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -9,11 +11,13 @@ import { Helmet } from "react-helmet-async";
 const AddNews = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [division, setDivision] = useState("");
   const [district, setDistrict] = useState("");
   const [image, setImage] = useState(null);
   const [reporterName, setReporterName] = useState("");
+
 
   const image_hosting_key = "6fbc3358bbb1a92b78e2dee0f5ca1b94";
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -46,7 +50,9 @@ const AddNews = () => {
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
   };
 
+
   const handleSubmit = async (e, status) => {
+
     e.preventDefault();
 
     try {
@@ -63,6 +69,7 @@ const AddNews = () => {
 
       const date = new Date();
       const bengaliDate = getBengaliDate(date);
+
       const newsInfo = { 
         title, 
         description, 
@@ -79,10 +86,13 @@ const AddNews = () => {
       const endpoint = status === "publish" ? "/news" : "/draft";
       await AxiosPublic.post(endpoint, newsInfo);
 
+
       Swal.fire({
         position: "top-end",
         icon: "success",
+
         title: `News has been ${status === "publish" ? "published" : "saved as draft"}`,
+
         showConfirmButton: false,
         timer: 1500,
       });
@@ -90,17 +100,21 @@ const AddNews = () => {
       // Reset the form
       setTitle("");
       setDescription("");
+
       setSelectedCategories([]);
       setDivision("");
       setDistrict("");
       setImage(null);
       setReporterName("");
+
     } catch (error) {
       console.error("Error posting news", error);
       Swal.fire({
         position: "top-end",
         icon: "error",
+
         title: `Failed to ${status === "publish" ? "publish news" : "save draft"}`,
+
         showConfirmButton: false,
         timer: 1500,
       });
@@ -112,6 +126,7 @@ const AddNews = () => {
     setImage(selectedImage);
   };
 
+
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
     setSelectedCategories((prevCategories) =>
@@ -121,10 +136,12 @@ const AddNews = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 w-full">
+
       <Helmet>
         <title>NilAkashToday | AddNews</title>
         <link rel="canonical" href="https://www.example.com/" />
       </Helmet>
+
       <div className="bg-white p-8 rounded-lg shadow-lg w-full ">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Add New Post</h2>
         <form className="space-y-6">
@@ -291,6 +308,7 @@ const AddNews = () => {
               className="w-full bg-gray-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
             >
               Save as Draft
+
             </button>
           </div>
         </form>
