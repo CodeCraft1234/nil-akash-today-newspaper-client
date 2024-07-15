@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { MdOutlinePayments, MdPeopleOutline } from "react-icons/md";
-import { BsCartCheckFill, BsCartPlusFill } from "react-icons/bs";
+import { BsAlignMiddle, BsAwardFill, BsCartCheckFill, BsCartPlusFill, BsDash } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { RxDashboard } from "react-icons/rx";
 
@@ -76,6 +76,18 @@ const AdminDashboard = () => {
               <button className={getButtonClass("/dashboard/admin/addNews")}>
                 <BsCartCheckFill className="text-xl inline-block mr-2" />
                 Add News
+              </button>
+            </Link>
+            <Link to="/dashboard/admin/allNews">
+              <button className={getButtonClass("/dashboard/admin/allNews")}>
+                <BsAwardFill className="text-xl inline-block mr-2" />
+                All News
+              </button>
+            </Link>
+            <Link to="/dashboard/admin/draft">
+              <button className={getButtonClass("/dashboard/admin/draft")}>
+                <BsDash className="text-xl inline-block mr-2" />
+                Draft
               </button>
             </Link>
             <Link to="/dashboard/admin/settings">
