@@ -14,6 +14,7 @@ import Khela from "../../Components/Khela";
 import Saradesh from "./Saradesh";
 
 import Sikkha from "../../Components/Sikkha";
+import TwoCard from "./TwoCard";
 
 
 

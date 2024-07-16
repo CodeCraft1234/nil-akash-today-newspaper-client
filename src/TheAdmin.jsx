@@ -15,7 +15,7 @@ const TheAdmin = () => {
            {
             user &&  <div className="flex justify-start gap-5 py-2 pl-10 lg:pl-10 bg-black text-white  pt-1 md:pt-1 lg:pt-1 z-50 w-full  fixed">
          
-          <NavLink className='flex items-center gap-1' to={"/dashboard"}>
+          <NavLink className='flex items-center gap-1' to={"/dashboard/admin/addNews"}>
           <MdDashboard className="text-xs sm:text-sm md:text-base lg:text-lg" />  Dashboard
             </NavLink>
           <NavLink className='flex items-center gap-1' to={"/dashboard/admin/addNews"}>

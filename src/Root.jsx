@@ -17,7 +17,7 @@ const Root = () => {
       <ScrollTop />
       {noheaderfooter || <TheAdmin />}
       {noheaderfooter || <NavBar />}
-      <div className="min-h-screen overflow-y-hidden max-w-auto mx-auto">
+      <div className="min-h-screen overflow-y-hidden  mx-12">
         <Outlet />
       </div>
       {noheaderfooter || <Footer />}
