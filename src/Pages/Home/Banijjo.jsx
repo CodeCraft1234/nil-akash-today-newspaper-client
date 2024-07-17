@@ -9,7 +9,7 @@ function Banijjo () {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://akash-newspaper-server.vercel.app/news");
+        const response = await axios.get("http://localhost:5000/news");
 
         const sortByDate = (newsArray) => {
           return newsArray.sort((a, b) => new Date(b.date) - new Date(a.date));

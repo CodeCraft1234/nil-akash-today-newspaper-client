@@ -5,7 +5,7 @@ import CategoryNews from "./CategoryNews";
 import Headline from "./Headline";
 import SubHome from "./SubHome";
 
-import Banijjo from "./Banijjo";
+// import Banijjo from "./Banijjo";
 
 
 import Rajniti from "../../Components/Rajniti";
@@ -15,6 +15,8 @@ import Saradesh from "./Saradesh";
 
 import Sikkha from "../../Components/Sikkha";
 import TwoCard from "./TwoCard";
+import PhotoGallery from "./PhotoGallery";
+
 
 
 
@@ -29,16 +31,17 @@ const Home = () => {
       <Headline></Headline>
       <SubHome></SubHome>
 
-      {/* <TwoCard></TwoCard> */}
+      <TwoCard></TwoCard>
 
       {/* <TwoCard></TwoCard> */}
       <Sikkha></Sikkha>
 
       <Binnodon></Binnodon>
-      <Banijjo></Banijjo>
-      <Rajniti></Rajniti>
+      {/* <Banijjo></Banijjo> */}
+      {/* <Rajniti></Rajniti> */}
       <Khela></Khela>
       <Saradesh></Saradesh>
+      <PhotoGallery></PhotoGallery>
     </div>
   );
 };
