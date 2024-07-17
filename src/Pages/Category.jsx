@@ -67,8 +67,7 @@ const Category = () => {
         <div className="rounded-lg lg:col-span-2">
           {/* Big Card for Latest News */}
           {latestNews && (
-             <Link key={latestNews.id} to={`/newsDetails/${latestNews._id}`}>
-    <div key={latestNews._id} className="w-full overflow-hidden border border-gray-400 my-4 rounded-lg bg-gray-100">
+            <div key={latestNews._id} className="w-full overflow-hidden border border-gray-400 my-4 rounded-lg bg-gray-100">
               <div className="relative w-full h-[500px]">
                 <img
                   className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
@@ -80,8 +79,6 @@ const Category = () => {
                 </div>
               </div>
             </div>
-             </Link>
-        
           )}
           {/* Grid for Other News */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

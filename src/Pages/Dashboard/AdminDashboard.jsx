@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { MdOutlinePayments, MdPeopleOutline } from "react-icons/md";
+import { MdOutlineDrafts, MdOutlinePayments, MdPeopleOutline } from "react-icons/md";
 import { BsAlignMiddle, BsAwardFill, BsCartCheckFill, BsCartPlusFill, BsDash } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { RxDashboard } from "react-icons/rx";
@@ -9,6 +9,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { Helmet } from "react-helmet-async";
 import useLogo from "../../AxiosFetch/useLogo";
 import { AuthContext } from "../../Security/AuthProvider";
+import { FaRegNewspaper } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const [logo, setLogo] = useLogo();
@@ -57,24 +58,23 @@ const AdminDashboard = () => {
         <div className="flex items-center justify-center mb-8">
           <Link to={"/"}>
             <img
-              className="h-20 w:24 lg:w-36 "
-              src={latestLogo?.photo}
+              className="h-14 w:16 lg:w-36 mt-5 "
+              src='https://i.ibb.co/sHLrjHq/Logo-Nilakash-Today-1.png'
               alt="Logo"
             />
           </Link>
         </div>
-
         <nav>
           <div className="space-y-2 text-start">
-            <Link to="/dashboard/admin/adminHome">
+            <Link to="/dashboard/admin/addNews">
               <button className={getButtonClass("/dashboard/admin/adminHome")}>
                 <RxDashboard className="text-xl inline-block mr-2" />
                 Dashboard
               </button>
             </Link>
-            <Link to="/dashboard/admin/addNews">
+            <Link className="" to="/dashboard/admin/addNews">
               <button className={getButtonClass("/dashboard/admin/addNews")}>
-                <BsCartCheckFill className="text-xl inline-block mr-2" />
+              <FaRegNewspaper className="text-xl inline-block  mr-2" />
                 Add News
               </button>
             </Link>
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
             </Link>
             <Link to="/dashboard/admin/draft">
               <button className={getButtonClass("/dashboard/admin/draft")}>
-                <BsDash className="text-xl inline-block mr-2" />
+              <MdOutlineDrafts className="text-xl inline-block mr-2" />
                 Draft
               </button>
             </Link>

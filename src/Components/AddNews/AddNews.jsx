@@ -200,8 +200,23 @@ const AddNews = () => {
               </div>
             </div>
 
-            <div className="col-span-1 border border-black p-5">
-              <div className="space-y-2">
+            <div className="col-span-1 border mb-5  border-black p-5">
+            <div>
+            <label htmlFor="reporterName" className="block text-lg font-medium text-gray-700">
+              Reporter Name
+            </label>
+            <input
+              type="text"
+              id="reporterName"
+              name="reporterName"
+              placeholder="type name..."
+              className="mt-1 block w-full bg-white  px-4 py-2 border border-black rounded-md shadow-sm"
+              required
+              value={reporterName}
+              onChange={(e) => setReporterName(e.target.value)}
+            />
+          </div>
+              <div className="space-y-2 border-t border-gray-700 mt-5">
                 <p className="text-lg font-medium text-gray-700">Category</p>
                 {[
                   "জাতীয়",
@@ -276,22 +291,6 @@ const AddNews = () => {
                 </>
               ))}
             </div>
-          </div>
-
-          <div>
-            <label htmlFor="reporterName" className="block text-lg font-medium text-gray-700">
-              Reporter Name
-            </label>
-            <input
-              type="text"
-              id="reporterName"
-              name="reporterName"
-              placeholder="type name..."
-              className="mt-1 block w-full bg-white  px-4 py-2 border border-black rounded-md shadow-sm"
-              required
-              value={reporterName}
-              onChange={(e) => setReporterName(e.target.value)}
-            />
           </div>
 
           <div className="flex space-x-4">

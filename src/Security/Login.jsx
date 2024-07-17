@@ -25,7 +25,7 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
+        navigate(location?.state ? location.state : "/dashboard/admin/addNews");
         toast.success("Google login successful");
       })
       .catch((error) => {
@@ -38,7 +38,7 @@ const Login = () => {
     facebookSignin()
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
+        navigate(location?.state ? location.state : "/dashboard/admin/addNews");
         return toast.success("Facebook login successful");
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : "/dashboard/admin/adminHome");
+        navigate(location?.state ? location.state : "/dashboard/admin/addNews");
         Swal.fire({
           title: "Login successful!",
           text: "You have logged in successfully.",
@@ -170,7 +170,7 @@ const Login = () => {
     </div>
 
     <div className="text-center text-sm text-gray-600">
-            <Link to="/admin-login/reg-php" className="text-blue-600 hover:text-blue-500">
+            <Link to="/admin-login/reg" className="text-blue-600 hover:text-blue-500">
               Already have an account? Resister
             </Link>
           </div>
