@@ -29,7 +29,7 @@ const Home = () => {
       <Headline></Headline>
       <SubHome></SubHome>
 
-      <TwoCard></TwoCard>
+      {/* <TwoCard></TwoCard> */}
 
       {/* <TwoCard></TwoCard> */}
       <Sikkha></Sikkha>

@@ -22,7 +22,7 @@ import UpdateProducts from "./Pages/Dashboard/Routes/Updateproducts";
 import Settings from "./Pages/Dashboard/Settings";
 import AllNews from "./Pages/Home/AllNews";
 import Draft from "./Pages/Home/Draft";
-import Register from "./Security/Register";
+
 
 const router = createBrowserRouter([
   {
@@ -38,10 +38,6 @@ const router = createBrowserRouter([
         element:<Login></Login>
       },
       {
-        path:'/admin-login/reg',
-        element:<Register></Register>
-      },
-      {
         path:'/category/:categorys',
         element: <Category></Category>
       },
@@ -49,9 +45,7 @@ const router = createBrowserRouter([
         path:'/newsDetails/:id',
         element: <PageDetails></PageDetails>,
         // loader:({params})=>fetch(`https://akash-newspaper-server.vercel.app/news/${params.id}`)
-
-        loader:({params})=>fetch(`https://akash-newspaper-server.vercel.app/news/${params.id}`)
-
+        loader:({params})=>fetch(`http://localhost:5000/news/${params.id}`)
       },
       {
         path:'/addNews',
@@ -85,9 +79,7 @@ const router = createBrowserRouter([
             path:'/dashboard/admin/updateProducts/:id',
             element:<UpdateProducts></UpdateProducts>,
             // loader: ({ params }) => fetch(`https://hirikbazar.vercel.app/products/${params.id}`)
-
-            loader: ({ params }) => fetch(`https://akash-newspaper-server.vercel.app/products/${params.id}`)
-
+            loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
           },
         ]
       }
