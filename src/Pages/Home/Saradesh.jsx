@@ -109,7 +109,7 @@ const Saradesh = () => {
               <div className="w-full ">
                 <img className='rounded' src={article?.photo} alt="" />
                 <h1 className="text-2xl font-bold mb-1">{article.title}</h1>
-                <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateDescription(article.description, 50) }}></p>
+                {/* <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateDescription(article.description, 50) }}></p> */}
               </div>
             </div>
             </Link>
