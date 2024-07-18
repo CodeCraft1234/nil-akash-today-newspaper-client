@@ -5,7 +5,7 @@ import UseAxiosPublic from "../Axios/UseAxiosPublic";
 const UseNews = () => {
     const AxiosPublic=UseAxiosPublic()
     const { refetch, data: news=[]}=useQuery({
-        queryKey:['news'],
+        queryKey:['newsDetails'],
         queryFn: async () => {
             const res=await AxiosPublic.get(`/news`)
             return res.data
