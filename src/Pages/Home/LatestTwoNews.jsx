@@ -24,11 +24,14 @@ const LatestTwoNews = () => {
     return (
         <div className='text-black mx-3 '>
             {latestTwoNews.map(newsItem => (
-                <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block border-b border-gray-500 mb-5 h-full">
- <div className='mb-4' >
-                    <img className='h-60 w-full' src={newsItem.photo} alt="" />
-                    <h1>{newsItem.title}</h1>
-                      <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0]?.description, 35) }}></p>
+                <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block mb-5 h-full">
+ <div className='mb-4 relative gap-6' >
+                    <img className='h-84 w-full' src={newsItem.photo} alt="" />
+                    <div className="absolute  bottom-0 w-full bg-gray-700 bg-opacity-40 text-white px-2 py-4">
+                      <div className="font-bold text-sm md:text-xl">{newsItem.title}</div>
+                    </div>
+                 
+                      {/* <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0]?.description, 35) }}></p> */}
                </div>
                 </Link>
               
