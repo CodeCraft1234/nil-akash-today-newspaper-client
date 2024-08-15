@@ -72,7 +72,9 @@ const SubHome = () => {
 
                 <div className="rounded-lg w-full">
           <div className="rounded-lg text-black bg-white">
-            <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+        
+         
+            <img className="w-full h-200px" src="  https://i.ibb.co/Kqp8y1F/33d582ad-0750-464f-b4dd-47d5b7558717.jpg" alt="" />
             <div className="p-4 mt-3">
               <div className="flex mb-4">
                 <button
@@ -106,7 +108,15 @@ const SubHome = () => {
                 </ul>
               </div>
             </div>
-            <img className="w-full py-4 h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+            <img className="w-full py-2 h-200px" src="https://i.ibb.co/LRyY1ht/b9880a9b-001f-4308-95d1-56609da8577e.jpg" alt="" />
+            <img className="w-full py-2 h-200px" src="https://i.ibb.co/xgYzBcx/96f7937e-e3af-42d6-893f-2c0ed2872f97.jpg" alt="" />
+            <img className="w-full py-2 h-200px" src="https://i.ibb.co/Kqp8y1F/33d582ad-0750-464f-b4dd-47d5b7558717.jpg" alt="" />
+            <img className="w-full py-2 h-200px" src="https://i.ibb.co/dMgfhVk/8bb4a054-a1a6-4283-af32-ad0ff75f149f.jpg" alt="" />
+            <img className="w-full py-2 h-200px" src=" https://i.ibb.co/C7CLFXs/5c96d337-1bf3-454d-9a3d-7d5ca9028fac.jpg" alt="" />
+
+
+
+
           </div>
         </div>
             </div>        

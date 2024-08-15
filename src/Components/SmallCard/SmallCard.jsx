@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UseNews from "../../AxiosFetch/UseNews";
 
-const SmallCard = ({ article }) => {
+const SmallCard = ({ article}) => {
+
   return (
     <div className="rounded text-black overflow-hidden shadow-md flex flex-row items-center">
      <Link  to={`/newsDetails/${article._id}`}>

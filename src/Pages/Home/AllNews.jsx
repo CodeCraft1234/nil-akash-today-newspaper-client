@@ -75,13 +75,11 @@ const AllNews = () => {
       const updatedNews = {
         title,
         description,
-        photo,
-        category,
-        division,
-        district
       };
+      console.log(title,description);
       const response = await axios.put(`https://akash-newspaper-server.vercel.app/news/${editingNews._id}`, updatedNews);
       if (response.status === 200) {
+        window.location.reload();
         Swal.fire({
           icon: 'success',
           title: 'News Updated Successfully',

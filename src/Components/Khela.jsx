@@ -28,7 +28,7 @@ const Khela = () => {
   return (
     <div>
        <div className="bg-red-600 mx-3 text-white p-2 rounded">খেলা</div>
-       <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+       <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
       {/* Left Side News */}
       <div className="">
        
@@ -44,7 +44,7 @@ const Khela = () => {
       </div>
 
       {/* Middle News */}
-      <div className="col-span-1 md:col-span-1 w-full overflow-hidden rounded-lg text-black">
+      <div className="col-span-1 lg:col-span-2 md:col-span-1 w-full overflow-hidden rounded-lg text-black">
         {leftNews[0] && (
 <Link  to={`/newsDetails/${leftNews[0]._id}`} className="block h-full">
 <div  className="news-article mb-4">

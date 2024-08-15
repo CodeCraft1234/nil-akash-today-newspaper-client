@@ -28,7 +28,7 @@ const LatestTwoNews = () => {
  <div className='mb-4' >
                     <img className='h-60 w-full' src={newsItem.photo} alt="" />
                     <h1>{newsItem.title}</h1>
-                      <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0]?.description, 35) }}></p>
+                      <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0]?.description, 75) }}></p>
                </div>
                 </Link>
               

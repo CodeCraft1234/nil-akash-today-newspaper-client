@@ -43,13 +43,13 @@ const Binnodon = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className=" p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Left Column */}
         <div className="col-span-2">
           <div className="bg-red-600 text-white p-2 rounded">বিনোদন</div>
           <div>
-            <div className="grid lg:grid-cols-2 gap-3 my-3">
+            <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 my-3">
               {binodonNews.slice(0, 2).map((latestNews) => (
                 <Link key={latestNews._id} to={`/newsDetails/${latestNews._id}`}>
                     <div  className="w-full overflow-hidden border border-gray-400 my-4 rounded-lg bg-gray-100">
@@ -68,7 +68,7 @@ const Binnodon = () => {
             
               ))}
             </div>
-            <div className="grid lg:grid-cols-3 gap-3 mb-3">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-3">
               {oparbanglaNews.slice(2, 5).map((data) => (
                 <Link key={data._id} to={`/newsDetails/${data._id}`} className="block shadow-lg h-full">
                   <div className="flex flex-col h-full">

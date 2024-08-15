@@ -6,7 +6,23 @@ import {
   FaWhatsapp,
   FaEnvelope,
   FaLink,
+  FaPrint,
 } from "react-icons/fa";
+
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+  EmailIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+} from 'react-share';
 import { Link, useLoaderData } from "react-router-dom";
 import UseNews from "../../AxiosFetch/UseNews";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
@@ -64,48 +80,61 @@ const PageDetails = () => {
     }
   };
 
-  const description='the description'
-  const title='the description ttt'
-  const photo='https://i.ibb.co/vdvf0sP/367071537-1084088192555421-2038517797379868910-n.jpg'
-  const currentUrl='the descriptioncccc'
+ // Split the description into words
+ const words = datas.description.split(' ');
+
+ // Define the points to split the description
+ const splitIndex1 = 200;
+ const splitIndex2 = 400;
+
+ // Create the first, second, and third parts of the description
+ const firstPart = words.slice(0, splitIndex1).join(' ');
+ const secondPart = words.slice(splitIndex1, splitIndex2).join(' ');
+ const thirdPart = words.slice(splitIndex2).join(' ');
+
+ const shareUrl = window.location.href;
+ const handlePrint = () => {
+  window.print();
+};
 
   return (
     
       <div className="container pt-36 mx-auto text-black p-4 bg-white">
 
+
+
 <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        
+        <title>{datas.title}</title>
+        <meta name="description" content={datas.description} />
+
         {/* Open Graph Meta Tags */}
-        <meta property="og:url" content={currentUrl} />
+        <meta property="og:url" content={`https://nil-akash-newspaper.netlify.app/newsDetails/${datas._id}`} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={photo} />
-        <meta property="og:image:secure_url" content={photo} />
+        <meta property="og:title" content="sagfdsgg" />
+        <meta property="og:description" content="gdsgadsagga" />
+        <meta property="og:image" content={datas.photo} />
+        <meta property="og:image:secure_url" content={datas.photo} />
+        <meta property="og:image:alt" content="khgkasdhgk" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={photo} />
-        
-        {/* Facebook App ID (optional) */}
-        <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
       </Helmet>
 
-        <img className="w-full h-20 mb-4" src="https://i.ibb.co/t3xZ42G/8506705887870801222.png" alt="" />
-        <div className="grid grid-cols-1 gap-3 lg:grid-cols-4 lg:gap-5 bg-white">
+
+      <div>
+        <h1>{datas.title}</h1>
+        <p>{datas.description}</p>
+        <img src={datas.photo} alt={datas.title} />
+      </div>
+
+        
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-5 lg:gap-5 bg-white">
           <div className="rounded-lg order-2 lg:order-1 md:order-1 bg-white">
             <div className="mb-4 text-sm bg-white">
               <a href="#" className="text-blue-500 hover:underline">{datas.category}</a> /
-              <a href="#" className="text-blue-500 hover:underline"> টালিউড</a>
+              <a href="#" className="text-blue-500 hover:underline"> পত্রিকা </a>
               <div className="text-black mt-1">
-                <h1>প্রতিবেদক</h1>
+                <h1>প্রতিবেদক : {datas.reporter}</h1>
                 <h1>প্রকাশ : ০৪ জুন ২০২৪, ০৮:৫৫ পিএম</h1>
                 <h1>অনলাইন সংস্করণ</h1>
               </div>
@@ -125,35 +154,55 @@ const PageDetails = () => {
                 </ul>
               </div>
             </article>
-            <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+            <img className="w-full h-[150px]" src="https://i.ibb.co/f9SmLH4/8bb4a054-a1a6-4283-af32-ad0ff75f149f.jpg" alt="" />
           </div>
 
-          <div className="rounded-lg order-1 lg:order-2 md:order-2 lg:col-span-2 bg-white">
-            <header className="mb-4 items-center md:col-span-2 lg:col-span-2 bg-white">
-              <h1 className="text-2xl mb-4 font-bold">{datas.title}</h1>
-              <div className="flex space-x-2">
-                <button className="px-3 py-1 bg-blue-500 text-white rounded-full flex items-center">
-                  <FaFacebookF />
-                </button>
-                <button className="px-3 py-1 bg-blue-400 text-white rounded-full flex items-center">
-                  <FaTwitter />
-                </button>
-                <button className="px-3 py-1 bg-blue-700 text-white rounded-full flex items-center">
-                  <FaLinkedinIn />
-                </button>
-                <button className="px-3 py-1 bg-green-500 text-white rounded-full flex items-center">
-                  <FaWhatsapp />
-                </button>
-                <button className="px-3 py-1 bg-gray-500 text-white rounded-full flex items-center">
-                  <FaEnvelope />
-                </button>
-                <button className="px-3 py-1 bg-gray-700 text-white rounded-full flex items-center">
-                  <FaLink />
-                </button>
-              </div>
-            </header>
+          <div className="rounded-lg order-1 lg:order-2 md:order-2 lg:col-span-3 bg-white">
+          <img className="w-full h-36 mb-4" src="https://i.ibb.co/LRyY1ht/b9880a9b-001f-4308-95d1-56609da8577e.jpg" alt="" />
+          <header className="mb-4 items-center md:col-span-2 lg:col-span-2 bg-white">
+      <h1 className="text-2xl mb-4 font-bold">{datas.title}</h1>
+      <div className="flex space-x-2">
+        <FacebookShareButton url={shareUrl} className="px-3 py-1 rounded-full flex items-center">
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+        <FacebookMessengerShareButton url={shareUrl} className="px-3 py-1 rounded-full flex items-center">
+            <FacebookMessengerIcon size={32} round />
+          </FacebookMessengerShareButton>
+        <TwitterShareButton url={shareUrl} className="px-3 py-1 rounded-full flex items-center">
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+        <LinkedinShareButton url={shareUrl} className="px-3 py-1 rounded-full flex items-center">
+          <LinkedinIcon size={32} round />
+        </LinkedinShareButton>
+        <WhatsappShareButton url={shareUrl} className="px-3 py-1 rounded-full flex items-center">
+          <WhatsappIcon size={32} round />
+        </WhatsappShareButton>
+        <EmailShareButton url={shareUrl} className="px-3 py-1 rounded-full flex items-center">
+          <EmailIcon size={32} round />
+        </EmailShareButton>
+        <button className="px-3 py-1 bg-gray-700 text-white rounded-full flex items-center">
+          <FaLink />
+        </button>
+        <button onClick={handlePrint} className="px-3 py-1 bg-gray-500 text-white rounded-full flex items-center">
+          <FaPrint />
+        </button>
+      </div>
+    </header>
             <img src={datas.photo} alt="Article" className="w-full h-auto mb-4 bg-white" />
-            <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: datas.description }}></p>
+
+            <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: firstPart }}></p>
+      
+      {/* Insert the first image */}
+      <img className="w-full h-56 mb-4" src="https://i.ibb.co/jJVB81x/02244e8e-1be5-4d7c-9566-25f238a8c6b8.jpg" alt="" />
+      
+      {/* Render the second part of the description */}
+      <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: secondPart }}></p>
+      
+      {/* Insert the second image */}
+      <img className="w-full h-56 mb-4" src="https://i.ibb.co/YQ3PTXs/91047daf-4df5-45df-ada5-4b6a65c7aa29.jpg" alt="" />
+      
+      {/* Render the third part of the description */}
+      <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: thirdPart }}></p>
 
             <div className="p-4 border rounded-lg">
               <h2 className="text-blue-600 font-bold mb-4">মন্তব্য করুন</h2>
@@ -211,11 +260,11 @@ const PageDetails = () => {
                 ))}
               </div>
             </div>
-            <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+            <img className="w-full h-[300px]" src="https://i.ibb.co/ThqC7t5/33d582ad-0750-464f-b4dd-47d5b7558717.jpg" alt="" />
           </div>
 
           <div className="rounded-lg order-3 lg:order-3 md:order-3 bg-white">
-            <img className="w-full h-200px" src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp" alt="" />
+            <img className="w-full h-[300px]" src="https://i.ibb.co/4Vt7yvt/82f949d1-225f-434d-9cbb-d0dd9a7ff41c.jpg" alt="" />
             <div className="p-4 mt-3">
               <div className="flex mb-4">
                 <button
@@ -244,7 +293,8 @@ const PageDetails = () => {
                 </ul>
               </div>
             </div>
-            <img className="w-full h-200px" src="https://i.ibb.co/YW2Gqsx/images-2.jpg" alt="" />
+            <img className="w-full h-[100px]" src="https://i.ibb.co/VpZzSpY/5c96d337-1bf3-454d-9a3d-7d5ca9028fac.jpg" alt="" />
+            <img className="w-full mt-20 h-[100px]" src="https://i.ibb.co/d20bkbt/96f7937e-e3af-42d6-893f-2c0ed2872f97.jpg" alt="" />
           </div>
         </div>
       </div>
