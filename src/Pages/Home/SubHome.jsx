@@ -35,31 +35,39 @@ const SubHome = () => {
   return (
     <div className="mt-5 px-1">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-8">
-        {/* Left side (blank) */}
-        <div className="lg:col-span-3">
-          <div className="mb-8">
-            <div className="rounded-lg bg-gray-200">
-              <LatestTwoNews></LatestTwoNews>
-            </div>
-          </div>
-        </div>
+     <div className="lg:col-span-9">
+     <div className="grid grid-cols-8 ">
 
-        {/* Middle section */}
-        <div className="lg:col-span-6">
-          <div className="mb-8">
-            <div className="rounded-lg bg-gray-200">
-              <Carousel />
-            </div>
-          </div>
-          <div className="mt-8">
-            <div className="rounded-lg bg-gray-200">
-              <EveryCategory />
-            </div>
-          </div>
-        </div>
+{/* Left side (blank) */}
+<div className="lg:col-span-3">
+ <div className="mb-8">
+   <div className="rounded-lg bg-gray-200">
+     <LatestTwoNews></LatestTwoNews>
+   </div>
+ </div>
+
+</div>
+
+{/* Middle section */}
+<div className="lg:col-span-5">
+ <div className="mb-8">
+   <div className="rounded-lg bg-gray-200">
+     <Carousel />
+   </div>
+ </div>
+ 
+</div>
+
+</div>
+<div className="mt-8">
+   <div className="rounded-lg bg-gray-200">
+     <EveryCategory />
+   </div>
+ </div>
+     </div>
 
         {/* Right side (সর্বশেষ and জনপ্রিয় data) */}
-        <div class="h-32 rounded-lg bg-gray-200 lg:col-span-3">
+        <div className="h-32 rounded-lg bg-gray-200 lg:col-span-3">
           <div className="rounded-lg w-full">
             <div className="rounded-lg text-black bg-white">
               <img
