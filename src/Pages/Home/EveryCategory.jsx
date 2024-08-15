@@ -28,9 +28,9 @@ const EveryCategory = () => {
         return title;
       };
     return (
-        <div className='grid gap-3 m-3 lg:grid-cols-3'>
+        <div className='grid gap-5 m-3 lg:grid-cols-4'>
             {latestNewsByCategory.map((newsItem, index) => (
-                <div key={newsItem._id} className="max-w-sm h-[270px] hover:text-blue-800 rounded-lg overflow-hidden shadow-lg border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col">
+                <div key={newsItem._id} className="max-w-sm h-[270px] hover:text-blue-800 rounded-lg overflow-hidden shadow-lg border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-start">
                 <Link to={`/newsDetails/${newsItem._id}`} className="block h-full">
                   <div className="flex flex-col h-full">
                     <img
