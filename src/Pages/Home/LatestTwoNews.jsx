@@ -21,20 +21,20 @@ const LatestTwoNews = () => {
         }
         return text;
     };
+
     return (
-        <div className='text-black mx-3 '>
+        <div className="text-black mx-3">
             {latestTwoNews.map(newsItem => (
                 <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block mb-5 h-full">
- <div className='mb-4 relative gap-6' >
-                    <img className='h-84 w-full' src={newsItem.photo} alt="" />
-                    <div className="absolute  bottom-0 w-full bg-gray-700 bg-opacity-40 text-white px-2 py-4">
-                      <div className="font-bold text-sm md:text-xl">{newsItem.title}</div>
+                    <div className="relative gap-6 mb-4">
+                        <img className="h-48 w-full object-cover md:h-64 lg:h-72" src={newsItem.photo} alt="" />
+                        <div className="absolute bottom-0 w-full bg-gray-700 bg-opacity-60 text-white px-2 py-4">
+                            <div className="font-bold text-sm md:text-lg lg:text-xl">
+                                {truncateText(newsItem.title, 7)}
+                            </div>
+                        </div>
                     </div>
-                 
-                      {/* <p className="text-justify mb-4 bg-white" dangerouslySetInnerHTML={{ __html: truncateText(news[0]?.description, 35) }}></p> */}
-               </div>
                 </Link>
-              
             ))}
         </div>
     );

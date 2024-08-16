@@ -33,52 +33,50 @@ const SubHome = () => {
   const itemsToShow = activeSection === "latest" ? newer : news;
 
   return (
-    <div className="mt-5 px-1">
+    <div className="mt-5 px-2 lg:px-4">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-8">
-     <div className="lg:col-span-9">
-     <div className="grid grid-cols-8 ">
+        {/* Main content area */}
+        <div className="lg:col-span-9">
+          <div className="grid grid-cols-1 lg:grid-cols-8 gap-4">
+            {/* Left side */}
+            <div className="lg:col-span-3 order-2 lg:order-1">
+              <div className="mb-8">
+                <div className="rounded-lg  p-2 lg:p-4">
+                  <LatestTwoNews />
+                </div>
+              </div>
+            </div>
 
-{/* Left side (blank) */}
-<div className="lg:col-span-3">
- <div className="mb-8">
-   <div className="rounded-lg bg-gray-200">
-     <LatestTwoNews></LatestTwoNews>
-   </div>
- </div>
+            {/* Middle section */}
+            <div className="lg:col-span-5 order-1 lg:order-2">
+              <div className="mb-8">
+                <div className="rounded-lg  p-2 lg:p-4">
+                  <Carousel />
+                </div>
+              </div>
+            </div>
+          </div>
 
-</div>
-
-{/* Middle section */}
-<div className="lg:col-span-5">
- <div className="mb-8">
-   <div className="rounded-lg bg-gray-200">
-     <Carousel />
-   </div>
- </div>
- 
-</div>
-
-</div>
-<div className="mt-8">
-   <div className="rounded-lg bg-gray-200">
-     <EveryCategory />
-   </div>
- </div>
-     </div>
+          <div className="mt-8">
+            <div className="rounded-lg  p-2 lg:p-4">
+              <EveryCategory />
+            </div>
+          </div>
+        </div>
 
         {/* Right side (সর্বশেষ and জনপ্রিয় data) */}
-        <div className="h-32 rounded-lg bg-gray-200 lg:col-span-3">
+        <div className="h-full rounded-lg bg-gray-200 lg:col-span-3">
           <div className="rounded-lg w-full">
-            <div className="rounded-lg text-black bg-white">
+            <div className="rounded-lg text-black bg-white p-2 lg:p-4">
               <img
-                className="w-full h-48 object-cover"
+                className="w-full h-32 md:h-48 object-cover"
                 src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp"
                 alt=""
               />
-              <div className="p-4 mt-3">
+              <div className="mt-3">
                 <div className="flex mb-4">
                   <button
-                    className={`mr-2 p-2 transition duration-500 ease-in-out transform ${
+                    className={`mr-2 p-2 text-xs md:text-sm transition duration-500 ease-in-out transform ${
                       activeSection === "latest"
                         ? "bg-blue-500 text-white scale-105"
                         : "bg-gray-300"
@@ -88,7 +86,7 @@ const SubHome = () => {
                     সর্বশেষ
                   </button>
                   <button
-                    className={`p-2 transition duration-500 ease-in-out transform ${
+                    className={`p-2 text-xs md:text-sm transition duration-500 ease-in-out transform ${
                       activeSection === "popular"
                         ? "bg-blue-500 text-white scale-105"
                         : "bg-gray-300"
@@ -98,17 +96,20 @@ const SubHome = () => {
                     জনপ্রিয়
                   </button>
                 </div>
-                <div className="h-64 overflow-y-scroll" onScroll={handleScroll}>
+                <div
+                  className="h-48 md:h-64 overflow-y-scroll"
+                  onScroll={handleScroll}
+                >
                   <ul className="space-y-2">
                     {itemsToShow.slice(0, visibleCount).map((item) => (
                       <Link key={item.id} to={`/newsDetails/${item._id}`}>
                         <li className="flex hover:bg-gray-100 items-center justify-start gap-2 space-x-2">
                           <img
-                            className="h-14 w-16 object-cover"
+                            className="h-10 w-12 md:h-14 md:w-16 object-cover"
                             src={item.photo}
                             alt=""
                           />
-                          <span className="hover:text-blue-800 hover:font-extralight">
+                          <span className="hover:text-blue-800 hover:font-extralight text-xs md:text-sm">
                             {item.title}
                           </span>
                         </li>
@@ -118,7 +119,7 @@ const SubHome = () => {
                 </div>
               </div>
               <img
-                className="w-full py-4 h-48 object-cover"
+                className="w-full h-32 md:h-48 object-cover mt-4"
                 src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp"
                 alt=""
               />

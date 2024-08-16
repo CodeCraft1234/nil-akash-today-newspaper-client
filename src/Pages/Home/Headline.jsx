@@ -26,7 +26,7 @@ const Headline = () => {
   }
 
   return (
-    <div className="flex justify-between items-center mt-32 z-0 px-3 py-3 bg-sky-100 rounded-md">
+    <div className="flex justify-between items-center mt-32 z-0 px-3 py-3  rounded-md">
       <div className="flex items-center">
         <h1 className="bg-blue-700 text-white py-2 px-4 rounded-l-md text-sm font-bold">শিরোনাম</h1>
         <Marquee className="space-x-10 text-black py-2">
