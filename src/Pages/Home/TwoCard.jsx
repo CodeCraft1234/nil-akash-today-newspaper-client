@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NewsCard from "../../Components/NewsCard/NewsCard";
 import SmallCard from "../../Components/SmallCard/SmallCard";
-import NewsCardTest from "../../Components/NewsCard/NewsCardTest";
 
 const TwoCard = () => {
   const [nationalNews, setNationalNews] = useState([]);
@@ -49,11 +48,31 @@ const TwoCard = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Show 4 cards per slide
-    slidesToScroll: 4,
+    slidesToShow: 4, // Default for large screens
+    slidesToScroll: 1, // Scroll one card at a time
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024, // For large devices
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 768, // For medium devices
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640, // For small devices
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
     appendDots: dots => (
       <div
         style={{
@@ -81,26 +100,27 @@ const TwoCard = () => {
     )
   };
 
-
   return (
     <div className="px-4 py-8">
-    <div className="mb-8">
-      <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 text-white">
-        জাতীয়
-      </h2>
-      {nationalNews.length > 0 && (
-        <Slider {...settings}>
-          {nationalNews.slice(0, 4).map((article) => (
-            <div key={article.id} className="px-2">
-              <div className="w-full overflow-hidden rounded-lg">
-                <NewsCard {...article} />
+      {/* জাতীয় Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 text-white">
+          জাতীয়
+        </h2>
+        {nationalNews.length > 0 && (
+          <Slider {...settings}>
+            {nationalNews.map((article) => (
+              <div key={article.id} className="px-2">
+                <div className="w-full overflow-hidden rounded-lg">
+                  <NewsCard {...article} />
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-      )}
-    </div>
+            ))}
+          </Slider>
+        )}
+      </div>
 
+      {/* Other Categories */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="">
           <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
