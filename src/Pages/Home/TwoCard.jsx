@@ -122,37 +122,55 @@ const TwoCard = () => {
 
       {/* Other Categories */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        <div className="">
-          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+        {/* International Section */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 text-white">
             আন্তর্জাতিক
           </h2>
-          <div className="grid grid-cols-1 gap-4">
-            {internationalNews.slice(0, 3).map((article) => (
-              <SmallCard key={article.id} article={article} />
-            ))}
-          </div>
+          {internationalNews.length > 0 && (
+            <div className="space-y-4">
+              <div className="w-full overflow-hidden rounded-lg">
+                <NewsCard {...internationalNews[0]} />
+              </div>
+              {internationalNews.slice(1, 4).map((article) => (
+                <SmallCard key={article.id} article={article} />
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="">
-          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+        {/* Politics Section */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 text-white">
             রাজনীতি
           </h2>
-          <div className="grid grid-cols-1 gap-4">
-            {politicsNews.slice(0, 3).map((article) => (
-              <SmallCard key={article.id} article={article} />
-            ))}
-          </div>
+          {politicsNews.length > 0 && (
+            <div className="space-y-4">
+              <div className="w-full overflow-hidden rounded-lg">
+                <NewsCard {...politicsNews[0]} />
+              </div>
+              {politicsNews.slice(1, 4).map((article) => (
+                <SmallCard key={article.id} article={article} />
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="">
-          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 shadow-md text-white">
+        {/* Economics Section */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-700 rounded-md p-2 text-white">
             অর্থনীতি
           </h2>
-          <div className="grid grid-cols-1 gap-4">
-            {economicsNews.slice(0, 3).map((article) => (
-              <SmallCard key={article.id} article={article} />
-            ))}
-          </div>
+          {economicsNews.length > 0 && (
+            <div className="space-y-4">
+              <div className="w-full overflow-hidden rounded-lg">
+                <NewsCard {...economicsNews[0]} />
+              </div>
+              {economicsNews.slice(1, 4).map((article) => (
+                <SmallCard key={article.id} article={article} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
