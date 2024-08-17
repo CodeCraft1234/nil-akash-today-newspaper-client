@@ -60,20 +60,29 @@ const Khela = () => {
 
       {/* Right Side News */}
       <div className="col-span-1">
-        <div className="grid gap-4">
-          {rightNews.length > 0 ? (
-            rightNews.map((article, index) => (
-              <Link key={article._id} to={`/newsDetails/${article._id}`} className="block  h-full">
-                <div key={index} className="">
-                  <SmallCard key={article.id} article={article} />
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p>No articles found</p>
-          )}
-        </div>
-      </div>
+  <div className="flex flex-col items-center py-4 border border-green-600 rounded-lg">
+    {/* Header Section */}
+    <div className="bg-green-600 w-full text-center py-2 rounded-t-lg -mt-4">
+      <h1 className="text-white font-bold text-xl lg:text-2xl">
+        NilAkashToday ই - পেপার
+      </h1>
+    </div>
+
+    {/* Image Section */}
+    <div className="w-full max-w-4xl mt-4 shadow-lg rounded-lg overflow-hidden flex justify-center">
+      <a href="https://nilakashtoday.com">
+      <img
+        src="https://i.ibb.co/8P10nGd/acrop.png"
+        alt="Newspaper"
+        className="w-full md:w-3/4 lg:w-1/2 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105 mx-auto"
+      />
+      </a>
+    </div>
+    
+  </div>
+  <img className="w-full h-200px mt-4" src="https://i.ibb.co/CKCFHGP/bookad.jpg" alt="" />
+</div>
+
     </div>
     </div>
    
