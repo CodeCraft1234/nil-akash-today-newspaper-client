@@ -27,7 +27,7 @@ const LatestTwoNews = () => {
             {latestTwoNews.map(newsItem => (
                 <Link key={newsItem._id} to={`/newsDetails/${newsItem._id}`} className="block mb-5 h-full">
                     <div className="relative gap-6 mb-4">
-                        <img className="h-48 w-full object-cover md:h-64 lg:h-72" src={newsItem.photo} alt="" />
+                        <img className="h-48 w-full object-cover md:h-64 lg:h-72 rounded" src={newsItem.photo} alt="" />
                         <div className="absolute bottom-0 w-full bg-gray-700 bg-opacity-60 text-white px-2 py-4">
                             <div className="font-bold text-sm md:text-lg lg:text-xl">
                                 {truncateText(newsItem.title, 7)}
