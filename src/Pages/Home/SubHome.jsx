@@ -65,7 +65,7 @@ const SubHome = () => {
         </div>
 
         {/* Right side (সর্বশেষ and জনপ্রিয় data) */}
-        <div className="h-full rounded-lg bg-gray-200 lg:col-span-3">
+        <div className="h-full rounded-lg  lg:col-span-3">
           <div className="rounded-lg w-full">
             <div className="rounded-lg text-black bg-white p-2 lg:p-4">
               <img
@@ -123,6 +123,19 @@ const SubHome = () => {
                 src="https://i.ibb.co/99Bfx2B/Walton1465127503.webp"
                 alt=""
               />
+              <img className="w-full h-200px mt-4" src="https://i.ibb.co/YW2Gqsx/images-2.jpg" alt="" />
+              <img
+                className="w-full h-32 md:h-48 object-cover mt-4"
+                src="https://i.ibb.co/M82yNzT/Daraz-11-11-Featured.webp"
+                alt=""
+              />
+              <img
+                className="w-full h-32 md:h-48 object-cover mt-4"
+                src="https://i.ibb.co/bmHXv48/Bkash-1-2209281207.jpg"
+                alt=""
+              />
+               <img className="w-full h-200px mt-4" src="https://i.ibb.co/9cFD4ng/8aed5-x2015-04-11-27-3-b.jpg" alt="" />
+               <img className="w-full h-200px mt-4" src="https://i.ibb.co/4YNYD2v/3da8b9197750446af5e6ef6767336d30.jpg" alt="" />
             </div>
           </div>
         </div>
