@@ -97,6 +97,7 @@ const Binnodon = () => {
               <SmallCard key={article._id} article={article} />
             ))}
           </div>
+          <img className="w-full h-200px mt-4" src="https://i.ibb.co/rfBp3fb/gpad.jpg" alt="" />
         </div>
       </div>
     </div>

@@ -98,6 +98,7 @@ const Sikkha = () => {
               <SmallCard key={article._id} article={article} />
             ))}
           </div>
+          <img className="w-full h-200px mt-4" src="https://i.ibb.co/1GTjGnL/Fresh-Exercise-Book.jpg" alt="" />
         </div>
       </div>
     </div>
