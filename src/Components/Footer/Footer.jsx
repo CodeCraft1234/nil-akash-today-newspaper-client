@@ -89,7 +89,7 @@ const Footer = () => {
 
       <div className="container mx-auto flex flex-wrap justify-between items-center mt-10">
         <p className="text-center md:text-left w-full md:w-auto mb-4 md:mb-0">
-          Copyright © 2023{" "}
+          Copyright © 2024{" "}
           <a href="https://nil-akash-newspaper.netlify.app/">
             <span className="text-green-600 font-bold">Digital Network</span>
           </a>{" "}

@@ -15,7 +15,7 @@ const TwoCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/news");
+        const response = await axios.get("https://akash-newspaper-server.vercel.app/news");
         const national = response.data.filter(
           (news) => news.category === "জাতীয়"
         );
