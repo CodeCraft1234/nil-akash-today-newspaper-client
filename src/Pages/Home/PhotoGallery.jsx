@@ -20,7 +20,7 @@ const PhotoGallery = () => {
 
         // Filter the first 3 categories for the sidebar
         const sidebarCategories = ['জাতীয়', 'আন্তর্জাতিক', 'রাজনীতি'];
-        const sidebarFilteredNews = newsData.filter((item) => sidebarCategories.includes(item.category)).slice(0, 3);
+        const sidebarFilteredNews = newsData.filter((item) => sidebarCategories.includes(item.category)).slice(0, 5);
         setSidebarNews(sidebarFilteredNews);
       } catch (error) {
         console.error('Error fetching news:', error);
@@ -97,14 +97,14 @@ const PhotoGallery = () => {
       <div className="flex flex-col lg:w-1/4 mt-4 lg:mt-0 lg:ml-4 space-y-4">
         {sidebarNews.map((item, index) => (
           <Link key={index} to={`/newsDetails/${item._id}`}>
-            <div className="flex flex-col items-center cursor-pointer">
-              <img
-                src={item.photo}
-                alt={item.title}
-                className="w-full h-24 object-cover rounded"
-              />
-              <p className="text-center mt-2">{item.title}</p>
-            </div>
+             <li className="flex p-4 hover:bg-gray-100 cursor-pointer">
+                  <img
+                    src={item.photo}
+                    alt={`News ${index + 1}`}
+                    className="w-16 h-16 object-cover rounded-lg mr-4"
+                  />
+                  <span className='hover:text-blue-800 hover:font-extralight'>{item.title}</span>
+                </li>
           </Link>
         ))}
       </div>
