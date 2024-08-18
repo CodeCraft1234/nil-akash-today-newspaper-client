@@ -83,7 +83,7 @@ const Carousel = () => {
       <Slider {...settings}>
         {latestNewsByCategory.map((newsItem, index) => (
           <div key={index} className="px-2">
-            <div key={newsItem._id} className="w-full overflow-hidden mb-4 rounded-lg">
+            <div key={newsItem._id} className="w-full overflow-hidden mb-2 rounded-lg">
             <Link to={`/newsDetails/${newsItem._id}`} className="block h-full">
               <div className="relative w-full h-[500px]">
                 <img

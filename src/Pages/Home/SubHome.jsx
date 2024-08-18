@@ -33,14 +33,14 @@ const SubHome = () => {
   const itemsToShow = activeSection === "latest" ? newer : news;
 
   return (
-    <div className="mt-5 px-2 lg:px-4">
+    <div className="mt-2 px-2 lg:px-4">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-8">
         {/* Main content area */}
         <div className="lg:col-span-9">
           <div className="grid grid-cols-1 lg:grid-cols-8 gap-4">
             {/* Left side */}
             <div className="lg:col-span-3 order-2 lg:order-1">
-              <div className="mb-8">
+              <div className="mb-2">
                 <div className="rounded-lg  p-2 lg:p-4">
                   <LatestTwoNews />
                 </div>
@@ -49,7 +49,7 @@ const SubHome = () => {
 
             {/* Middle section */}
             <div className="lg:col-span-5 order-1 lg:order-2">
-              <div className="mb-8">
+              <div className="mb-2">
                 <div className="rounded-lg  p-2 lg:p-4">
                   <Carousel />
                 </div>
@@ -57,7 +57,7 @@ const SubHome = () => {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-2">
             <div className="rounded-lg  p-2 lg:p-4">
               <EveryCategory />
             </div>
