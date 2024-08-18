@@ -61,7 +61,7 @@ const PhotoGallery = () => {
           <img
             src={sliderNews[currentIndex].photo}
             alt={sliderNews[currentIndex].title}
-            className="w-full h-96 object-cover"
+            className="w-full h-96 object-cover rounded"
           />
           <button
             className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2"
@@ -87,7 +87,7 @@ const PhotoGallery = () => {
                 <img
                   src={item.photo}
                   alt={item.title}
-                  className="w-24 h-24 object-cover"
+                  className="w-24 h-24 object-cover rounded"
                 />
               </div>
             </Link>
@@ -101,7 +101,7 @@ const PhotoGallery = () => {
               <img
                 src={item.photo}
                 alt={item.title}
-                className="w-full h-24 object-cover"
+                className="w-full h-24 object-cover rounded"
               />
               <p className="text-center mt-2">{item.title}</p>
             </div>
