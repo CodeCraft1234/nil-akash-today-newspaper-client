@@ -40,7 +40,7 @@ const Home = () => {
       {/* <Banijjo></Banijjo> */}
       {/* <Rajniti></Rajniti> */}
       <Khela></Khela>
-      <Saradesh></Saradesh>
+      {/* <Saradesh></Saradesh> */}
       <PhotoGallery></PhotoGallery>
     </div>
   );
