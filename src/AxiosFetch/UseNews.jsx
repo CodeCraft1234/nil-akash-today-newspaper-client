@@ -11,7 +11,6 @@ const UseNews = () => {
             return res.data
         }
     })
-        console.log(news)
         return [news,refetch]
 }
 export default UseNews;

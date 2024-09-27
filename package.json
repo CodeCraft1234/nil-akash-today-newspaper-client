@@ -31,6 +31,7 @@
     "react-router-dom": "^6.22.1",
     "react-share": "^5.1.0",
     "react-slick": "^0.30.2",
+    "react-social-share": "^0.0.6",
     "recharts": "^2.12.7",
     "slick-carousel": "^1.8.1",
     "sort-by": "^0.0.2",
@@ -47,6 +48,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.39",
+    "react-refresh": "^0.14.2",
+    "react-refresh-webpack-plugin": "^0.1.0",
     "tailwindcss": "^3.4.4",
     "vite": "^4.4.5"
   }

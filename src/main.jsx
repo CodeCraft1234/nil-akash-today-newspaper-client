@@ -22,6 +22,7 @@ import UpdateProducts from "./Pages/Dashboard/Routes/Updateproducts";
 import Settings from "./Pages/Dashboard/Settings";
 import AllNews from "./Pages/Home/AllNews";
 import Draft from "./Pages/Home/Draft";
+import { Helmet } from "react-helmet";
 
 
 const router = createBrowserRouter([
@@ -89,6 +90,27 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    
+    <Helmet>
+      <title>Zookachu</title>
+      <meta name="description" content="Share your daily life with world" />
+      <meta name="keywords" content="" />
+      <meta
+        name="subject"
+        content="Social media platform that have seemless user experience"
+      />
+      <meta name="copyright" content="spam" />
+      <meta name="language" content="ES" />
+      <meta name="author" content="Rumman Sheikh, rummansheikh2004@gmail.com" />
+      <meta name="category" content="social" />
+      <meta name="coverage" content="Worldwide" />
+      <meta name="distribution" content="Global" />
+      <meta name="rating" content="General" />
+      <meta name="target" content="all" />
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+    </Helmet>
+
   <QueryClientProvider client={queryClient}>
    <HelmetProvider>
          <AuthProvider>
